@@ -1,0 +1,30 @@
+.login-container {
+  display: flex;
+}
+
+.login-first-div {
+  object-fit: fill;
+  margin: 0;
+  padding: 0;
+	  
+}
+
+.login-first-div img {
+  object-fit: none;
+  height: 99vh;
+  width: 100vw;
+  max-height: 99vh;
+  max-width: 100vw;
+  min-width: 0px;
+}
+
+.login-second-div {
+  position: fixed;
+  right: 0px;
+  padding: 15px;
+  background-color: rgb(250, 250, 250);
+  width: 480px;
+  min-width: 480px;
+  max-width: 480px;
+  min-height: 99vh;
+}
