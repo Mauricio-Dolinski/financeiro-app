@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 export const Title = ({ name}) => {
   return (
     <Container component="main" maxWidth="100%" sx={{ float: "left" }}>
-      <Box sx={{ m: 2, p: 1, bgcolor: "#ffffff", float: "right", borderRadius: 5, boxShadow: "2px 2px 3px 0px"}}>
+      <Box sx={{ m: 2, p: 1, bgcolor: "#ffffff", float: "left", borderRadius: 5, boxShadow: "2px 2px 3px 0px"}}>
         <Typography variant="h5">
           {name}
         </Typography>

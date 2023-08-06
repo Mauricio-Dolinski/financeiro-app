@@ -1,0 +1,40 @@
+
+.app-container {
+  display: flex;
+  flex-grow: 1;
+  width: 100vw;
+  height: 100vh;
+}
+
+.sidebar-container {
+  display: flex;
+  flex-basis: min-content;
+}
+
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.testfabars {
+	
+	position: absolute;
+	left: 400px;
+    color: gray;
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.testfabars2 {
+	
+	position: absolute;
+    color: gray;
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    cursor: pointer;
+}

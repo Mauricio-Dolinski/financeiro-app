@@ -2,34 +2,19 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background-color: #8a8a8a;
-  position: fixed;
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  top: 0px;
-  left: 0px;
   width: 400px;
-  left: ${props => props.sidebar ? '0' : '-100%'};
-  animation: showSidebar .4s;
+  animation: testAnimation .4s;
 
-  > svg {
-	position: fixed;
-	left: 410px;
-    color: gray;
-    top: 10px;
-    width: 30px;
-    height: 30px;
-    
-    margin-top: 0px;
-    margin-left: 0px;
-    cursor: pointer;
-  }
-  
   > img {
 	  width: 400px;
-	  padding: 10px;
+	  padding: 20px;
   }
   
 
-  @keyframes showSidebar {
+  @keyframes testAnimation {
     from {
       opacity: 0;
       width: 0;

@@ -1,17 +1,15 @@
-import React from 'react'
-import { Container, Content } from './styles'
+import React from 'react';
+import { Container, Content } from './styles';
 import logo from "../../images/logo/logo max.jpg";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import { FaBars } from 'react-icons/fa'
+
 
 const Sidebar = ({ active }) => {
 
-  const closeSidebar = () => {
-    active(false)
-  }
+  
   
   const navigate = useNavigate();
   const { user, logout } = useAuth();
@@ -39,7 +37,7 @@ const Sidebar = ({ active }) => {
 
   return (
     <Container sidebar={active}>
-      <FaBars onClick={closeSidebar} />  
+      
       <img src={logo} alt="TransDolinski"/>
         <Box  sx={{ display: "grid" }}>
             {pages?.map((page) => (
