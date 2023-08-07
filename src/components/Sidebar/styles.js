@@ -7,6 +7,7 @@ export const Container = styled.div`
   height: 100%;
   width: 400px;
   animation: testAnimation .4s;
+  box-shadow: 0px 0px 0px 0px;
 
   > img {
 	  width: 400px;

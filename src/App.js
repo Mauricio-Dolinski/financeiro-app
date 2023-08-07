@@ -31,7 +31,15 @@ const getUserData = () =>
       const userData = window.localStorage.getItem("user");
       const userObject = JSON.parse(userData);
 
-      if (userObject && userObject.user === "admin" && userObject.password === "aaaaaa") {
+      if (userObject && userObject.user === "admin" && userObject.password === "admin") {
+		  
+		  resolve(userData);
+	  } 
+	  else  if (userObject && userObject.user === "operador" && userObject.password === "operador") {
+		  
+		  resolve(userData);
+	  } 
+	  else  if (userObject && userObject.user === "motorista" && userObject.password === "motorista") {
 		  
 		  resolve(userData);
 	  } 

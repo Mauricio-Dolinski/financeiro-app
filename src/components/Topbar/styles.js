@@ -4,7 +4,7 @@ export const Container = styled.div`
   height: 50px;
   display: flex;
   background-color: #FFFFFF; 
-  box-shadow: 0 0 20px 0px;
+  box-shadow: 0 0 20px -5px;
 
   > svg {
     position: sticky;

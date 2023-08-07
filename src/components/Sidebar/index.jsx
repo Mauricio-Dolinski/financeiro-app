@@ -5,11 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import { useLocalStorage } from "./../../hooks/useLocalStorage";
 
 
 const Sidebar = ({ active }) => {
 
-  
+  const [userData] = useLocalStorage("user", null);
   
   const navigate = useNavigate();
   const { user, logout } = useAuth();
@@ -19,9 +20,12 @@ const Sidebar = ({ active }) => {
       navigate(path);
     }
   };
-  
         
-  const pages = [
+  var pages;
+  
+  if (userData){
+	  if (userData.role === "Admin"){
+		  pages = [
 	  { label: 'Dashboard', path: "/dashboard" },
 	  { label: 'Usuários', path: "/usuarios" },
 	  { label: 'Motoristas', path: "/motoristas" },
@@ -34,6 +38,28 @@ const Sidebar = ({ active }) => {
 	  { label: 'Contas a pagar', path: "/contas-a-pagar" },
 	  { label: 'Relatórios', path: "/relatorios" }
 	  ];
+	  }
+	  else if (userData.role === "Operador"){
+		  pages = [
+	  { label: 'Dashboard', path: "/dashboard" },
+	  { label: 'Fretes', path: "/fretes" },
+	  { label: 'Clientes', path: "/clientes" },
+	  { label: 'Receitas', path: "/receitas" },
+	  { label: 'Contas a receber', path: "/contas-a-receber" },
+	  { label: 'Despesas', path: "/despesas" },
+	  { label: 'Contas a pagar', path: "/contas-a-pagar" },
+	  { label: 'Relatórios', path: "/relatorios" }
+	  ];
+	  }
+	  else if (userData.role === "Motorista"){
+		  pages = [
+	  { label: 'Dashboard', path: "/dashboard" },
+	  { label: 'Fretes', path: "/fretes" },
+	  { label: 'Contas a receber', path: "/contas-a-receber" }, //TODO: arrumar contas a receber especifico para motorista
+	  { label: 'Despesas', path: "/despesas" },
+	  ];
+	  }
+  }
 
   return (
     <Container sidebar={active}>

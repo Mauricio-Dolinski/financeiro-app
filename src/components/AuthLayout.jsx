@@ -13,7 +13,7 @@ const AuthLayout = () => {
     <Suspense fallback={<LinearProgress />}>
       <Await
         resolve={userPromise}
-        errorElement={<Alert severity="error">Something went wrong!</Alert>}
+        errorElement={<Alert severity="error">Erro: Acesso Negado!</Alert>}
         children={(user) => (
           <AuthProvider userData={user}>{outlet}</AuthProvider>
         )}
