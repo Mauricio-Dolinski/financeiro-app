@@ -3,6 +3,8 @@ import { useAuth } from "../../hooks/useAuth";
 import caminhoes from "../../images/caminhoes.jpg";
 import "./styles.css";
 
+
+
  const LoginLayout = () => {
   const { user } = useAuth();
   const outlet = useOutlet();

@@ -31,15 +31,15 @@ const getUserData = () =>
       const userData = window.localStorage.getItem("user");
       const userObject = JSON.parse(userData);
 
-      if (userObject && userObject.user === "admin" && userObject.password === "admin") {
+      if (userObject && userObject.user === "admin" && userObject.password === "a") {
 		  
 		  resolve(userData);
 	  } 
-	  else  if (userObject && userObject.user === "operador" && userObject.password === "operador") {
+	  else  if (userObject && userObject.user === "operador" && userObject.password === "a") {
 		  
 		  resolve(userData);
 	  } 
-	  else  if (userObject && userObject.user === "motorista" && userObject.password === "motorista") {
+	  else  if (userObject && userObject.user === "motorista" && userObject.password === "a") {
 		  
 		  resolve(userData);
 	  } 
