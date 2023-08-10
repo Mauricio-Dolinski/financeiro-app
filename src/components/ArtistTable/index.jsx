@@ -20,7 +20,11 @@ export function ArtistTable() {
         };
         posts.length = 0
         
-      }).catch(error => { toast.error("e: " + error); });
+      }).catch(error => { 
+		toast.error("e: " + error, {
+      	toastId: "networkError"
+    	});
+      });
   };
   const data = useMemo(() => [...posts], [posts]);
   const columns = useMemo(() => [
@@ -46,9 +50,6 @@ export function ArtistTable() {
       {
         Header: 'Excluir'
       }
-
-      
-
   ], []
   );
   
