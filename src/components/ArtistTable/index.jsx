@@ -10,51 +10,45 @@ import { toast} from "react-toastify";
 export function ArtistTable() {
 
   const [posts, setPosts] = useState([]);
-  const [fetchdata, setData] = useState([]);
-
+  
   const GetArtistsInfo = async () => {
-    await axios.get('http://localhost:9080/artists').then(response => {
-        const artists = response.data;
-        for (const artist of artists) {
-          const { albums, ...rest } = artist;
-          for (const album of albums) {
-            setPosts([...posts, { ...rest, ...album }]);
-            posts.push({ ...rest, ...album });
-          }
+    await axios.get('https://jsonplaceholder.typicode.com/users').then(response => {
+        const users = response.data;
+        for (const user of users) {
+          setPosts([...posts, { ...user }]);
+          posts.push({ ...user });
         };
+        posts.length = 0
+        
       }).catch(error => { toast.error("e: " + error); });
   };
   const data = useMemo(() => [...posts], [posts]);
-  const columns = useMemo(() => [{
-    Header: 'Artist Info',
-    columns: [
+  const columns = useMemo(() => [
       {
-        Header: 'Artist ID',
+        Header: 'ID',
         accessor: 'id'
       },
       {
-        Header: 'Artist Name',
+        Header: 'Nome',
         accessor: 'name'
       },
       {
-        Header: 'Genres',
-        accessor: 'genres',
-      }
-    ]
-  },
-  {
-    Header: 'Albums',
-    columns: [
-      {
-        Header: 'Number of Tracks',
-        accessor: 'ntracks',
+        Header: 'Usuário',
+        accessor: 'username',
       },
       {
-        Header: 'Title',
-        accessor: 'title',
+        Header: 'Email',
+        accessor: 'email',
+      },
+      {
+        Header: 'Editar'
+      },
+      {
+        Header: 'Excluir'
       }
-    ]
-  }
+
+      
+
   ], []
   );
   
@@ -62,7 +56,7 @@ export function ArtistTable() {
     {
       columns,
       data,
-      initialState: { pageIndex: 0, pageSize: 4 }
+      initialState: { pageIndex: 0, pageSize: 7 }
     },
     useSortBy,
     usePagination
@@ -86,13 +80,12 @@ export function ArtistTable() {
   } = tableInstance;
 
   useEffect(() => {
-	  //toast.error("useEffect");
+	  //toast("useEffect");
     GetArtistsInfo(); 
   }, []);
 
   return (
-    <Container component="table" maxWidth="100%" sx={{ margin: 0}}>
-      <Box sx={{ m: 2, p: 1, bgcolor: "#ffffff", borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
+      <Box sx={{ marginX: '25px', p: 2, bgcolor: "#ffffff", borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
 	      <table {...getTableProps()}>
 	        <thead>
 	          {headerGroups.map(headerGroup => (
@@ -118,7 +111,9 @@ export function ArtistTable() {
 	            return (
 	              <tr {...row.getRowProps()}>
 	                {row.cells.map(cell => {
-	                  return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+	                  return (
+						  <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+					  )
 	                })}
 	              </tr>
 	            )
@@ -127,17 +122,17 @@ export function ArtistTable() {
 	      </table>
 	      <div className="pagination">
 	        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-	          {'Previous'}
+	          {'Voltar'}
 	        </button>{' '}
 	        <div class="page-info">
 	          <span>
-	            Page{' '}
+	            Página{' '}
 	            <strong>
-	              {pageIndex + 1} of {pageOptions.length}
+	              {pageIndex + 1} de {pageOptions.length}
 	            </strong>{' '}
 	          </span>
 	          <span>
-	            | Go to page:{' '}
+	            Ir para página:{' '}
 	            <input
 	              type="number"
 	              defaultValue={pageIndex + 1}
@@ -154,18 +149,17 @@ export function ArtistTable() {
 	              setPageSize(Number(e.target.value))
 	            }}
 	          >
-	            {[4, 5, 6, 9].map(pageSize => (
+	            {[7, 10, 13, 16].map(pageSize => (
 	              <option key={pageSize} value={pageSize}>
-	                Show {pageSize}
+	                Mostre {pageSize}
 	              </option>
 	            ))}
 	          </select>
 	        </div>
 	        <button onClick={() => nextPage()} disabled={!canNextPage}>
-	          {'Next'}
+	          {'Próximo'}
 	        </button>{' '}
 	      </div>
 	    </Box>
-	  </Container>
   );
 }
