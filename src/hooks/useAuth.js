@@ -57,6 +57,7 @@ export const AuthProvider = ({ children, userData }) => {
 	  <>
 	  	<ToastContainer autoClose={3000} position={toast.POSITION.TOP_CENTER} />
 	    <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+	    
 	  </>
   );
 };

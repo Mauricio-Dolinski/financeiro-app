@@ -30,20 +30,17 @@ export const Container = styled.div`
 export const Content = styled.div`
   display: flex;
   align-items: center;
-  color: white;
   padding: 0px;
+  border: 0px;
   cursor: pointer;
   border-radius: 50px;
-  margin: 0 30px;
+  margin: 0 40px;
   height: 40px;
 
-  > svg {
-	position: flex;
-    margin: 0 20px;
-  }
 
   &:hover {
-    background-color: white;
-    color: blue;
+    background-color: #ddddff;
   }
+
+  
 `;

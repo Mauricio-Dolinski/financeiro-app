@@ -76,21 +76,29 @@ const Sidebar = ({ active }) => {
   return (
     <Container sidebar={active}>
       <img src={logo} alt="TransDolinski"/>
-        <Box  sx={{ display: "flex", flexDirection: "column"}}>
-        	
-			  <List component="nav">
+        <Box  >
+			  <List component="nav" sx={{ display: "flex", flexDirection: "column", alignItems: "center",gap: "5px"}}>
 	            {pages?.map((page) => (
 					<Content>
-			        <ListItemButton sx={{ color: "white",
-		              width: 340,
-		              height: "40px",
-		              borderRadius: "50px",
-		               '&:hover': {
+			        <ListItemButton sx={{
+				        "&.Mui-selected": {
+				          backgroundColor: "#ccccff",
+				          color: "primary.main",
+				          '& .MuiListItemIcon-root': {
+					        color: 'primary.main',
+					      },
+				        },
+				        '&:hover': {
 					      color: 'primary.main',
+					      backgroundColor: 'white',
 					      '& .MuiListItemIcon-root': {
 					        color: 'primary.main',
 					      },
 					    },
+				      color: 'white',  
+		              width: 340,
+		              height: "40px",
+		              borderRadius: "50px",
 	                 }}
 			          selected={selectedIndex === page.index}
 			          onClick={(event) => {
@@ -108,6 +116,8 @@ const Sidebar = ({ active }) => {
 			        </ListItemButton>
 			        </Content>
 		        ))}
+		        
+		        
 		      </List>
 		    {!!user && (
               <Button
