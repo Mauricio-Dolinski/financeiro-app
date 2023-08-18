@@ -70,7 +70,6 @@ export const router = createBrowserRouter(
       <Route element={<LoginLayout />}>
         <Route path="/" element={<LoginPage />} />
         <Route path="/recuperar" element={<RecoverPage />} />
-        <Route path="*" element={<LoginPage />} />
       </Route>
 
       <Route element={<MainLayout />}>
