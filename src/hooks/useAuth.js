@@ -16,9 +16,15 @@ export const AuthProvider = ({ children, userData }) => {
 	
 	if (data){
 		// API call para checar o login se estiver ok o login entrar
-		toast.loading("Autenticando...", {
-      		toastId: "logintoast"
-    	});
+		if (toast.isActive("logintoast")){
+			toast.update("logintoast", {render: "Autenticando...", type: "loading", isLoading: true, hideProgressBar: true, autoClose: false, closed: false});
+		}
+		else{
+			toast.loading("Autenticando...", {
+      			toastId: "logintoast", closeButton: true, closeOnClick: true
+    		});
+		}
+		
 		
 	    await axios.post('http://localhost:8080/api/login', { }, {
 			auth: {
@@ -29,14 +35,14 @@ export const AuthProvider = ({ children, userData }) => {
 	        data.role = response.data.role;
 	        data.name = response.data.name;
 	        setUser(data);
-	        toast.update("logintoast", {render: "Autenticado", type: "success", isLoading: false, hideProgressBar: false, autoClose: 1500});
+	        toast.update("logintoast", {render: "Autenticado", type: "success", isLoading: false, hideProgressBar: false, autoClose: 1200});
     		navigate("/dashboard", { replace: true });
 	      }).catch(error => { 
 			  if (error.response && error.response.status === 401){
 				    toast.update("logintoast", {render: "Usuário ou senha incorretos", type: "error", isLoading: false, hideProgressBar: false, autoClose: 3000});
 			  }
 			  else {
-				  toast.update("logintoast", {render: "Servidor de login offline", type: "error", isLoading: false, hideProgressBar: false,autoClose: 3000 });
+				  toast.update("logintoast", {render: "Servidor de login offline", type: "error", isLoading: false, hideProgressBar: false, autoClose: 3000});
 			  }
 	      });
     }
