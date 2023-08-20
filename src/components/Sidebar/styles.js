@@ -26,21 +26,3 @@ export const Container = styled.div`
     }
   }
 `;
-
-export const Content = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 0px;
-  border: 0px;
-  cursor: pointer;
-  border-radius: 50px;
-  margin: 0 40px;
-  height: 40px;
-
-
-  &:hover {
-    background-color: #ddddff;
-  }
-
-  
-`;

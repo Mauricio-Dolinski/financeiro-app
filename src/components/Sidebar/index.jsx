@@ -79,7 +79,6 @@ const Sidebar = ({ active }) => {
         <Box  >
 			  <List component="nav" sx={{ display: "flex", flexDirection: "column", alignItems: "center",gap: "5px"}}>
 	            {pages?.map((page) => (
-					<Content>
 			        <ListItemButton sx={{
 				        "&.Mui-selected": {
 				          backgroundColor: "#ccccff",
@@ -87,6 +86,9 @@ const Sidebar = ({ active }) => {
 				          '& .MuiListItemIcon-root': {
 					        color: 'primary.main',
 					      },
+						  '&:hover': {
+						      backgroundColor: "#ccccff",
+						   },
 				        },
 				        '&:hover': {
 					      color: 'primary.main',
@@ -114,7 +116,6 @@ const Sidebar = ({ active }) => {
 			          disableTypography
                        primary={<Typography variant="h6" style={{  }}>{page.label}</Typography>} />
 			        </ListItemButton>
-			        </Content>
 		        ))}
 		        
 		        
