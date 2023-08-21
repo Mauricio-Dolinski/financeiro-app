@@ -12,6 +12,7 @@ export const Container = styled.div`
   > img {
 	  width: 400px;
 	  padding: 20px;
+	  animation: testAnimation .4s;
   }
   
 
