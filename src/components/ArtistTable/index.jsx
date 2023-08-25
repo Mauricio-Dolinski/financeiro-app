@@ -5,6 +5,9 @@ import { useTable, usePagination, useSortBy } from 'react-table';
 import './styles.css'
 import Box from "@mui/material/Box";
 import { toast} from "react-toastify";
+import { LuEdit} from "react-icons/lu";
+import {BsFillTrashFill} from "react-icons/bs";
+import Button from "@mui/material/Button";
 
 export function ArtistTable() {
 
@@ -44,10 +47,16 @@ export function ArtistTable() {
         accessor: 'email',
       },
       {
-        Header: 'Editar'
+        Header: 'Editar',
+        Cell: <div className='div_acoes'>
+        		<LuEdit className="edit-btn" />
+        	  </div>
       },
       {
-        Header: 'Excluir'
+        Header: 'Excluir',
+        Cell: <div className='div_acoes'>
+        		<BsFillTrashFill className="delete-btn" />
+        	  </div>
       }
   ], []
   );
@@ -56,7 +65,7 @@ export function ArtistTable() {
     {
       columns,
       data,
-      initialState: { pageIndex: 0, pageSize: 7 }
+      initialState: { pageIndex: 0, pageSize: 8 }
     },
     useSortBy,
     usePagination
@@ -80,7 +89,6 @@ export function ArtistTable() {
   } = tableInstance;
 
   useEffect(() => {
-	  //toast("useEffect");
     GetArtistsInfo(); 
   }, []);
 
@@ -121,9 +129,9 @@ export function ArtistTable() {
 	        </tbody>
 	      </table>
 	      <div className="pagination">
-	        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+	        <Button variant="outlined" onClick={() => previousPage()} disabled={!canPreviousPage}>
 	          {'Voltar'}
-	        </button>{' '}
+	        </Button>{' '}
 	        <div class="page-info">
 	          <span>
 	            Página{' '}
@@ -143,22 +151,10 @@ export function ArtistTable() {
 	              style={{ width: '100px' }}
 	            />
 	          </span>{' '}
-	          <select
-	            value={pageSize}
-	            onChange={e => {
-	              setPageSize(Number(e.target.value))
-	            }}
-	          >
-	            {[7, 10, 13, 16].map(pageSize => (
-	              <option key={pageSize} value={pageSize}>
-	                Mostre {pageSize}
-	              </option>
-	            ))}
-	          </select>
 	        </div>
-	        <button onClick={() => nextPage()} disabled={!canNextPage}>
+	        <Button variant="outlined" onClick={() => nextPage()} disabled={!canNextPage}>
 	          {'Próximo'}
-	        </button>{' '}
+	        </Button>{' '}
 	      </div>
 	    </Box>
   );

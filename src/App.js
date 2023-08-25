@@ -23,7 +23,7 @@ import LoginLayout from "./components/LoginLayout";
 import AuthLayout from "./components/AuthLayout";
 import "./App.css";
 
-//TODO: ideally this would be an API call to server to get logged in user data
+//TODO: checkar no API se o usuario esta logado
 
 const getUserData = () =>
   new Promise((resolve, reject) =>
@@ -32,7 +32,7 @@ const getUserData = () =>
       const userObject = JSON.parse(userData);
 
       if (userObject && userObject.user === "admin" && userObject.password === "a") {
-		  
+
 		  resolve(userData);
 	  } 
 	  else  if (userObject && userObject.user === "operador" && userObject.password === "a") {
