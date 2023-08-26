@@ -5,23 +5,21 @@ import { useTable, usePagination, useSortBy } from 'react-table';
 import './styles.css'
 import Box from "@mui/material/Box";
 import { toast} from "react-toastify";
-import { LuEdit} from "react-icons/lu";
-import {BsFillTrashFill} from "react-icons/bs";
 import {BiSolidDownArrow, BiSolidUpArrow} from "react-icons/bi";
 import Button from "@mui/material/Button";
 
-export function ArtistTable() {
+export function Table({url, colunastest, size}) {
 
-  const [posts, setPosts] = useState([]);
+  const [rows, setRows] = useState([]);
   
-  const GetArtistsInfo = async () => {
-    await axios.get('https://jsonplaceholder.typicode.com/users').then(response => {
-        const users = response.data;
-        for (const user of users) {
-          setPosts([...posts, { ...user }]);
-          posts.push({ ...user });
+  const GetData = async () => {
+    await axios.get('https://jsonplaceholder.typicode.com/'+url).then(response => {
+        const entities = response.data;
+        for (const entity of entities) {
+          setRows([...rows, { ...entity }]);
+          rows.push({ ...entity });
         };
-        posts.length = 0;
+        rows.length = 0;
         
       }).catch(error => { 
 		toast.error("e: " + error, {
@@ -29,44 +27,15 @@ export function ArtistTable() {
     	});
       });
   };
-  const data = useMemo(() => [...posts], [posts]);
-  const columns = useMemo(() => [
-      {
-        Header: 'ID',
-        accessor: 'id'
-      },
-      {
-        Header: 'Nome',
-        accessor: 'name'
-      },
-      {
-        Header: 'Usuário',
-        accessor: 'username',
-      },
-      {
-        Header: 'Email',
-        accessor: 'email',
-      },
-      {
-        Header: 'Editar',
-        Cell: <div className='div_acoes'>
-        		<LuEdit className="edit-btn" />
-        	  </div>
-      },
-      {
-        Header: 'Excluir',
-        Cell: <div className='div_acoes'>
-        		<BsFillTrashFill className="delete-btn" />
-        	  </div>
-      }
-  ], []
+  const data = useMemo(() => [...rows], [rows]);
+  const columns = useMemo(() => colunastest, []
   );
   
   const tableInstance = useTable(
     {
       columns,
       data,
-      initialState: { pageIndex: 0, pageSize: 8 }
+      initialState: { pageIndex: 0, pageSize: size }
     },
     useSortBy,
     usePagination
@@ -90,7 +59,7 @@ export function ArtistTable() {
   } = tableInstance;
 
   useEffect(() => {
-    GetArtistsInfo(); 
+    GetData(); 
   }, []);
 
   return (
