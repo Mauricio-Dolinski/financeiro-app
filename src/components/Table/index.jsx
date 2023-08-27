@@ -17,9 +17,8 @@ export function Table({url, colunas, size}) {
   const [rows, setRows] = useState([]);
   const [user] = useLocalStorage("user", null);
   
-  
-  
   const getData = async () => {
+	rows.length = 0;
     await axios.get('http://localhost:8080/api/'+url, {
 			auth: {
 				username: user.user,
@@ -32,7 +31,6 @@ export function Table({url, colunas, size}) {
           rows.push({ ...entity });
         };
         rows.length = 0;
-        
       }).catch(error => { 
 		toast.error("e: " + error, {
       	toastId: "networkError"
@@ -72,7 +70,6 @@ export function Table({url, colunas, size}) {
 				  toast.update(url + "_" + id + "_delete_toast", {render: "Servidor de login offline", type: "error", isLoading: false, hideProgressBar: false, autoClose: 3000});
 			  }
 	      });
-	      rows.length = 0;
 	      getData();
 	    }
 	};
