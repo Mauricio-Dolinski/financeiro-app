@@ -12,36 +12,25 @@ const UsuariosPage = () => {
         Header: 'ID',
         accessor: 'id'
       },
-      {
-        Header: 'Nome',
-        accessor: 'name'
-      },
+      
       {
         Header: 'Usuário',
         accessor: 'username',
       },
       {
+        Header: 'Nivel de Acesso',
+        accessor: 'role'
+      },
+      {
         Header: 'Email',
         accessor: 'email',
-      },
-      {
-        Header: 'Editar',
-        Cell: <div className='div_acoes'>
-        		<LuEdit className="edit-btn" />
-        	  </div>
-      },
-      {
-        Header: 'Excluir',
-        Cell: <div className='div_acoes'>
-        		<BsFillTrashFill className="delete-btn" />
-        	  </div>
       }
   ];
   
   return (
 	  <>
 	    <Title name="Usuários" />
-		<Table url="users" colunastest={colunas} size='6'/>
+		<Table url="usuarios" colunas={colunas} size='6'/>
 	  </>
   )
 };

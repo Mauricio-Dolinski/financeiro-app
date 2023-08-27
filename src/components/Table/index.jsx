@@ -7,13 +7,25 @@ import Box from "@mui/material/Box";
 import { toast} from "react-toastify";
 import {BiSolidDownArrow, BiSolidUpArrow} from "react-icons/bi";
 import Button from "@mui/material/Button";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { LuEdit} from "react-icons/lu";
+import {BsFillTrashFill} from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
-export function Table({url, colunastest, size}) {
+export function Table({url, colunas, size}) {
 
   const [rows, setRows] = useState([]);
+  const [user] = useLocalStorage("user", null);
   
-  const GetData = async () => {
-    await axios.get('https://jsonplaceholder.typicode.com/'+url).then(response => {
+  
+  
+  const getData = async () => {
+    await axios.get('http://localhost:8080/api/'+url, {
+			auth: {
+				username: user.user,
+  				password: user.password
+			}
+		}).then(response => {
         const entities = response.data;
         for (const entity of entities) {
           setRows([...rows, { ...entity }]);
@@ -28,8 +40,42 @@ export function Table({url, colunastest, size}) {
       });
   };
   const data = useMemo(() => [...rows], [rows]);
-  const columns = useMemo(() => colunastest, []
+  const columns = useMemo(() => colunas, []
   );
+  
+  const deleteEntity = async (rowid) => {
+	
+	const id = rows[rowid].id;
+		if (user){
+			if (toast.isActive(url + "_" + id + "_delete_toast")){
+				toast.update(url + "_" + id + "_delete_toast", {render: "Deletando "+ url+" "+id+"...", type: "loading", isLoading: true, hideProgressBar: true, autoClose: false, closed: false});
+			}
+			else{
+				toast.loading("Deletando "+ url+" "+id+"...", {
+	      			toastId: url + "_" + id + "_delete_toast", closeButton: true, closeOnClick: true
+	    		});
+			}
+
+		    await axios.delete("http://localhost:8080/api/"+url+"/"+id, {
+				auth: {
+					username: user.user,
+	  				password: user.password
+				}
+			}).then(response => {
+		        
+		        toast.update(url + "_" + id + "_delete_toast", {render: "Sucesso", type: "success", isLoading: false, hideProgressBar: false, autoClose: 200});
+	      }).catch(error => { 
+			  if (error.response && error.response.status === 401){
+				    toast.update(url + "_" + id + "_delete_toast", {render: "Algo deu errado", type: "error", isLoading: false, hideProgressBar: false, autoClose: 3000});
+			  }
+			  else {
+				  toast.update(url + "_" + id + "_delete_toast", {render: "Servidor de login offline", type: "error", isLoading: false, hideProgressBar: false, autoClose: 3000});
+			  }
+	      });
+	      rows.length = 0;
+	      getData();
+	    }
+	};
   
   const tableInstance = useTable(
     {
@@ -59,7 +105,7 @@ export function Table({url, colunastest, size}) {
   } = tableInstance;
 
   useEffect(() => {
-    GetData(); 
+    getData(); 
   }, []);
 
   return (
@@ -71,17 +117,18 @@ export function Table({url, colunastest, size}) {
 	              {headerGroup.headers.map((column) => (
 	                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
 	                  {column.render('Header')}
-	                  
 	                    {column.isSorted
 	                      ? column.isSortedDesc
 	                        ? <> <span> </span> <BiSolidUpArrow className='arrowup'/> </>
 	                        : <> <span> </span> <BiSolidDownArrow className='arrowdown'/> </>
 	                      : ''}
-	                  
 	                </th>
 	              ))}
+	              <th>Editar</th>
+	          	  <th>Excluir</th>
 	            </tr>
 	          ))}
+	          
 	        </thead>
 	        <tbody {...getTableBodyProps()}>
 	          {page.map((row, i) => {
@@ -93,9 +140,13 @@ export function Table({url, colunastest, size}) {
 						  <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
 					  )
 	                })}
+	                <td><LuEdit className="edit-btn" 
+					 /></td>
+	          		<td><BsFillTrashFill className="delete-btn" onClick={() => {deleteEntity(row.id)}}/></td>
 	              </tr>
 	            )
 	          })}
+	          
 	        </tbody>
 	      </table>
 	      <div className="pagination">
