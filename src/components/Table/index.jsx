@@ -10,7 +10,6 @@ import Button from "@mui/material/Button";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { LuEdit} from "react-icons/lu";
 import {BsFillTrashFill} from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
 
 export function Table({url, colunas, size}) {
 
@@ -53,21 +52,19 @@ export function Table({url, colunas, size}) {
 	      			toastId: url + "_" + id + "_delete_toast", closeButton: true, closeOnClick: true
 	    		});
 			}
-
 		    await axios.delete("http://localhost:8080/api/"+url+"/"+id, {
 				auth: {
 					username: user.user,
 	  				password: user.password
 				}
 			}).then(response => {
-		        
-		        toast.update(url + "_" + id + "_delete_toast", {render: "Sucesso", type: "success", isLoading: false, hideProgressBar: false, autoClose: 200});
+		        toast.update(url + "_" + id + "_delete_toast", {render: "Deletado", type: "success", isLoading: false, hideProgressBar: false, autoClose: 200});
 	      }).catch(error => { 
 			  if (error.response && error.response.status === 401){
 				    toast.update(url + "_" + id + "_delete_toast", {render: "Algo deu errado", type: "error", isLoading: false, hideProgressBar: false, autoClose: 3000});
 			  }
 			  else {
-				  toast.update(url + "_" + id + "_delete_toast", {render: "Servidor de login offline", type: "error", isLoading: false, hideProgressBar: false, autoClose: 3000});
+				  toast.update(url + "_" + id + "_delete_toast", {render: "Servidor offline", type: "error", isLoading: false, hideProgressBar: false, autoClose: 3000});
 			  }
 	      });
 	      getData();

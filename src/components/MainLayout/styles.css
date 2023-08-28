@@ -25,9 +25,9 @@
 	position: absolute;
 	left: 400px;
     color: gray;
-    width: 30px;
-    height: 30px;
-    margin: 10px;
+    width: 50px;
+    height: 40px;
+    margin: 12px;
     cursor: pointer;
 }
 
@@ -35,8 +35,8 @@
 	
 	position: absolute;
     color: gray;
-    width: 30px;
-    height: 30px;
-    margin: 10px;
+    width: 50px;
+    height: 40px;
+    margin: 12px;
     cursor: pointer;
 }

@@ -8,6 +8,12 @@ export const Container = styled.div`
   width: 400px;
   animation: testAnimation .4s;
   box-shadow: 0px 0px 0px 0px;
+  
+  .icon {
+	  margin: 10px;
+	  width: 30px;
+	  height: 30px;
+  }
 
   > img {
 	  width: 400px;
