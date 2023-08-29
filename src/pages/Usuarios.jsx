@@ -1,7 +1,7 @@
 import { Title } from "../components/Title";
 import {Table} from "../components/Table";
-
-//TODO: arrumar bug size 6 com 10 rows produz 12 rows 2da pagina com 6,  ultima repetindo os 2 ultimos rows
+import Box from "@mui/material/Box";
+import { AddButton } from "../components/AddButton";
 
 const UsuariosPage = () => {
 	
@@ -27,7 +27,10 @@ const UsuariosPage = () => {
   
   return (
 	  <>
-	    <Title name="Usuários" />
+	  	<Box sx={{display: 'flex', alignSelf: 'start', margin: '0px', width: '100%', p: 0, justifyContent: 'space-between'}}>
+	    	<Title name="Usuários" />
+	    	<AddButton />
+	    </Box>
 		<Table url="usuarios" colunas={colunas} size='6'/>
 	  </>
   )

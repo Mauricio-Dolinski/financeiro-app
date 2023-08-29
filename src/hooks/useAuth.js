@@ -46,32 +46,6 @@ export const AuthProvider = ({ children, userData }) => {
 			  }
 	      });
     }
-	
-	/* mudado pro backend
-	if (data && data.user === "admin" && data.password === "a") {
-		data.role = "Admin";
-		data.name = "Mauricio da Mota Porelli Dolinski"
-		setUser(data);
-    	navigate("/dashboard", { replace: true });  
-	}
-	else if (data && data.user === "operador" && data.password === "a") {
-		data.role = "Operador";
-		data.name = "Sidney Dolinski"
-		setUser(data);
-    	navigate("/dashboard", { replace: true });  
-	} 
-	else if (data && data.user === "motorista" && data.password === "a") {
-		data.role = "Motorista";
-		data.name = "Luiz Carlos Graciano"
-		setUser(data);
-    	navigate("/dashboard", { replace: true });  
-	} 
-	 
-	//se o login não for achado msg de erro ou ir para tela de recuperação
-	else {
-	  //navigate("/recuperar", { replace: false });  
-	  toast.error("Usuário ou senha incorretos");
-	}*/
   };
 
   const logout = () => {

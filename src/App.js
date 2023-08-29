@@ -8,6 +8,7 @@ import LoginPage from "./pages/Login";
 import RecoverPage from "./pages/Recover";
 import DashboardPage from "./pages/Dashboard";
 import UsuariosPage from "./pages/Usuarios";
+import UsuariosCadastroPage from "./pages/UsuariosCadastro";
 import MotoristasPage from "./pages/Motoristas";
 import VeiculosPage from "./pages/Veiculos";
 import FretesPage from "./pages/Fretes";
@@ -23,49 +24,32 @@ import LoginLayout from "./components/LoginLayout";
 import AuthLayout from "./components/AuthLayout";
 import "./App.css";
 
-//TODO: checkar no API se o usuario esta logado
+import axios from 'axios';
 
-const getUserData = () =>
-  new Promise((resolve, reject) =>
-    setTimeout(() => {
-      const userData = window.localStorage.getItem("user");
-      const userObject = JSON.parse(userData);
-
-      if (userObject && userObject.user === "admin" && userObject.password === "a") {
-
-		  resolve(userData);
-	  } 
-	  else  if (userObject && userObject.user === "operador" && userObject.password === "a") {
-		  
-		  resolve(userData);
-	  } 
-	  else  if (userObject && userObject.user === "motorista" && userObject.password === "a") {
-		  
-		  resolve(userData);
-	  } 
-      else if (userObject === null){
-		  resolve(userData);
-	  }
-	  
-	  else {
-		  reject("Error");
-	  }
-    }, 300)
-  );
-
-// for error
-// const getUserData = () =>
-//   new Promise((resolve, reject) =>
-//     setTimeout(() => {
-//       reject("Error");
-//     }, 3000)
-//   );
+  const auth = async () => {
+	const userData = window.localStorage.getItem("user");
+    const userObject = JSON.parse(userData);
+	if (userObject){
+	    await axios.post('http://localhost:8080/api/login', { }, {
+			auth: {
+				username: userObject.user,
+  				password: userObject.password
+			}
+		}).then(response => {
+	        return new Promise((resolve, reject) => resolve(userObject));
+      }).catch(error => { 
+		  window.localStorage.setItem("user", null);
+		  return new Promise((resolve, reject) => reject("Error"));
+      });
+    }
+    return new Promise((resolve, reject) => resolve(userObject));
+  };
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route
       element={<AuthLayout />}
-      loader={() => defer({ userPromise: getUserData() })}
+      loader={() => defer({ userPromise: auth() })}
     >
       <Route element={<LoginLayout />}>
         <Route path="/" element={<LoginPage />} />
@@ -75,6 +59,7 @@ export const router = createBrowserRouter(
       <Route element={<MainLayout />}>
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/usuarios" element={<UsuariosPage />} />
+        <Route path="/usuarios/cadastrar" element={<UsuariosCadastroPage />} />
         <Route path="/motoristas" element={<MotoristasPage />} />
         <Route path="/veiculos" element={<VeiculosPage />} />
         <Route path="/fretes" element={<FretesPage />} />
