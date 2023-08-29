@@ -1,27 +1,63 @@
 import React from "react";
 import { Title } from "../components/Title";
-import {Table} from "../components/Table";
 import Box from "@mui/material/Box";
-import { AddButton } from "../components/AddButton";
-import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField, Typography } from "@mui/material";
+import { SaveButton } from "../components/SaveButton";
+import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Typography } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { MyInput } from "../components/MyInput";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 
 const UsuariosCadastroPage = () => {
 	
 	const [showPassword, setShowPassword] = React.useState(false);
+	const { user } = useAuth();
 	
 	const handleClickShowPassword = () => setShowPassword((show) => !show);
 
     const handleMouseDownPassword = (event) => {
     	event.preventDefault();
     };
-	  
-	const handleSubmit = (event) => {
-    	event.preventDefault();
-    	const data = new FormData(event.currentTarget);
-  	};
+    
+    const navigate = useNavigate();
+  	
+  const handleSubmit = async (event) => {
+	
+	event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const entity = "usuarios";
+    
+	if (data){
+		if (toast.isActive(entity+"toast")){
+			toast.update(entity+"toast", {render: "Cadastrando...", type: "loading", isLoading: true, hideProgressBar: true, autoClose: false, closed: false});
+		}
+		else{
+			toast.loading("Cadastrando...", {
+      			toastId: entity+"toast", closeButton: true, closeOnClick: true
+    		});
+		}
+		
+	    await axios.post('http://localhost:8080/api/'+entity, {data}, {
+			auth: {
+				username: user.user,
+  				password: user.password
+			}
+		}).then(response => {
+	        toast.update(entity+"toast", {render: "Cadastrado", type: "success", isLoading: false, hideProgressBar: false, autoClose: 1200});
+    		navigate("/"+entity, { replace: true });
+	      }).catch(error => { 
+			  if (error.response && error.response.status === 401){
+				    toast.update(entity+"toast", {render: "Acesso negado", type: "error", isLoading: false, hideProgressBar: false, autoClose: 3000});
+			  }
+			  else {
+				  toast.update(entity+"toast", {render: "Servidor de login offline", type: "error", isLoading: false, hideProgressBar: false, autoClose: 3000});
+			  }
+	      });
+    }
+  };
   
   return (
 	  <>
@@ -66,7 +102,7 @@ const UsuariosCadastroPage = () => {
         	  </Box>
             </Box>
           <Box sx={{display: "flex", alignItems: "flex-start"}} > 
-		  	<AddButton />
+		  	<SaveButton />
 		  </Box>
         </Box>
 	  </>
