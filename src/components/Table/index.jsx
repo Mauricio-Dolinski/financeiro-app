@@ -10,11 +10,13 @@ import Button from "@mui/material/Button";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { LuEdit} from "react-icons/lu";
 import {BsFillTrashFill} from "react-icons/bs";
+import { useNavigate } from 'react-router-dom';
 
 export function Table({url, colunas, size}) {
 
   const [rows, setRows] = useState([]);
   const [user] = useLocalStorage("user", null);
+  const navigate = useNavigate();
   
   const getData = async () => {
 	rows.length = 0;
@@ -70,12 +72,20 @@ export function Table({url, colunas, size}) {
 	      getData();
 	    }
 	};
+	
+  const editEntity = (rowid) => {
+	  		const id = rows[rowid].id;
+	  		navigate("/"+url+"/editar/"+id, { replace: true })
+	  	}
+	  	
+	  	
+	
   
   const tableInstance = useTable(
     {
       columns,
       data,
-      initialState: { pageIndex: 0, pageSize: size }
+      initialState: { pageIndex: 0, pageSize: Number(size) }
     },
     useSortBy,
     usePagination
@@ -134,7 +144,7 @@ export function Table({url, colunas, size}) {
 						  <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
 					  )
 	                })}
-	                <td><LuEdit className="edit-btn" 
+	                <td><LuEdit className="edit-btn" onClick={() => {editEntity(row.id)}}
 					 /></td>
 	          		<td><BsFillTrashFill className="delete-btn" onClick={() => {deleteEntity(row.id)}}/></td>
 	              </tr>

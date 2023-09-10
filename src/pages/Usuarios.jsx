@@ -10,7 +10,10 @@ const UsuariosPage = () => {
         Header: 'ID',
         accessor: 'id'
       },
-      
+      {
+        Header: 'Nome',
+        accessor: 'name',
+      },
       {
         Header: 'Usuário',
         accessor: 'username',

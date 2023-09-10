@@ -60,6 +60,7 @@ export const router = createBrowserRouter(
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/usuarios" element={<UsuariosPage />} />
         <Route path="/usuarios/cadastrar" element={<UsuariosCadastroPage />} />
+        <Route path="/usuarios/editar/:id" element={<UsuariosCadastroPage />} />
         <Route path="/motoristas" element={<MotoristasPage />} />
         <Route path="/veiculos" element={<VeiculosPage />} />
         <Route path="/fretes" element={<FretesPage />} />
