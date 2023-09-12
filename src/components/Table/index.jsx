@@ -61,7 +61,8 @@ export function Table({url, colunas, size}) {
 				}
 			}).then(response => {
 		        toast.update(url + "_" + id + "_delete_toast", {render: "Deletado", type: "success", isLoading: false, hideProgressBar: false, autoClose: 200});
-	      }).catch(error => { 
+	      }).catch(error => {
+			  getData(); 
 			  if (error.response && error.response.status === 401){
 				    toast.update(url + "_" + id + "_delete_toast", {render: "Algo deu errado", type: "error", isLoading: false, hideProgressBar: false, autoClose: 3000});
 			  }

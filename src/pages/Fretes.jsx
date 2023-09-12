@@ -1,7 +1,45 @@
 import { Title } from "../components/Title";
+import {Table} from "../components/Table";
+import { AddButton } from "../components/AddButton";
+import Box from "@mui/material/Box";
 
 const FretesPage = () => {
-  return <Title name="Fretes" />;
+  const colunas = [
+      {
+        Header: 'ID',
+        accessor: 'id'
+      },
+      {
+        Header: 'Data Inicio',
+        accessor: 'data',
+      },
+      {
+        Header: 'Veiculo',
+        accessor: 'placa',
+      },
+      {
+        Header: 'Origem',
+        accessor: 'origem'
+      },
+      {
+        Header: 'Destino',
+        accessor: 'destino',
+      },
+      {
+        Header: 'Motorista',
+        accessor: 'nome',
+      }
+  ];
+  
+  return (
+	<>
+	  	<Box sx={{display: 'flex', alignSelf: 'start', margin: '0px', width: '100%', p: 0, justifyContent: 'space-between'}}>
+	    	<Title name="Fretes" />
+	    	<AddButton />
+	    </Box>
+		<Table url="fretes" colunas={colunas} size='6'/>
+	  </>
+	)
 };
 
 export default FretesPage

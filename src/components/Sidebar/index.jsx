@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container } from './styles';
 import logo from "../../images/logo/logo max.jpg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
@@ -28,9 +28,25 @@ const Sidebar = ({ active }) => {
   
   const navigate = useNavigate();
   const { user, logout } = useAuth();
+  const location = useLocation();
+  const pathname = location.pathname;
+  var initialIndex = 0;
+  if (pathname.includes("dashboard")) initialIndex = 0;
+  else if (pathname.includes("usuarios")) initialIndex = 1;
+  else if (pathname.includes("motoristas")) initialIndex = 2;
+  else if (pathname.includes("veiculos")) initialIndex = 3;
+  else if (pathname.includes("fretes")) initialIndex = 4;
+  else if (pathname.includes("clientes")) initialIndex = 5;
+  else if (pathname.includes("receitas")) initialIndex = 6;
+  else if (pathname.includes("contas-a-receber")) initialIndex = 7;
+  else if (pathname.includes("despesas")) initialIndex = 8;
+  else if (pathname.includes("contas-a-pagar")) initialIndex = 9;
+  else if (pathname.includes("relatorios")) initialIndex = 10;
   
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
-
+  const [selectedIndex, setSelectedIndex] = useState(initialIndex);
+  
+  
+  
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
   };
@@ -62,24 +78,26 @@ const Sidebar = ({ active }) => {
 	  else if (userData.role === "Operador"){
 		  pages = [
 	  { label: 'Dashboard', path: "/dashboard" , index: 0, icon: <BiSolidDashboard className='icon' />},
-	  { label: 'Fretes', path: "/fretes" , index: 1, icon: <FaShippingFast className='icon' />},
-	  { label: 'Clientes', path: "/clientes" , index: 2, icon: <Groups sx={{ m: "10px", width: "30px", height: "30px"}}/>},
-	  { label: 'Receitas', path: "/receitas", index: 3, icon: <LuReceipt className='icon' />},
-	  { label: 'Contas a receber', path: "/contas-a-receber", index: 4, icon: <GiReceiveMoney className='icon' />},
-	  { label: 'Despesas', path: "/despesas", index: 5, icon: <LuReceipt className='icon' />},
-	  { label: 'Contas a pagar', path: "/contas-a-pagar", index: 6, icon: <GiPayMoney className='icon' />},
-	  { label: 'Relatórios', path: "/relatorios", index: 7, icon: <BsFillBarChartLineFill className='icon'/>}
+	  { label: 'Fretes', path: "/fretes" , index: 4, icon: <FaShippingFast className='icon' />},
+	  { label: 'Clientes', path: "/clientes" , index: 5, icon: <Groups sx={{ m: "10px", width: "30px", height: "30px"}}/>},
+	  { label: 'Receitas', path: "/receitas", index: 6, icon: <LuReceipt className='icon' />},
+	  { label: 'Contas a receber', path: "/contas-a-receber", index: 7, icon: <GiReceiveMoney className='icon' />},
+	  { label: 'Despesas', path: "/despesas", index: 8, icon: <LuReceipt className='icon' />},
+	  { label: 'Contas a pagar', path: "/contas-a-pagar", index: 9, icon: <GiPayMoney className='icon' />},
+	  { label: 'Relatórios', path: "/relatorios", index: 10, icon: <BsFillBarChartLineFill className='icon'/>}
 	  ];
 	  }
 	  else if (userData.role === "Motorista"){
 		  pages = [
 	  { label: 'Dashboard', path: "/dashboard", index: 0, icon: <BiSolidDashboard className='icon' />},
-	  { label: 'Fretes', path: "/fretes", index: 1, icon: <FaShippingFast className='icon' />},
-	  { label: 'Contas a receber', path: "/contas-a-receber" , index: 2, icon: <GiReceiveMoney className='icon' />}, //TODO: arrumar contas a receber especifico para motorista
-	  { label: 'Despesas', path: "/despesas", index: 3, icon: <LuReceipt className='icon' />},
+	  { label: 'Fretes', path: "/fretes", index: 4, icon: <FaShippingFast className='icon' />},
+	  { label: 'Contas a receber', path: "/contas-a-receber" , index: 7, icon: <GiReceiveMoney className='icon' />}, //TODO: arrumar contas a receber especifico para motorista
+	  { label: 'Despesas', path: "/despesas", index: 8, icon: <LuReceipt className='icon' />},
 	  ];
 	  }
   }
+  
+  
 
   return (
     <Container sidebar={active}>

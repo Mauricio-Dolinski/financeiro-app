@@ -66,7 +66,7 @@ const UsuariosCadastroPage = () => {
 	
 	if (data){
 		
-		const renderLabel = isCadastro ? "Cadastrando..." : "Editando...";
+		const renderLabel = isCadastro ? "Cadastrando..." : "Salvando...";
 		if (toast.isActive(entityName+"toast")){
 			toast.update(entityName+"toast", {render: renderLabel, type: "loading", isLoading: true, hideProgressBar: true, autoClose: false, closed: false});
 		}
@@ -152,12 +152,13 @@ const UsuariosCadastroPage = () => {
 	   <Title name="Usuários - Editar " />
 	    }
 	  	<Box component="form" onSubmit={handleSubmit} gap="25px" sx={{ display: "flex", flexDirection: "column", m: "0px", p: "0px", alignItems: "flex-start" }}>
+	  	{!isLoading && <>
 	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
-	  	  	{!isLoading && <MyInput name="name" label="Nome Completo" isCadastro={isCadastro} getValue={entity.name}/>}
-	  	  	{!isLoading && <MyInput name="email" label="Email" isCadastro={isCadastro} getValue={entity.email}/>}
+	  	  	<MyInput name="name" label="Nome Completo" isCadastro={isCadastro} getValue={entity.name}/>
+	  	  	<MyInput name="email" label="Email" isCadastro={isCadastro} getValue={entity.email}/>
 	  	  </Box>
 	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
-            {!isLoading && <MyInput name="username" label="Usuário" isCadastro={isCadastro} isDisabled={!isCadastro} getValue={entity.username}/>}
+            <MyInput name="username" label="Usuário" isCadastro={isCadastro} isDisabled={!isCadastro} getValue={entity.username}/>
             <Box sx={{width: "100%", display: 'flex', alignItems: 'center',color: '#757575', marginX: '25px', p: 2, bgcolor: bgColor, borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
 	          <Typography variant="h6" sx={{display: "flex", fontWeight: 'bold', marginRight: "25px"}}>
 	             Senha
@@ -191,7 +192,7 @@ const UsuariosCadastroPage = () => {
 	          	/>
 	        	</FormControl>
         	  </Box>
-        	  {!isLoading && <MyInput name="role" label="Nivel de Acesso" isCadastro={isCadastro} getValue={entity.role}/>}
+        	  <MyInput name="role" label="Nivel de Acesso" isCadastro={isCadastro} getValue={entity.role}/>
             </Box>
           <Box sx={{display: "flex", alignItems: "flex-start"}} > 
 		  	{isCadastro ?
@@ -200,6 +201,9 @@ const UsuariosCadastroPage = () => {
 		  	<SaveButton />
 		  	}
 		  </Box>
+	  	
+	  	</>}
+	  	  
         </Box>
 	  </>
   )

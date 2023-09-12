@@ -11,6 +11,10 @@ const MotoristasPage = () => {
         accessor: 'id'
       },
       {
+        Header: 'CNH',
+        accessor: 'cnh',
+      },
+      {
         Header: 'Nome',
         accessor: 'nome',
       },
