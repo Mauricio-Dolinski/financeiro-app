@@ -14,6 +14,14 @@ const FretesPage = () => {
         accessor: 'data',
       },
       {
+        Header: 'Cliente',
+        accessor: 'nome_cliente',
+      },
+      {
+        Header: 'Motorista',
+        accessor: 'nome_motorista',
+      },
+      {
         Header: 'Veiculo',
         accessor: 'placa',
       },
@@ -24,10 +32,6 @@ const FretesPage = () => {
       {
         Header: 'Destino',
         accessor: 'destino',
-      },
-      {
-        Header: 'Motorista',
-        accessor: 'nome',
       }
   ];
   

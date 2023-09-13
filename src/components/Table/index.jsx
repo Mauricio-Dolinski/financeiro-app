@@ -26,7 +26,14 @@ export function Table({url, colunas, size}) {
   				password: user.password
 			}
 		}).then(response => {
+		setRows([...rows, ]); // TODO: check it
         const entities = response.data;
+        if (response.data === null){
+			toast.error("TEST");
+			setRows([...rows, { ...entities }]);
+			rows.push({ ...entities });
+			return;
+		}
         for (const entity of entities) {
           setRows([...rows, { ...entity }]);
           rows.push({ ...entity });
@@ -50,7 +57,7 @@ export function Table({url, colunas, size}) {
 				toast.update(url + "_" + id + "_delete_toast", {render: "Deletando "+ url+" "+id+"...", type: "loading", isLoading: true, hideProgressBar: true, autoClose: false, closed: false});
 			}
 			else{
-				toast.loading("Deletando "+ url+" "+id+"...", {
+				toast.loading("Deletando id: "+id+"...", {
 	      			toastId: url + "_" + id + "_delete_toast", closeButton: true, closeOnClick: true
 	    		});
 			}

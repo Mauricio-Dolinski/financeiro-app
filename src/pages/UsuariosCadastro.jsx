@@ -2,17 +2,19 @@ import React, { useEffect, useState } from "react";
 import { Title } from "../components/Title";
 import Box from "@mui/material/Box";
 import { SaveButton } from "../components/SaveButton";
-import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Typography } from "@mui/material";
+import { FormControl, IconButton, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select, Typography } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { MyInput } from "../components/MyInput";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import { MySelect } from "../components/MySelect";
 
 
 
 const UsuariosCadastroPage = () => {
+	
 	
 	const [entity, setEntity] = useState([]);
 	const entityName = "usuarios";
@@ -28,17 +30,21 @@ const UsuariosCadastroPage = () => {
     	event.preventDefault();
     };
     
+    const options = ["Motorista", "Operador", "Admin"];
+    
     const navigate = useNavigate();
     const bgColor = isCadastro ? '#fff' : '#ccc';
     const editColor = isCadastro ? 'success' : 'warning';
     
     const [isLoading, setIsLoading] = useState(true);
+    const [isWaitingData, setIsWaitingData] = useState(false);
     
     const setLoading = () => {
 		setIsLoading(false);
 	}
     
     const getData = async () => {
+		setIsWaitingData(true);
 		await axios.get('http://localhost:8080/api/'+entityName+"/"+id, {
 			auth: {
 				username: user.user,
@@ -48,6 +54,7 @@ const UsuariosCadastroPage = () => {
 			const entityData  = response.data;
 	        setEntity({ ...entity, ...entityData});
 	        setIsLoading(false);
+	        setIsWaitingData(false);
         }).catch(error => { 
 			toast.error("e: "+ error);
         });
@@ -65,7 +72,7 @@ const UsuariosCadastroPage = () => {
     
 	
 	if (data){
-		
+		setIsWaitingData(true);
 		const renderLabel = isCadastro ? "Cadastrando..." : "Salvando...";
 		if (toast.isActive(entityName+"toast")){
 			toast.update(entityName+"toast", {render: renderLabel, type: "loading", isLoading: true, hideProgressBar: true, autoClose: false, closed: false});
@@ -87,6 +94,7 @@ const UsuariosCadastroPage = () => {
 	  				password: user.password
 				}
 			}).then(response => {
+				setIsWaitingData(false);
 				if (response.data === "Cadastrado"){
 					toast.update(entityName+"toast", {render: response.data, type: "success", isLoading: false, hideProgressBar: false, autoClose: 1200});
 	    			navigate("/"+entityName, { replace: true });
@@ -94,8 +102,8 @@ const UsuariosCadastroPage = () => {
 				else{
 					toast.update(entityName+"toast", {render: response.data, type: "error", isLoading: false, hideProgressBar: false, autoClose: 3000});
 				}
-		        
 		      }).catch(error => { 
+				  setIsWaitingData(false);
 				  if (error.response && error.response.status === 401){
 					    toast.update(entityName+"toast", {render: "Acesso negado", type: "error", isLoading: false, hideProgressBar: false, autoClose: 3000});
 				  }
@@ -115,6 +123,7 @@ const UsuariosCadastroPage = () => {
 	  				password: user.password
 				}
 			}).then(response => {
+				setIsWaitingData(false);
 				if (response.data === "Editado"){
 					toast.update(entityName+"toast", {render: response.data, type: "success", isLoading: false, hideProgressBar: false, autoClose: 1200});
 	    			navigate("/"+entityName, { replace: true });
@@ -124,6 +133,7 @@ const UsuariosCadastroPage = () => {
 				}
 		        
 		      }).catch(error => { 
+				  setIsWaitingData(false);
 				  if (error.response && error.response.status === 401){
 					    toast.update(entityName+"toast", {render: "Acesso negado", type: "error", isLoading: false, hideProgressBar: false, autoClose: 3000});
 				  }
@@ -132,7 +142,7 @@ const UsuariosCadastroPage = () => {
 				  }
 		      });
 		  }
-    }
+      }
   };
   
   useEffect(() => {
@@ -163,7 +173,7 @@ const UsuariosCadastroPage = () => {
 	          <Typography variant="h6" sx={{display: "flex", fontWeight: 'bold', marginRight: "25px"}}>
 	             Senha
 	          </Typography>
-	          <FormControl sx={{mt: 1, width: 1 }} variant="outlined">
+	          <FormControl sx={{ width: 1 }} variant="outlined">
 	          <InputLabel color={editColor} htmlFor="password">Senha *</InputLabel>
 	          <OutlinedInput
 	          	sx={{width: "100%"}}
@@ -192,13 +202,13 @@ const UsuariosCadastroPage = () => {
 	          	/>
 	        	</FormControl>
         	  </Box>
-        	  <MyInput name="role" label="Nivel de Acesso" isCadastro={isCadastro} getValue={entity.role}/>
+        	    <MySelect name="role" label="Nivel de Acesso" isCadastro={isCadastro} getValue={entity.role} options={options}/>
             </Box>
           <Box sx={{display: "flex", alignItems: "flex-start"}} > 
 		  	{isCadastro ?
-		  	<SaveButton action='cadastrar'/>
+		  	<SaveButton action='cadastrar' isWaitingData={isWaitingData}/>
 		  	:
-		  	<SaveButton />
+		  	<SaveButton isWaitingData={isWaitingData}/>
 		  	}
 		  </Box>
 	  	
