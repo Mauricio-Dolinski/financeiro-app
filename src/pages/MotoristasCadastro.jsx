@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Title } from "../components/Title";
 import Box from "@mui/material/Box";
 import { SaveButton } from "../components/SaveButton";
-import { FormControl, IconButton, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select, Typography } from "@mui/material";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { MyInput } from "../components/MyInput";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -13,50 +11,51 @@ import { MySelect } from "../components/MySelect";
 
 
 
-const UsuariosCadastroPage = () => {
+const MotoristasCadastroPage = () => {
 	
-	const entityName = "usuarios";
-	const options_role = 
+	const entityName = "motoristas";
+	/*const options_usuarios = 
 	{
 		  "key": [
 		    0,
 		    1,
-		    2
+		    2,
+		    3,
+		    4 
 		  ],
 		  "name": [
-		    "Motorista",
-		    "Operador",
-		    "Admin"
+		    "Mauricio da Mota Porelli Dolinski",
+		    "Sidney Dolinski",
+		    "Luiz Carlos Graciano",
+		    "Motorista Teste2",
+		    "Motorista Teste3"
 		  ],
 		  "value": [
-			"Motorista",
-		    "Operador",
-		    "Admin"
+			1,
+		    2,
+		    3,
+		    4,
+		    5 
 		  ]
-	};
+	};*/
 	const url = 'http://localhost:8080/api/'+entityName;
 	
-	
-	const [entity, setEntity] = useState([]);
-	const [showPassword, setShowPassword] = React.useState(false);
+	const [options, setOptions] = useState({
+		"key": [],
+		"name": [],
+		"value": []
+	});
+	const [entity, setEntity] = useState([])
 	const { user } = useAuth();
 	const location = useLocation();
 	const id = location.pathname.split('/').pop();
 	const isCadastro = isNaN(id);
-	
-	const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-    const handleMouseDownPassword = (event) => {
-    	event.preventDefault();
-    };
-    
-    
-    
     const navigate = useNavigate();
-    const bgColor = isCadastro ? '#fff' : '#ccc';
-    const editColor = isCadastro ? 'success' : 'warning';
+
     
     const [isLoading, setIsLoading] = useState(true);
+    const [isLoadingOptions, setIsLoadingOptions] = useState(true);
     const [isWaitingData, setIsWaitingData] = useState(false);
     
     const setLoading = () => {
@@ -86,6 +85,25 @@ const UsuariosCadastroPage = () => {
 					  
 				  }
 				  toast.update(toastId, options);
+	}
+	
+	const getOptions = async () => {
+		let url_options = url+"/options";
+		if (!isCadastro){
+			url_options += "/" + id;
+		}
+		await axios.get(url_options, {
+			auth: {
+				username: user.user,
+  				password: user.password
+			}
+		}).then(response => {
+			const optionsData  = response.data;
+	        setOptions({ ...options, ...optionsData});
+			setIsLoadingOptions(false);
+        }).catch(error => { 
+			toast.error("e: "+ error);
+        });
 	}
     
     const getData = async () => {
@@ -160,64 +178,32 @@ const UsuariosCadastroPage = () => {
   };
   
   useEffect(() => {
+	  	getOptions();
 	 	if (!isCadastro){
 			getData();
 		}
 		else {
-			setLoading();
+			setIsLoading(false);
 		}
   }, []);
   
   return (
 	  <>
 	    {isCadastro ?
-	    <Title name="Usuários - Cadastrar " />
+	    <Title name="Motoristas - Cadastrar " />
 	    :
-	   <Title name="Usuários - Editar " />
+	   <Title name="Motoristas - Editar " />
 	    }
 	  	<Box component="form" onSubmit={handleSubmit} gap="25px" sx={{ display: "flex", flexDirection: "column", m: "0px", p: "0px", alignItems: "flex-start" }}>
-	  	{!isLoading && <>
+	  	{!isLoading && !isLoadingOptions && <>
 	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
-	  	  	<MyInput name="name" label="Nome Completo" isCadastro={isCadastro} getValue={entity.name}/>
-	  	  	<MyInput name="email" label="Email" isCadastro={isCadastro} getValue={entity.email}/>
+	  	  	<MySelect name="usuario_id" label="Usuário" isCadastro={isCadastro} getValue={options.value[0]} options={options}/>
+	  	  	<MyInput name="telefone" label="Telefone" isCadastro={isCadastro} getValue={entity.telefone}/>
 	  	  </Box>
 	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
-            <MyInput name="username" label="Usuário" isCadastro={isCadastro} isDisabled={!isCadastro} getValue={entity.username}/>
-            <Box sx={{width: "100%", display: 'flex', alignItems: 'center',color: '#757575', marginX: '25px', p: 2, bgcolor: bgColor, borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
-	          <Typography variant="h6" sx={{display: "flex", fontWeight: 'bold', marginRight: "25px"}}>
-	             Senha
-	          </Typography>
-	          <FormControl sx={{ width: 1 }} variant="outlined">
-	          <InputLabel color={editColor} htmlFor="password">Senha *</InputLabel>
-	          <OutlinedInput
-	          	sx={{width: "100%"}}
-	            id="password"
-	            type={showPassword ? 'text' : 'password'}
-	            color={editColor}
-	            disabled={!isCadastro}
-	            defaultValue={isCadastro ? '': 'password'}
-	            endAdornment={
-	              <InputAdornment position="end">
-	                <IconButton
-	                  aria-label="toggle password visibility"
-	                  onClick={handleClickShowPassword}
-	                  onMouseDown={handleMouseDownPassword}
-	                  disabled={!isCadastro}
-	                  edge="end"
-	                >
-	                  {showPassword ? <VisibilityOff /> : <Visibility />}
-	                </IconButton>
-	              </InputAdornment>
-	            }
-	            label="Senha"
-	            required={isCadastro}
-	            autoComplete="current-password"
-	            name="password"
-	          	/>
-	        	</FormControl>
-        	  </Box>
-        	    <MySelect name="role" label="Nivel de Acesso" isCadastro={isCadastro} getValue={entity.role} options={options_role}/>
-            </Box>
+	  	  	<MyInput name="cpf" label="CPF" isCadastro={isCadastro} getValue={entity.cpf}/>
+	  	  	<MyInput name="cnh" label="CNH" isCadastro={isCadastro} getValue={entity.cnh}/>
+	  	  </Box>
           <Box sx={{display: "flex", alignItems: "flex-start"}} > 
 		  	{isCadastro ?
 		  	<SaveButton action='cadastrar' isWaitingData={isWaitingData}/>
@@ -225,12 +211,10 @@ const UsuariosCadastroPage = () => {
 		  	<SaveButton isWaitingData={isWaitingData}/>
 		  	}
 		  </Box>
-	  	
 	  	</>}
-	  	  
         </Box>
 	  </>
   )
 };
 
-export default UsuariosCadastroPage
+export default MotoristasCadastroPage

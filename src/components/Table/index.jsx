@@ -26,7 +26,7 @@ export function Table({url, colunas, size}) {
   				password: user.password
 			}
 		}).then(response => {
-		setRows([...rows, ]); // TODO: check it
+		setRows([...rows, ]);
         const entities = response.data;
         if (response.data === null){
 			toast.error("TEST");

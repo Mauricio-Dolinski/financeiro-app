@@ -10,7 +10,9 @@ import DashboardPage from "./pages/Dashboard";
 import UsuariosPage from "./pages/Usuarios";
 import UsuariosCadastroPage from "./pages/UsuariosCadastro";
 import MotoristasPage from "./pages/Motoristas";
+import MotoristasCadastroPage from "./pages/MotoristasCadastro";
 import VeiculosPage from "./pages/Veiculos";
+import VeiculosCadastroPage from "./pages/VeiculosCadastro";
 import FretesPage from "./pages/Fretes";
 import ClientesPage from "./pages/Clientes";
 import ReceitasPage from "./pages/Receitas";
@@ -62,7 +64,11 @@ export const router = createBrowserRouter(
         <Route path="/usuarios/cadastrar" element={<UsuariosCadastroPage />} />
         <Route path="/usuarios/editar/:id" element={<UsuariosCadastroPage />} />
         <Route path="/motoristas" element={<MotoristasPage />} />
+        <Route path="/motoristas/cadastrar" element={<MotoristasCadastroPage />} />
+        <Route path="/motoristas/editar/:id" element={<MotoristasCadastroPage />} />
         <Route path="/veiculos" element={<VeiculosPage />} />
+        <Route path="/veiculos/cadastrar" element={<VeiculosCadastroPage />} />
+        <Route path="/veiculos/editar/:id" element={<VeiculosCadastroPage />} />
         <Route path="/fretes" element={<FretesPage />} />
         <Route path="/clientes" element={<ClientesPage />} />
         <Route path="/receitas" element={<ReceitasPage />} />

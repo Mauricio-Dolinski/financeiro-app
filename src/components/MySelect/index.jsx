@@ -15,7 +15,7 @@ export const MySelect = ({ name, label, isCadastro=true, isDisabled=false, isReq
 	}
 	
 	if (isCadastro){
-		getValue = options[0];
+		getValue = options.value[0];
 	}
 
   return (
@@ -24,22 +24,22 @@ export const MySelect = ({ name, label, isCadastro=true, isDisabled=false, isReq
           {label}
         </Typography>
         <FormControl fullWidth>
-				  <InputLabel id="role_label">Nivel de Acesso</InputLabel>
+				  <InputLabel id={label}>{label}</InputLabel>
 				  <Select
 				  	margin="0px"
 				  	required={isRequired}
-				    id="role"
-				    label="Nivel de Acesso"
+				    id={name}
+				    label={label}
 				    disabled={isDisabled}
-				    name="role"
+				    name={name}
 				    defaultValue={getValue}
 				    autoComplete={name}
             		color={editColor}
 				    sx={{ width: "100%"}}
 				  >
-				  {options.map((option) => {
+				  {options.key.map((key) => {
 					    return (
-					       <MenuItem value={option}>{option}</MenuItem>
+					       <MenuItem value={options.value[key]}>{options.name[key]}</MenuItem>
 					      )
 					 })}
 				  </Select>
