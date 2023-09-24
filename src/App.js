@@ -15,6 +15,7 @@ import VeiculosPage from "./pages/Veiculos";
 import VeiculosCadastroPage from "./pages/VeiculosCadastro";
 import FretesPage from "./pages/Fretes";
 import ClientesPage from "./pages/Clientes";
+import ClientesCadastroPage from "./pages/ClientesCadastro";
 import ReceitasPage from "./pages/Receitas";
 import ContasReceberPage from "./pages/ContasReceber";
 import DespesasPage from "./pages/Despesas";
@@ -71,6 +72,8 @@ export const router = createBrowserRouter(
         <Route path="/veiculos/editar/:id" element={<VeiculosCadastroPage />} />
         <Route path="/fretes" element={<FretesPage />} />
         <Route path="/clientes" element={<ClientesPage />} />
+        <Route path="/clientes/cadastrar" element={<ClientesCadastroPage />} />
+        <Route path="/clientes/editar/:id" element={<ClientesCadastroPage />} />
         <Route path="/receitas" element={<ReceitasPage />} />
         <Route path="/contas-a-receber" element={<ContasReceberPage />} />
         <Route path="/despesas" element={<DespesasPage />} />
