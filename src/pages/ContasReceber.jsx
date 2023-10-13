@@ -13,7 +13,7 @@ const ContasReceber = () => {
         accessor: 'data_registro',
       },
       {
-        Header: 'Data de Recebimento',
+        Header: 'Data de Validade',
         accessor: 'data_recebimento',
       },
       {

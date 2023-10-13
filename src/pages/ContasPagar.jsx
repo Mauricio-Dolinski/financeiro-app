@@ -13,12 +13,16 @@ const ContasPagar = () => {
         accessor: 'data_registro',
       },
       {
-        Header: 'Data de Pagamento',
+        Header: 'Data de Validade',
         accessor: 'data_pagamento',
       },
       {
         Header: 'Valor',
         accessor: 'valor'
+      },
+      {
+        Header: 'Descrição',
+        accessor: 'descricao',
       },
       {
         Header: 'Tipo de Despesa',

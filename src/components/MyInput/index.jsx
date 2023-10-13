@@ -6,6 +6,7 @@ export const MyInput = ({ name, label, isCadastro=true, isDisabled=false, isRequ
 	
 	const bgColor = isDisabled ? '#ccc' : '#fff';
     const editColor = isCadastro ? 'success' : 'warning';
+
     
 	if (isDisabled){
 		isRequired = false;
@@ -22,6 +23,7 @@ export const MyInput = ({ name, label, isCadastro=true, isDisabled=false, isRequ
             id={name}
             label={label}
             disabled={isDisabled}
+            type="{isHidden}"
             name={name}
             defaultValue={getValue}
             autoComplete={name}

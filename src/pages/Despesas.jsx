@@ -10,12 +10,16 @@ const DespesasPage = () => {
         accessor: 'id'
       },
       {
-        Header: 'Data',
+        Header: 'Data de Registro',
         accessor: 'data_registro',
       },
       {
         Header: 'Tipo',
         accessor: 'tipo',
+      },
+      {
+        Header: 'Descrição',
+        accessor: 'descricao',
       },
       {
         Header: 'Valor',

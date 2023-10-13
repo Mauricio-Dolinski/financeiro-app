@@ -76,6 +76,25 @@ table {
 	cursor: pointer;
 }
 
+.confirm-btn{
+  flex: 1 1;
+  height: 30px;
+  width: 30px;
+  margin: 5px;
+  padding: 0px;
+  color: #2e7d32;
+  cursor: pointer;
+}
+
+.confirmed-btn{
+  flex: 1 1;
+  height: 30px;
+  width: 30px;
+  margin: 5px;
+  padding: 0px;
+  color: #bee6c0;
+}
+
 input, select {
 	font-size:18px;
 }
