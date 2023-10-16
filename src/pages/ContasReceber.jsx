@@ -21,12 +21,12 @@ const ContasReceber = () => {
         accessor: 'valor'
       },
       {
-        Header: 'Descrição',
-        accessor: 'descricao',
-      },
-      {
         Header: 'Tipo da Receita',
         accessor: 'tipo_receita',
+      },
+      {
+        Header: 'Descrição',
+        accessor: 'descricao',
       },
       {
         Header: 'Tipo de Pagamento',

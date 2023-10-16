@@ -238,7 +238,7 @@ const FretesCadastroPage = () => {
 	   		 	</LocalizationProvider>
 	          </Box>
 	  	  	<MyInput name="valor_total" label="Valor Total" isCadastro={isCadastro} isDisabled={!isCadastro} getValue={entity.valor_total}/>
-	  	  	<MyInput name="adiantamento" label="Valor do Adiantamento" isCadastro={isCadastro} isDisabled={!isCadastro} getValue={entity.adiantamento}/>
+	  	  	<MyInput name="valor_adiantamento" label="Valor do Adiantamento" isCadastro={isCadastro} isDisabled={!isCadastro} getValue={entity.valor_adiantamento}/>
           </Box>
           <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
             <MyInput name="descricao" label="Descricao" isCadastro={isCadastro} isDisabled={!isCadastro} getValue={entity.descricao}/>

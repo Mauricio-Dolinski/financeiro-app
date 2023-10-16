@@ -21,12 +21,12 @@ const ContasPagar = () => {
         accessor: 'valor'
       },
       {
-        Header: 'Descrição',
-        accessor: 'descricao',
-      },
-      {
         Header: 'Tipo de Despesa',
         accessor: 'tipo_despesa',
+      },
+      {
+        Header: 'Descrição',
+        accessor: 'descricao',
       },
       {
         Header: 'Tipo de Pagamento',
