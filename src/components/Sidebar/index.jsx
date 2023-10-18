@@ -140,7 +140,7 @@ const Sidebar = ({ active }) => {
 			          </ListItemIcon>
 			          <ListItemText 
 			          disableTypography
-                       primary={<Typography variant="h6" style={{  }}>{page.label}</Typography>} />
+                       primary={<Typography variant="h6" style={{ fontSize: "25px"  }}>{page.label}</Typography>} />
 			        </ListItemButton>
 		        ))}
 		        

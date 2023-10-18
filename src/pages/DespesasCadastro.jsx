@@ -65,17 +65,36 @@ const ReceitasCadastroPage = () => {
 		  "key": [
 		    0,
 		    1,
-		    2
+		    2,
+		    3,
+		    4,
+		    5,
+		    6,
+		    7,
+		    8
+
 		  ],
 		  "name": [
-		    "Entrada",
-		    "Entrada",
-		    "Entrada"
+		    "Combustível",
+		    "Manutenção",
+		    "Salário",
+		    "Encargo",
+		    "Seguro",
+		    "Imposto",
+		    "Emprestimo",
+		    "Administrativo",
+		    "Outros"
 		  ],
 		  "value": [
-			"Entrada",
-		    "Entrada",
-		    "Entrada"
+			"Combustível",
+		    "Manutenção",
+		    "Salário",
+		    "Encargo",
+		    "Seguro",
+		    "Imposto",
+		    "Emprestimo",
+		    "Administrativo",
+		    "Outros"
 		  ]
 	};
 	const options_recorrente = 
@@ -127,13 +146,12 @@ const ReceitasCadastroPage = () => {
 	const showError = (toastId, options, error) => {
 		setIsWaitingData(false);
 		if (error.response && error.response.status === 401){
-					  options.render = "Acesso negado";
-				  }
-				  else {
-					  options.render = "Servidor de login offline";
-					  
-				  }
-				  toast.update(toastId, options);
+			options.render = "Acesso negado";
+		}
+		else {
+			options.render = "Servidor de login offline";
+		}
+		toast.update(toastId, options);
 	}
     
     const getData = async () => {

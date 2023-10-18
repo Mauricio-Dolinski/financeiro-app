@@ -65,17 +65,32 @@ const ReceitasCadastroPage = () => {
 		  "key": [
 		    0,
 		    1,
-		    2
+		    2,
+		    3,
+		    4,
+		    5,
+		    6,
+		    7
 		  ],
 		  "name": [
-		    "Entrada",
-		    "Entrada",
-		    "Entrada"
+		    "Multa por Atraso",
+		    "Aluguel",
+		    "Armazenagem",
+		    "Seguro",
+		    "Entrada de Caixa",
+		    "Emprestimo",
+		    "Taxas",
+		    "Outros"
 		  ],
 		  "value": [
-			"Entrada",
-		    "Entrada",
-		    "Entrada"
+			"Multa por Atraso",
+		    "Aluguel",
+		    "Armazenagem",
+		    "Seguro",
+		    "Entrada de Caixa",
+		    "Emprestimo",
+		    "Taxas",
+		    "Outros"
 		  ]
 	};
 	const url = 'http://localhost:8080/api/'+entityName;

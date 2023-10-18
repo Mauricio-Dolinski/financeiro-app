@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Title } from "../components/Title";
+import { FluxoDeCaixa } from "../components/FluxoDeCaixa";
+import { TiposDeDespesas } from "../components/TiposDeDespesas";
 import { Box, Typography } from "@mui/material";
 import { useAuth } from "../hooks/useAuth";
 import axios from "axios";
@@ -90,6 +92,11 @@ const DashboardPage = () => {
 		    		 </Box>
 		    	</Box>
 		    </Box>
+		    <Box sx={{ width: "100%", height: "100%", display: "flex", flexDirection: "row"}}>
+		    	<FluxoDeCaixa />
+		    	<TiposDeDespesas />
+		    </Box>
+		    <Box></Box>
 		    </>}
 		</>
 	)

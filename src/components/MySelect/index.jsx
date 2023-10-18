@@ -3,7 +3,7 @@ import { FormControl, InputLabel, MenuItem, Select, TextField, Typography } from
 import Box from "@mui/material/Box";
 import { useState } from "react";
 
-export const MySelect = ({ name, label, isCadastro=true, isDisabled=false, isRequired=true, getValue, options}) => {
+export const MySelect = ({ name, label, isCadastro=true, isDisabled=false, isRequired=true, getValue, options, funcOnChange=null}) => {
 	
 	const bgColor = isDisabled ? '#ccc' : '#fff';
     const editColor = isCadastro ? 'success' : 'warning';
@@ -33,6 +33,7 @@ export const MySelect = ({ name, label, isCadastro=true, isDisabled=false, isReq
 				    disabled={isDisabled}
 				    name={name}
 				    defaultValue={getValue}
+				    onChange={funcOnChange}
 				    autoComplete={name}
             		color={editColor}
 				    sx={{ width: "100%"}}
