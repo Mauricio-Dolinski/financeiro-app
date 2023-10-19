@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Mauricio-Dolinski/tcc/static/css/main.cd9b654c.css",
-    "main.js": "/Mauricio-Dolinski/tcc/static/js/main.0dac411a.js",
-    "static/media/caminhoes.jpg": "/Mauricio-Dolinski/tcc/static/media/caminhoes.9229ba445e3bd7e2af8e.jpg",
-    "static/media/logo max.jpg": "/Mauricio-Dolinski/tcc/static/media/logo max.5ac7aa9fd29d3c94a8fa.jpg",
-    "index.html": "/Mauricio-Dolinski/tcc/index.html",
-    "main.cd9b654c.css.map": "/Mauricio-Dolinski/tcc/static/css/main.cd9b654c.css.map",
-    "main.0dac411a.js.map": "/Mauricio-Dolinski/tcc/static/js/main.0dac411a.js.map"
+    "main.css": "/tcc/static/css/main.cd9b654c.css",
+    "main.js": "/tcc/static/js/main.f6a92b26.js",
+    "static/media/caminhoes.jpg": "/tcc/static/media/caminhoes.9229ba445e3bd7e2af8e.jpg",
+    "static/media/logo max.jpg": "/tcc/static/media/logo max.5ac7aa9fd29d3c94a8fa.jpg",
+    "index.html": "/tcc/index.html",
+    "main.cd9b654c.css.map": "/tcc/static/css/main.cd9b654c.css.map",
+    "main.f6a92b26.js.map": "/tcc/static/js/main.f6a92b26.js.map"
   },
   "entrypoints": [
     "static/css/main.cd9b654c.css",
-    "static/js/main.0dac411a.js"
+    "static/js/main.f6a92b26.js"
   ]
 }
