@@ -13,12 +13,12 @@ import ListItemText from '@mui/material/ListItemText';
 import Person from "@mui/icons-material/Person";
 import Groups from "@mui/icons-material/Groups";
 import Typography from '@mui/material/Typography';
-import {BiSolidDashboard} from "react-icons/bi";
-import {BsFillBarChartLineFill, BsPersonBadge} from "react-icons/bs";
-import {FaTruck, FaShippingFast} from "react-icons/fa";
-import {LuReceipt} from "react-icons/lu";
-import {GiReceiveMoney, GiPayMoney} from "react-icons/gi";
-
+import { BiSolidDashboard } from "react-icons/bi";
+import { BsFillBarChartLineFill, BsPersonBadge } from "react-icons/bs";
+import { FaTruck, FaShippingFast } from "react-icons/fa";
+import { LuReceipt } from "react-icons/lu";
+import { GiReceiveMoney, GiPayMoney } from "react-icons/gi";
+import { BiLogOut } from "react-icons/bi";
 
 
 
@@ -102,7 +102,7 @@ const Sidebar = ({ active }) => {
   return (
     <Container sidebar={active}>
       <img src={logo} alt="TransDolinski"/>
-        <Box  >
+        <Box  sx={{bgcolor: "#8a8a8a"}}>
 			  <List component="nav" sx={{ display: "flex", flexDirection: "column", alignItems: "center",gap: "5px"}}>
 	            {pages?.map((page) => (
 			        <ListItemButton sx={{
@@ -149,8 +149,9 @@ const Sidebar = ({ active }) => {
 		    {!!user && (
               <Button
                 key={"logout"}
+                startIcon={<BiLogOut/>}
                 onClick={logout}
-                sx={{ position: "fixed", bottom: 0, color: "white", width: "400px" }}
+                sx={{ position: "fixed", bottom: 0, fontSize: "18px", color: "white", bgcolor: "#8a8a8a", width: "400px" }}
               >
                 {"sair"}
               </Button>

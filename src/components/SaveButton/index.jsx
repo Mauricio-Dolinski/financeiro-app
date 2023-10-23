@@ -3,8 +3,8 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Avatar } from "@mui/material";
-import {FaPlus} from "react-icons/fa";
-import { LuEdit} from "react-icons/lu";
+import { FaPlus } from "react-icons/fa";
+import { RiEditBoxLine } from "react-icons/ri";
 
 export const SaveButton = ({action, isWaitingData=false}) => {
 	
@@ -18,7 +18,7 @@ export const SaveButton = ({action, isWaitingData=false}) => {
       			  {action === "cadastrar" ? 
                   <FaPlus />
                   :
-                  <LuEdit />
+                  <RiEditBoxLine />
                   }
             </Avatar>
 	        <Typography color={bgColor} variant="h6" sx={{fontWeight: 'bold'}}>

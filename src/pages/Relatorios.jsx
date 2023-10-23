@@ -10,11 +10,14 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import TextField from '@mui/material/TextField';
 import 'dayjs/locale/pt-br';
 import Typography from "@mui/material/Typography";
+import Backdrop from '@mui/material/Backdrop';
+import { FluxoDeCaixa } from "../components/FluxoDeCaixa";
 
 const RelatoriosPage = () => {
 
   const [gerar, setGerar] = useState(false);
   const [isFluxoDeCaixa, setIsFluxoDeCaixa] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const options_tipo = 
   {
@@ -70,6 +73,22 @@ const RelatoriosPage = () => {
       ]
   };
 
+  const handleSubmit = async (event) => {
+  
+    event.preventDefault();
+    
+    const data = new FormData(event.currentTarget);
+    const params = new URLSearchParams(data);
+
+    if (data && isFluxoDeCaixa) {
+      setOpen(true);
+    }
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const funcOnChangeTipo = (event) => {
     const value = event.target.value;
     if (value === " "){
@@ -98,40 +117,51 @@ const RelatoriosPage = () => {
       <Box sx={{ width: "500px", display: "flex", flexDirection: "row"}}>
         <MySelect name="tipo" label="Tipo de Relatório" options={options_tipo} funcOnChange={funcOnChangeTipo}/>
       </Box>
-      {isFluxoDeCaixa && <>
-        <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
-          <Box sx={{ width: "500px", minWidth: "500px", display: 'flex', alignItems: 'center',color: '#757575', marginX: '25px', p: 2, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
-            <Typography variant="h6" sx={{display: "flex", flexGrow: "10", fontWeight: 'bold', marginRight: "25px" }}>
-              Período
-            </Typography>
-            <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
-              <DatePicker
-                  label="Período Inicial"
-                  format="DD/MM/YYYY"
-                  defaultValue={dayjs().subtract(1, 'month')}
-                  slotProps={{ textField: { name: 'data_inicial' } }}
-              />
-            </LocalizationProvider>
-            <Typography variant="h6" sx={{display: "flex", flexGrow: "10", fontWeight: 'bold', marginX: "20px" }}>
-              {' - '}
-            </Typography>
-            <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
-              <DatePicker
-                  label="Período Final"
-                  format="DD/MM/YYYY"
-                  defaultValue={dayjs()}
-                  slotProps={{ textField: { name: 'data_final' } }}
-              />
-            </LocalizationProvider>
+      <Box component="form" onSubmit={handleSubmit}>
+        {isFluxoDeCaixa && <>
+          <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
+            <Box sx={{ width: "500px", minWidth: "500px", display: 'flex', alignItems: 'center',color: '#757575', marginX: '25px', p: 2, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
+              <Typography variant="h6" sx={{display: "flex", flexGrow: "10", fontWeight: 'bold', marginRight: "25px" }}>
+                Período
+              </Typography>
+              <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
+                <DatePicker
+                    label="Período Inicial"
+                    format="DD/MM/YYYY"
+                    defaultValue={dayjs().subtract(1, 'month')}
+                    slotProps={{ textField: { name: 'data_inicial' } }}
+                />
+              </LocalizationProvider>
+              <Typography variant="h6" sx={{display: "flex", flexGrow: "10", fontWeight: 'bold', marginX: "20px" }}>
+                {' - '}
+              </Typography>
+              <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
+                <DatePicker
+                    label="Período Final"
+                    format="DD/MM/YYYY"
+                    defaultValue={dayjs()}
+                    slotProps={{ textField: { name: 'data_final' } }}
+                />
+              </LocalizationProvider>
+            </Box>
+            <MySelect name="frequencia" label="Frequencia dos Dados" options={options_frequencia}/>
+            <MySelect name="projecoes" label="Projeções Futuras?" options={options_projecoes}/>
           </Box>
-          <MySelect name="frequencia" label="Frequencia dos Dados" options={options_frequencia}/>
-          <MySelect name="projecoes" label="Projeções Futuras?" options={options_projecoes}/>
+          </>
+        }
+        <Box sx={{display: "flex", flexDirection: "row", marginTop: "25px"}}>
+          {gerar && <GerarButton />}
         </Box>
-        </>
-      }
-      <Box sx={{display: "flex", flexDirection: "row"}}>
-        {gerar && <GerarButton />}
       </Box>
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+        onClick={handleClose}
+      >
+        <Box sx={{ width: "80%", height: "80%", display: "flex", flexDirection: "row", marginBottom: "25px"}}>
+          <FluxoDeCaixa />
+        </Box>
+      </Backdrop>
 
       
     </>

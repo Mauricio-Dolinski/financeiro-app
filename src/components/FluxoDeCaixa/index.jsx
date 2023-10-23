@@ -77,8 +77,9 @@ export const FluxoDeCaixa = () => {
   }).format;
 
   return (
-      <Box sx={{ width: "100%", display: 'flex',color: '#757575', marginX: '25px', flexGrow: 2, p: 2, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
+      <Box sx={{ width: "100%", maxHeight: "550px", display: 'flex',color: '#757575', marginX: '25px', p: 2, minWidth: "0",  bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
         <LineChart
+          sx={{ color: '#1565c0'}}
           xAxis={[{ 
             scaleType: 'time', 
             data: time,
@@ -92,7 +93,7 @@ export const FluxoDeCaixa = () => {
               valueFormatter: currencyFormatter,
             },
             {
-              color: '#ed6c02', showMark: false, label: 'Projeção Futura (7 dias)', data: data_projecao,
+              color: '#F4B400', showMark: false, label: 'Projeção Futura (7 dias)', data: data_projecao,
               valueFormatter: currencyFormatter,
             },
           ]}

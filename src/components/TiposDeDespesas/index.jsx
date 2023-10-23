@@ -19,8 +19,8 @@ export const TiposDeDespesas = ({ getData=null }) => {
   }
 
   return (
-      <Box sx={{ width: "60%", display: 'flex', flexDirection: "column", alignItems: "center", color: '#757575', marginX: '25px', p: 2, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
-      <Typography variant="h3" sx={{fontWeight: 'bold', fontSize: "24px"}}>
+      <Box sx={{ width: "60%", display: 'flex', flexDirection: "column", maxWidth: "550px",  maxHeight: "550px", alignItems: "center", color: '#757575', marginX: '25px', minWidth: "0", p: 0, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
+      <Typography variant="h3" sx={{fontWeight: 'bold', fontSize: "24px", paddingTop: "20px"}}>
           Despesas
       </Typography>
       <PieChart

@@ -8,7 +8,8 @@ import { toast} from "react-toastify";
 import {BiSolidDownArrow, BiSolidUpArrow} from "react-icons/bi";
 import Button from "@mui/material/Button";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
-import { LuEdit, LuCheckCircle} from "react-icons/lu";
+import {  LuCheckCircle } from "react-icons/lu";
+import {  RiEditBoxLine } from "react-icons/ri";
 import {BsFillTrashFill} from "react-icons/bs";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -300,7 +301,7 @@ export function Table({url, colunas, size}) {
 						  <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
 					  )
 	                })}
-	                {renderEdit && <td><LuEdit className="edit-btn" onClick={() => {editEntity(row.id)}}/></td>}
+	                {renderEdit && <td><RiEditBoxLine className="edit-btn" onClick={() => {editEntity(row.id)}}/></td>}
 	          			{renderDelete && <td><BsFillTrashFill className="delete-btn" onClick={() => {openDeleteDialog(row.id)}}/></td>}
 	          			{renderConfirm && <td><LuCheckCircle className={testFunc(row.id) ? "confirm-btn" : "confirmed-btn"} onClick={() => {openConfirmDialog(row.id)}}/></td>}
 	              </tr>

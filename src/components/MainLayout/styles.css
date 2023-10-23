@@ -4,6 +4,8 @@
   flex-grow: 1;
   width: 100vw;
   height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
 }
 
 .sidebar-container {
@@ -18,6 +20,8 @@
   flex-direction: column;
   flex-grow: 1;
   gap: 25px;
+  max-width: 100vw;
+  max-height: 100vh;
 }
 
 .testfabars {

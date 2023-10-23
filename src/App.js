@@ -53,39 +53,40 @@ import axios from 'axios';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route
+    <Route 
       element={<AuthLayout />}
       loader={() => defer({ userPromise: auth() })}
     >
       <Route element={<LoginLayout />}>
         <Route path="/" element={<LoginPage />} />
-        <Route path="/recuperar" element={<RecoverPage />} />
+        <Route path="recuperar" element={<RecoverPage />} />
+        <Route path="/tcc" element={<LoginPage />} />
       </Route>
 
       <Route element={<MainLayout />}>
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/usuarios" element={<UsuariosPage />} />
-        <Route path="/usuarios/cadastrar" element={<UsuariosCadastroPage />} />
-        <Route path="/usuarios/editar/:id" element={<UsuariosCadastroPage />} />
-        <Route path="/motoristas" element={<MotoristasPage />} />
-        <Route path="/motoristas/cadastrar" element={<MotoristasCadastroPage />} />
-        <Route path="/motoristas/editar/:id" element={<MotoristasCadastroPage />} />
-        <Route path="/veiculos" element={<VeiculosPage />} />
-        <Route path="/veiculos/cadastrar" element={<VeiculosCadastroPage />} />
-        <Route path="/veiculos/editar/:id" element={<VeiculosCadastroPage />} />
-        <Route path="/fretes" element={<FretesPage />} />
-        <Route path="/fretes/cadastrar" element={<FretesCadastroPage />} />
-        <Route path="/fretes/editar/:id" element={<FretesCadastroPage />} />
-        <Route path="/clientes" element={<ClientesPage />} />
-        <Route path="/clientes/cadastrar" element={<ClientesCadastroPage />} />
-        <Route path="/clientes/editar/:id" element={<ClientesCadastroPage />} />
-        <Route path="/receitas" element={<ReceitasPage />} />
-        <Route path="/receitas/cadastrar" element={<ReceitasCadastroPage />} />
-        <Route path="/contas-a-receber" element={<ContasReceberPage />} />
-        <Route path="/despesas" element={<DespesasPage />} />
-        <Route path="/despesas/cadastrar" element={<DespesasCadastroPage />} />
-        <Route path="/contas-a-pagar" element={<ContasPagarPage />} />
-        <Route path="/relatorios" element={<RelatoriosPage />} />
+        <Route path="dashboard" element={<DashboardPage />} />
+        <Route path="usuarios" element={<UsuariosPage />} />
+        <Route path="usuarios/cadastrar" element={<UsuariosCadastroPage />} />
+        <Route path="usuarios/editar/:id" element={<UsuariosCadastroPage />} />
+        <Route path="motoristas" element={<MotoristasPage />} />
+        <Route path="motoristas/cadastrar" element={<MotoristasCadastroPage />} />
+        <Route path="motoristas/editar/:id" element={<MotoristasCadastroPage />} />
+        <Route path="veiculos" element={<VeiculosPage />} />
+        <Route path="veiculos/cadastrar" element={<VeiculosCadastroPage />} />
+        <Route path="veiculos/editar/:id" element={<VeiculosCadastroPage />} />
+        <Route path="fretes" element={<FretesPage />} />
+        <Route path="fretes/cadastrar" element={<FretesCadastroPage />} />
+        <Route path="fretes/editar/:id" element={<FretesCadastroPage />} />
+        <Route path="clientes" element={<ClientesPage />} />
+        <Route path="clientes/cadastrar" element={<ClientesCadastroPage />} />
+        <Route path="clientes/editar/:id" element={<ClientesCadastroPage />} />
+        <Route path="receitas" element={<ReceitasPage />} />
+        <Route path="receitas/cadastrar" element={<ReceitasCadastroPage />} />
+        <Route path="contas-a-receber" element={<ContasReceberPage />} />
+        <Route path="despesas" element={<DespesasPage />} />
+        <Route path="despesas/cadastrar" element={<DespesasCadastroPage />} />
+        <Route path="contas-a-pagar" element={<ContasPagarPage />} />
+        <Route path="relatorios" element={<RelatoriosPage />} />
       </Route>
     </Route>
   )
