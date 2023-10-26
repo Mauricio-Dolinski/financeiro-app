@@ -78,7 +78,7 @@ const LoginPage = () => {
             }
             label="Senha"
             required
-            autoComplete="current-password"
+            autoComplete="password"
             name="password"
           />
         </FormControl>
