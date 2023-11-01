@@ -33,7 +33,7 @@ const ClientesPage = () => {
 	    	<Title name="Clientes" />
 	    	<AddButton />
 	    </Box>
-		<Table url="clientes" colunas={colunas} size='6'/>
+		<Table url="clientes" colunas={colunas}/>
 	  </>
 	)
 };

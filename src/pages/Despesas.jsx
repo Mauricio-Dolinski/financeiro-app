@@ -22,8 +22,12 @@ const DespesasPage = () => {
         accessor: 'descricao',
       },
       {
-        Header: 'Valor',
+        Header: 'Valor Total',
         accessor: 'valor_total',
+      },
+      {
+        Header: 'Valor Pago',
+        accessor: 'valor_pago',
       },
       {
         Header: 'Recorrente?',
@@ -41,7 +45,7 @@ const DespesasPage = () => {
 	    	<Title name="Despesas" />
 	    	<AddButton />
 	    </Box>
-		<Table url="despesas" colunas={colunas} size='6'/>
+		<Table url="despesas" colunas={colunas}/>
 	  </>
 	)
 };

@@ -22,6 +22,10 @@ const ReceitasPage = () => {
         accessor: 'descricao',
       },
       {
+        Header: 'Parcelas',
+        accessor: 'parcelas',
+      },
+      {
         Header: 'Valor Total',
         accessor: 'valor_total'
       },
@@ -41,7 +45,7 @@ const ReceitasPage = () => {
 	    	<Title name="Receitas" />
 	    	<AddButton />
 	    </Box>
-		<Table url="receitas" colunas={colunas} size='6'/>
+		<Table url="receitas" colunas={colunas}/>
 	  </>
 	)
 };

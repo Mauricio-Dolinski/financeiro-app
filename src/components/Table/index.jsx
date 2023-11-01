@@ -12,6 +12,7 @@ import {  LuCheckCircle } from "react-icons/lu";
 import {  RiEditBoxLine } from "react-icons/ri";
 import {BsFillTrashFill} from "react-icons/bs";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Title } from "../Title";
 
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -21,7 +22,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 import { Select, Avatar, Typography, MenuItem, InputLabel, FormControl, TextField} from "@mui/material";
 
-export function Table({url, colunas, size}) {
+export function Table({url, colunas, size='10', params=''}) {
 
   const [rows, setRows] = useState([]);
   const [user] = useLocalStorage("user", null);
@@ -31,6 +32,12 @@ export function Table({url, colunas, size}) {
   const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [entityId, setEntityId] = useState(-1);
+  const [total, setTotal] = useState('');
+  const [isTotal, setIsTotal] = useState(false);
+  const [parcial, setParcial] = useState('');
+  const [isParcial, setIsParcial] = useState(false);
+  const [restante, setRestante] = useState('');
+  const [isRestante, setIsRestante] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname.split('/').pop();
@@ -70,6 +77,62 @@ export function Table({url, colunas, size}) {
     	});
       });
   };
+
+  const getFilteredData = async () => {
+
+		const config = {
+			headers: {
+            	"content-type": "application/x-www-form-urlencoded"
+        	},
+			auth: {
+				username: user.user,
+  				password: user.password
+			}
+		};
+
+		//post(url, params.toString(), config)
+
+		rows.length = 0;
+    await axios.post('http://localhost:8080/api/'+url, params.toString(), config).then(response => {
+			setRows([...rows, ]);
+      var entities = null;
+      if (response.data === null){
+				setRows([...rows, { ...entities }]);
+				rows.push({ ...entities });
+				return;
+			}
+			else {
+				entities = response.data.registros;
+				if (entities === null) {
+					setRows([...rows, { ...entities }]);
+					rows.push({ ...entities });
+					return;
+				}
+				else {
+					for (const entity of entities) {
+		        setRows([...rows, { ...entity }]);
+		        rows.push({ ...entity });
+		      };
+		      rows.length = 0;
+				}
+				setIsTotal(true);
+				setTotal(response.data.valor_total);
+				if (null !== response.data.valor_parcial && response.data.valor_parcial !== undefined){
+					setIsParcial(true);
+					setParcial(response.data.valor_parcial);
+				}
+				if (null !== response.data.valor_restante && response.data.valor_restante !== undefined){
+					setIsRestante(true);
+					setRestante(response.data.valor_restante);
+				}
+			}
+    }).catch(error => { 
+			toast.error("e: " + error, {
+      	toastId: "networkError"
+    	});
+    });
+  };
+
   const data = useMemo(() => [...rows], [rows]);
   const columns = useMemo(() => colunas, []
   );
@@ -205,8 +268,8 @@ export function Table({url, colunas, size}) {
     }
 	}
 
-	const testFunc = (rowid) => {
-			if (null == rows[rowid]){
+	const confirmFunc = (rowid) => {
+			if (null === rows[rowid] || undefined === rows[rowid]){
 				return false;
 			}
 			const status = rows[rowid].status;
@@ -244,31 +307,41 @@ export function Table({url, colunas, size}) {
   } = tableInstance;
 
   useEffect(() => {
-    getData(); 
+     
 
     switch(pathname) {
 	  case "receitas":
-	  	funcRenderDelete()
+	  	getData();
+	  	funcRenderDelete();
 	    break;
 	  case "receitas":
-	    funcRenderDelete()
+	  	getData();
+	    funcRenderDelete();
 	    break;
 	  case "contas-a-receber":
+	  	getData();
 	    if (!user.role.includes("Motorista")) setRenderConfirm(true);
 	    break;
 	  case "despesas":
-	    funcRenderDelete()
+	  	getData();
+	    funcRenderDelete();
 	    break;
 	  case "contas-a-pagar":
+	  	getData();
 	    if (!user.role.includes("Motorista")) setRenderConfirm(true);
 	    break;
+	  case "relatorios":
+	  	getFilteredData();
+	  	break;
 	  default:
+	  	getData();
 	  	funcRenderDelete();
 	  	funcRenderEdit();
 		}
   }, []);
 
   return (
+  		<Box gap="25px" sx={{ display: "flex", flexDirection: "column"}}>
       <Box sx={{ marginX: '25px', p: 2, bgcolor: "#ffffff", borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
 	      <table {...getTableProps()}>
 	        <thead>
@@ -295,7 +368,7 @@ export function Table({url, colunas, size}) {
 	          {page.map((row, i) => {
 	            prepareRow(row)
 	            return (
-	              <tr {...row.getRowProps()}>
+	              <tr {...row.getRowProps()} className={row.cells[7] !== undefined ? row.cells[7].value : ""}>
 	                {row.cells.map(cell => {
 	                  return (
 						  <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
@@ -303,7 +376,7 @@ export function Table({url, colunas, size}) {
 	                })}
 	                {renderEdit && <td><RiEditBoxLine className="edit-btn" onClick={() => {editEntity(row.id)}}/></td>}
 	          			{renderDelete && <td><BsFillTrashFill className="delete-btn" onClick={() => {openDeleteDialog(row.id)}}/></td>}
-	          			{renderConfirm && <td><LuCheckCircle className={testFunc(row.id) ? "confirm-btn" : "confirmed-btn"} onClick={() => {openConfirmDialog(row.id)}}/></td>}
+	          			{renderConfirm && <td><LuCheckCircle className={confirmFunc(row.id) ? "confirm-btn" : "confirmed-btn"} onClick={() => {openConfirmDialog(row.id)}}/></td>}
 	              </tr>
 	            )
 	          })}
@@ -419,6 +492,12 @@ export function Table({url, colunas, size}) {
 	        	</Box>
 	        </DialogActions>
 	      </Dialog>
+	    </Box>
+	    	<Box sx={{ display: "flex", alignSelf: "flex-end"}}>
+	    		{isTotal && <Title name={"Total: " + total} align='flex-end' />}
+	    		{isParcial && <Title name={"Pago: " + parcial} align='flex-end' />}
+	    		{isRestante && <Title name={"Restante: " + restante} align='flex-end' />}
+	    	</Box>
 	    </Box>
   );
 }

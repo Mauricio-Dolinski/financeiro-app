@@ -34,7 +34,7 @@ const MotoristasPage = () => {
 	    	<Title name="Motoristas" />
 	    	<AddButton />
 	    </Box>
-		<Table url="motoristas" colunas={colunas} size='6'/>
+		<Table url="motoristas" colunas={colunas}/>
 	  </>
 	)
 };

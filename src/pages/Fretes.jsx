@@ -41,7 +41,7 @@ const FretesPage = () => {
 	    	<Title name="Fretes" />
 	    	<AddButton />
 	    </Box>
-		<Table url="fretes" colunas={colunas} size='6'/>
+		<Table url="fretes" colunas={colunas}/>
 	  </>
 	)
 };

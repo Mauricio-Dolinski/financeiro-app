@@ -43,7 +43,7 @@ const ContasReceber = () => {
 	  	<Box sx={{display: 'flex', alignSelf: 'start', margin: '0px', width: '100%', p: 0, justifyContent: 'space-between'}}>
 	    	<Title name="Contas a Receber" />
 	    </Box>
-		<Table url="contas-a-receber" colunas={colunas} size='6'/>
+		<Table url="contas-a-receber" colunas={colunas}/>
 	  </>
 	)
 };

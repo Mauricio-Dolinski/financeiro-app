@@ -34,7 +34,7 @@ const UsuariosPage = () => {
 	    	<Title name="Usuários" />
 	    	<AddButton />
 	    </Box>
-		<Table url="usuarios" colunas={colunas} size='6'/>
+		<Table url="usuarios" colunas={colunas}/>
 	  </>
   )
 };
