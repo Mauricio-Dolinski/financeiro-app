@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.cd9b654c.css",
-    "main.js": "/static/js/main.3ba1a292.js",
-    "static/media/caminhoes.jpg": "/static/media/caminhoes.9229ba445e3bd7e2af8e.jpg",
-    "static/media/logo max.jpg": "/static/media/logo max.5ac7aa9fd29d3c94a8fa.jpg",
-    "index.html": "/index.html",
-    "main.cd9b654c.css.map": "/static/css/main.cd9b654c.css.map",
-    "main.3ba1a292.js.map": "/static/js/main.3ba1a292.js.map"
+    "main.css": "/tcc/static/css/main.92977765.css",
+    "main.js": "/tcc/static/js/main.801d0896.js",
+    "static/media/caminhoes.jpg": "/tcc/static/media/caminhoes.9229ba445e3bd7e2af8e.jpg",
+    "static/media/logo max.jpg": "/tcc/static/media/logo max.5ac7aa9fd29d3c94a8fa.jpg",
+    "index.html": "/tcc/index.html",
+    "main.92977765.css.map": "/tcc/static/css/main.92977765.css.map",
+    "main.801d0896.js.map": "/tcc/static/js/main.801d0896.js.map"
   },
   "entrypoints": [
-    "static/css/main.cd9b654c.css",
-    "static/js/main.3ba1a292.js"
+    "static/css/main.92977765.css",
+    "static/js/main.801d0896.js"
   ]
 }
