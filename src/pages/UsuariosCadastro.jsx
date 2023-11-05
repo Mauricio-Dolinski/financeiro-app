@@ -16,6 +16,7 @@ import { MySelect } from "../components/MySelect";
 const UsuariosCadastroPage = () => {
 	
 	const entityName = "usuarios";
+	const { URL_API } = useAuth();
 	const options_role = 
 	{
 		  "key": [
@@ -34,7 +35,7 @@ const UsuariosCadastroPage = () => {
 		    "Admin"
 		  ]
 	};
-	const url = 'http://localhost:8080/api/'+entityName;
+	const url = URL_API+entityName;
 	
 	
 	const [entity, setEntity] = useState([]);

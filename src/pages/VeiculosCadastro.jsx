@@ -14,6 +14,7 @@ import { MySelect } from "../components/MySelect";
 const VeiculosCadastroPage = () => {
 	
 	const entityName = "veiculos";
+	const { URL_API } = useAuth();
 	/*const options_usuarios = 
 	{
 		  "key": [
@@ -38,7 +39,7 @@ const VeiculosCadastroPage = () => {
 		    5 
 		  ]
 	};*/
-	const url = 'http://localhost:8080/api/'+entityName;
+	const url = URL_API+entityName;
 	
 	const [options, setOptions] = useState({
 		"key": [],

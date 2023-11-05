@@ -14,6 +14,7 @@ import { MySelect } from "../components/MySelect";
 const ClientesCadastroPage = () => {
 	
 	const entityName = "clientes";
+	const { URL_API } = useAuth();
 	/*const options_role = 
 	{
 		  "key": [
@@ -32,11 +33,12 @@ const ClientesCadastroPage = () => {
 		    "Admin"
 		  ]
 	};*/
-	const url = 'http://localhost:8080/api/'+entityName;
+	const url = URL_API+entityName;
 	
 	
 	const [entity, setEntity] = useState([]);
 	const { user } = useAuth();
+
 	const location = useLocation();
 	const id = location.pathname.split('/').pop();
 	const isCadastro = isNaN(id);

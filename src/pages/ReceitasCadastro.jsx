@@ -21,6 +21,7 @@ import 'dayjs/locale/pt-br';
 const ReceitasCadastroPage = () => {
 	
 	const entityName = "receitas";
+	const { URL_API } = useAuth();
 	const options_parcelas = 
 	{
 		  "key": [
@@ -106,7 +107,7 @@ const ReceitasCadastroPage = () => {
 		"value": []
 	});
 
-	const url = 'http://localhost:8080/api/'+entityName;
+	const url = URL_API+entityName;
 	
 	
 	const [entity, setEntity] = useState([]);

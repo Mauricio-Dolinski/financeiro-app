@@ -21,6 +21,7 @@ import 'dayjs/locale/pt-br';
 const FretesCadastroPage = () => {
 	
 	const entityName = "fretes";
+	const { URL_API } = useAuth();
 	const options_parcelas = 
 	{
 		  "key": [
@@ -91,7 +92,7 @@ const FretesCadastroPage = () => {
 		"value": []
 	});
 
-	const url = 'http://localhost:8080/api/'+entityName;
+	const url = URL_API+entityName;
 	
 	
 	const [entity, setEntity] = useState([]);

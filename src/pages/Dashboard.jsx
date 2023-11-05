@@ -18,6 +18,7 @@ const DashboardPage = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [entity, setEntity] = useState([]);
 	const { user } = useAuth();
+	const { URL_API } = useAuth();
 	const [timer, setTimer] = useState(false);
 	const [days, setDays] = useState(30);
 	const [userData] = useLocalStorage("user", null);
@@ -58,15 +59,15 @@ const DashboardPage = () => {
 					}
 				};
 
-		await axios.post("http://localhost:8080/api/dashboard", str, config).then(response => {
-			const entityData  = response.data;
-	        setEntity({ ...entity, ...entityData});
-	        setIsLoading(false);
-	        setDays(value);
-        }).catch(error => { 
-			toast.error("e: "+ error);
-        });
-	}
+		await axios.post(URL_API+"dashboard", str, config).then(response => {
+					const entityData  = response.data;
+			        setEntity({ ...entity, ...entityData});
+			        setIsLoading(false);
+			        setDays(value);
+		        }).catch(error => { 
+					toast.error("e: "+ error);
+		        });
+			}
 
 	const funcOnChangeDias = (event) => {
     	const value = event.target.value;

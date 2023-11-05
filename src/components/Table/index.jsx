@@ -13,7 +13,7 @@ import {  RiEditBoxLine } from "react-icons/ri";
 import {BsFillTrashFill} from "react-icons/bs";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Title } from "../Title";
-
+import { useAuth } from "../../hooks/useAuth";
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -26,6 +26,7 @@ export function Table({url, colunas, size='9', params=''}) {
 
   const [rows, setRows] = useState([]);
   const [user] = useLocalStorage("user", null);
+  const { URL_API } = useAuth();
   const [renderEdit, setRenderEdit] = useState(false);
   const [renderDelete, setRenderDelete] = useState(false);
   const [renderConfirm, setRenderConfirm] = useState(false);
@@ -53,7 +54,7 @@ export function Table({url, colunas, size='9', params=''}) {
 
   const getData = async () => {
 	rows.length = 0;
-    await axios.get('http://localhost:8080/api/'+url, {
+    await axios.get(URL_API+url, {
 			auth: {
 				username: user.user,
   				password: user.password
@@ -93,7 +94,7 @@ export function Table({url, colunas, size='9', params=''}) {
 		//post(url, params.toString(), config)
 
 		rows.length = 0;
-    await axios.post('http://localhost:8080/api/'+url, params.toString(), config).then(response => {
+    await axios.post(URL_API+url, params.toString(), config).then(response => {
 			setRows([...rows, ]);
       var entities = null;
       if (response.data === null){
@@ -178,7 +179,7 @@ export function Table({url, colunas, size='9', params=''}) {
 	      			toastId: url + "_" + id + "_delete_toast", closeButton: true, closeOnClick: true
 	    		});
 			}
-		    await axios.delete("http://localhost:8080/api/"+url+"/"+id, {
+		    await axios.delete(URL_API+url+"/"+id, {
 				auth: {
 					username: user.user,
 	  				password: user.password
@@ -259,7 +260,7 @@ export function Table({url, colunas, size='9', params=''}) {
 					}
 				};
 		
-		 	await axios.put("http://localhost:8080/api/"+url+"/"+id, params.toString(), config).then(response => {
+		 	await axios.put(URL_API+url+"/"+id, params.toString(), config).then(response => {
 					showResponse(toastId, options, response);
 		    }).catch(error => { 
 					showError(toastId, options, error);

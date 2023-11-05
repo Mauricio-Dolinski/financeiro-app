@@ -9,7 +9,7 @@ import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
-
+import { useAuth } from "../hooks/useAuth";
 import IconButton from '@mui/material/IconButton';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
@@ -20,7 +20,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const RecoverPage = () => {
 	const navigate = useNavigate();
-
+  const { URL_API } = useAuth();
   const [submitText, setSubmitText] = useState('Enviar Email de Recuperação');
   const [emailHidden, setEmailHidden] = useState('normal');
   const [senhaHidden, setSenhaHidden] = useState('none');
@@ -28,7 +28,7 @@ const RecoverPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isWaitingData, setIsWaitingData] = useState(false);
 
-  const url = 'http://localhost:8080/api/'
+  const url = URL_API;
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 

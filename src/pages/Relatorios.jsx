@@ -19,6 +19,7 @@ import { useAuth } from "../hooks/useAuth";
 
 const RelatoriosPage = () => {
 
+  const { URL_API } = useAuth();
   const colunas_inadimplencia = [
       {
         Header: 'ID',
@@ -467,7 +468,7 @@ const RelatoriosPage = () => {
   });
 
   const entityName = "despesas";
-  const url = 'http://localhost:8080/api/'+entityName;
+  const url = URL_API+entityName;
 
   const { user } = useAuth();
 
