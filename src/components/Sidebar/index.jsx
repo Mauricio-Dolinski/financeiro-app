@@ -35,7 +35,7 @@ const Sidebar = ({ active }) => {
   else if (pathname.includes("usuarios")) initialIndex = 1;
   else if (pathname.includes("motoristas")) initialIndex = 2;
   else if (pathname.includes("veiculos")) initialIndex = 3;
-  else if (pathname.includes("fretes")) initialIndex = 4;
+  else if (pathname.includes("fretes")) 	initialIndex = 4;
   else if (pathname.includes("clientes")) initialIndex = 5;
   else if (pathname.includes("receitas")) initialIndex = 6;
   else if (pathname.includes("contas-a-receber")) initialIndex = 7;
@@ -89,15 +89,12 @@ const Sidebar = ({ active }) => {
 	  }
 	  else if (userData.role === "Motorista"){
 		  pages = [
-	  { label: 'Dashboard', path: "/dashboard", index: 0, icon: <BiSolidDashboard className='icon' />},
 	  { label: 'Fretes', path: "/fretes", index: 4, icon: <FaShippingFast className='icon' />},
-	  { label: 'Contas a receber', path: "/contas-a-receber" , index: 7, icon: <GiReceiveMoney className='icon' />}, //TODO: arrumar contas a receber especifico para motorista
 	  { label: 'Despesas', path: "/despesas", index: 8, icon: <LuReceipt className='icon' />},
+	  { label: 'Salário', path: "/contas-a-pagar" , index: 9, icon: <GiReceiveMoney className='icon' />},
 	  ];
 	  }
   }
-  
-  
 
   return (
     <Container sidebar={active}>

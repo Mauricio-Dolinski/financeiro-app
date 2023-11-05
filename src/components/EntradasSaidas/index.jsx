@@ -1,14 +1,10 @@
 import { PieChart } from '@mui/x-charts/PieChart';
 import { Box, Typography } from "@mui/material";
 
-export const EntradasSaidas = ({ getData=null }) => {
+export const EntradasSaidas = ({ entradas=70, saidas=30 }) => {
 
-  var data = getData;
+  var data = [entradas, saidas ];
 
-  if (data === null)
-  {
-    data = [60, 40 ];
-  }
 
   const currencyFormatter = (v) => {
     return new Intl.NumberFormat('pt-BR', {

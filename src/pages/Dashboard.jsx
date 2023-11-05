@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Title } from "../components/Title";
+import { useNavigate } from "react-router-dom";
 import { FluxoDeCaixa } from "../components/FluxoDeCaixa";
 import { TiposDeDespesas } from "../components/TiposDeDespesas";
 import { EntradasSaidas } from "../components/EntradasSaidas";
+import { useLocalStorage } from "./../hooks/useLocalStorage";
 import { Box, Typography } from "@mui/material";
 import { useAuth } from "../hooks/useAuth";
 import axios from "axios";
@@ -17,6 +19,9 @@ const DashboardPage = () => {
 	const [entity, setEntity] = useState([]);
 	const { user } = useAuth();
 	const [timer, setTimer] = useState(false);
+	const [days, setDays] = useState(30);
+	const [userData] = useLocalStorage("user", null);
+	const navigate = useNavigate();
 
 	const delay = 30;
 
@@ -33,56 +38,57 @@ const DashboardPage = () => {
 	    "Últimos 90 dias"
 	  ],
 	  "value": [
-	    "30",
-	    "60",
-	    "90"
+	    30,
+	    60,
+	    90
 	  ]
 	};
 
-	const getData = async () => {
-		setTimer(true);
-		await axios.get("http://localhost:8080/api/dashboard", {
-			auth: {
-				username: user.user,
-  				password: user.password
-			}
-		}).then(response => {
+	
+
+	const postData = async (value) => {
+		const str = "dias="+value
+		const config = {
+					headers: {
+		            	"content-type": "application/x-www-form-urlencoded"
+		        	},
+					auth: {
+						username: user.user,
+		  				password: user.password
+					}
+				};
+
+		await axios.post("http://localhost:8080/api/dashboard", str, config).then(response => {
 			const entityData  = response.data;
 	        setEntity({ ...entity, ...entityData});
 	        setIsLoading(false);
-	        setTimer(false);
+	        setDays(value);
         }).catch(error => { 
 			toast.error("e: "+ error);
         });
 	}
 
+	const funcOnChangeDias = (event) => {
+    	const value = event.target.value;
+    	postData(value);
+  	};
+
 	useEffect(() => {
-		getData();
+		if (userData){
+		  if (userData.role === "Motorista"){
+			  navigate("/fretes", { replace: true });
+		  }
+		  else {
+		  	postData(days);
+		  }
+	  	}
 	},[]);
-
-  	useEffect(() => {
-	      let timer1 = setTimeout(() => getData(), delay * 1000);
-
-	      // this will clear Timeout
-	      // when component unmount like in willComponentUnmount
-	      // and show will not change to true
-	      return () => {
-	        clearTimeout(timer1);
-	      };
-	    },
-	    // useEffect will run only one time with empty []
-	    // if you pass a value to array,
-	    // like this - [data]
-	    // than clearTimeout will run every time
-	    // this value changes (useEffect re-run)
-	    [timer]
-	  );
 	
 	return (
 		<>	<Box sx={{display: 'flex', alignSelf: 'start', margin: '0px', width: '100%', p: 0, justifyContent: 'space-between'}}>
 		    	<Title name="Dashboard" />
-		    	{!isLoading && <EntradasSaidas />}
-		    	{!isLoading && <MySelect name="tempo" label="Período" options={options_tempo} width="300px" size="small"/>}
+		    	{!isLoading && <EntradasSaidas entradas={entity.entradas} saidas={entity.saidas}/>}
+		    	<MySelect name="dias" label="Período" options={options_tempo} funcOnChange={funcOnChangeDias} width="300px" size="small"/>
 		    </Box>
 		    {!isLoading && <>
 		    <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
@@ -156,12 +162,11 @@ const DashboardPage = () => {
 	   					 </Typography>
 			    	</Box>
 		    	</Tooltip>
-		    	
 		    </Box>
 		    <Box sx={{ width: "100%", height: "100%", display: "flex", flexDirection: "row", marginBottom: "25px"}}>
-		    	<FluxoDeCaixa />
+		    	<FluxoDeCaixa getFluxo={entity.fluxoDiario} getProjecao={entity.projecao} days={days}/>
 		    	
-		    	<TiposDeDespesas />
+		    	<TiposDeDespesas getData={entity.despesasPeriodo}/>
 		    </Box>
 		    </>}
 		</>

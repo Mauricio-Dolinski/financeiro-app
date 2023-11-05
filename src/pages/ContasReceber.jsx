@@ -9,6 +9,10 @@ const ContasReceber = () => {
         accessor: 'id'
       },
       {
+        Header: 'ID Receita',
+        accessor: 'receita_id'
+      },
+      {
         Header: 'Data de Registro',
         accessor: 'data_registro',
       },
@@ -16,10 +20,7 @@ const ContasReceber = () => {
         Header: 'Data de Validade',
         accessor: 'data_recebimento',
       },
-      {
-        Header: 'Valor',
-        accessor: 'valor'
-      },
+      
       {
         Header: 'Tipo da Receita',
         accessor: 'tipo_receita',
@@ -35,6 +36,10 @@ const ContasReceber = () => {
       {
         Header: 'Status',
         accessor: 'status',
+      },
+      {
+        Header: 'Valor',
+        accessor: 'valor'
       }
   ];
   

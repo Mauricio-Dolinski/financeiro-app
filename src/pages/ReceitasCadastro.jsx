@@ -93,6 +93,19 @@ const ReceitasCadastroPage = () => {
 		    "Outros"
 		  ]
 	};
+
+	const [optionsCliente, setOptionsCliente] = useState({
+		"key": [],
+		"name": [],
+		"value": []
+	});
+
+	const [optionsVeiculo, setOptionsVeiculo] = useState({
+		"key": [],
+		"name": [],
+		"value": []
+	});
+
 	const url = 'http://localhost:8080/api/'+entityName;
 	
 	
@@ -106,6 +119,8 @@ const ReceitasCadastroPage = () => {
     
     const [isLoading, setIsLoading] = useState(true);
     const [isWaitingData, setIsWaitingData] = useState(false);
+    const [isLoadingOptionsCliente, setIsLoadingOptionsCliente] = useState(true);
+    const [isLoadingOptionsVeiculo, setIsLoadingOptionsVeiculo] = useState(true);
     
     const setLoading = () => {
 		setIsLoading(false);
@@ -134,6 +149,44 @@ const ReceitasCadastroPage = () => {
 					  
 				  }
 				  toast.update(toastId, options);
+	}
+
+	const getOptionsCliente = async () => {
+		let url_options = url+"/options_cliente";
+		if (!isCadastro){
+			url_options += "/" + id;
+		}
+		await axios.get(url_options, {
+			auth: {
+				username: user.user,
+  				password: user.password
+			}
+		}).then(response => {
+			const optionsData  = response.data;
+	        setOptionsCliente({ ...optionsCliente, ...optionsData});
+			setIsLoadingOptionsCliente(false);
+        }).catch(error => { 
+			toast.error("e: "+ error);
+        });
+	}
+
+	const getOptionsVeiculo = async () => {
+		let url_options = url+"/options_veiculo";
+		if (!isCadastro){
+			url_options += "/" + id;
+		}
+		await axios.get(url_options, {
+			auth: {
+				username: user.user,
+  				password: user.password
+			}
+		}).then(response => {
+			const optionsData  = response.data;
+	        setOptionsVeiculo({ ...optionsVeiculo, ...optionsData});
+			setIsLoadingOptionsVeiculo(false);
+        }).catch(error => { 
+			toast.error("e: "+ error);
+        });
 	}
     
     const getData = async () => {
@@ -208,6 +261,8 @@ const ReceitasCadastroPage = () => {
   };
   
   useEffect(() => {
+  		getOptionsCliente();
+  		getOptionsVeiculo();
 	 	if (!isCadastro){
 			getData();
 		}
@@ -224,10 +279,14 @@ const ReceitasCadastroPage = () => {
 	   <Title name="Receitas - Editar " />
 	    }
 	  	<Box component="form" onSubmit={handleSubmit} gap="25px" sx={{ display: "flex", flexDirection: "column", m: "0px", p: "0px", alignItems: "flex-start" }}>
-	  	{!isLoading && <>
+	  	{!isLoading && !isLoadingOptionsCliente && !isLoadingOptionsVeiculo && <>
 	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
 	  	  	<MySelect name="tipo" label="Tipo de receita" isCadastro={isCadastro} getValue={entity.tipo} options={options_tipo}/>
 	  	  	<MySelect name="parcelas" label="Quantidade de parcelas" isCadastro={isCadastro} getValue={entity.parcelas} options={options_parcelas}/>
+	  	  </Box>
+	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
+			<MySelect name="cliente_id" label="Cliente" isDisabled={!isCadastro} isRequired={false} isCadastro={isCadastro} getValue={optionsCliente.value[0]} options={optionsCliente}/>
+	  	  	<MySelect name="veiculo_id" label="Veiculo" isDisabled={!isCadastro} isRequired={false} isCadastro={isCadastro} getValue={optionsVeiculo.value[0]} options={optionsVeiculo}/>
 	  	  </Box>
 	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
 	  	  	<MyInput name="valor_total" label="Valor Total" isCadastro={isCadastro} getValue={entity.valor_total}/>

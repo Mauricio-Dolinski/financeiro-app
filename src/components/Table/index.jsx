@@ -22,7 +22,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 import { Select, Avatar, Typography, MenuItem, InputLabel, FormControl, TextField} from "@mui/material";
 
-export function Table({url, colunas, size='10', params=''}) {
+export function Table({url, colunas, size='9', params=''}) {
 
   const [rows, setRows] = useState([]);
   const [user] = useLocalStorage("user", null);
@@ -205,7 +205,7 @@ export function Table({url, colunas, size='10', params=''}) {
 		if (response.data === "Cadastrado" || response.data === "Editado"|| response.data === "Confirmado"){
 			options.type = "success";
 			toast.update(toastId, options);
-			navigate("/"+pathname, { replace: true });
+			//navigate("/"+pathname, { replace: true });
 		}
 		else{
 			toast.update(toastId, options);

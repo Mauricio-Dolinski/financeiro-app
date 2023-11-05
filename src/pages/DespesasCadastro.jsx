@@ -119,6 +119,12 @@ const ReceitasCadastroPage = () => {
 		"value": []
 	});
 
+	const [optionsMotorista, setOptionsMotorista] = useState({
+		"key": [],
+		"name": [],
+		"value": []
+	});
+
 	const [optionsVeiculo, setOptionsVeiculo] = useState({
 		"key": [],
 		"name": [],
@@ -139,6 +145,7 @@ const ReceitasCadastroPage = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [isWaitingData, setIsWaitingData] = useState(false);
     const [isLoadingOptionsCliente, setIsLoadingOptionsCliente] = useState(true);
+    const [isLoadingOptionsMotorista, setIsLoadingOptionsMotorista] = useState(true);
     const [isLoadingOptionsVeiculo, setIsLoadingOptionsVeiculo] = useState(true);
     
     
@@ -184,6 +191,25 @@ const ReceitasCadastroPage = () => {
 			const optionsData  = response.data;
 	        setOptionsCliente({ ...optionsCliente, ...optionsData});
 			setIsLoadingOptionsCliente(false);
+        }).catch(error => { 
+			toast.error("e: "+ error);
+        });
+	}
+
+	const getOptionsMotorista = async () => {
+		let url_options = url+"/options_motorista";
+		if (!isCadastro){
+			url_options += "/" + id;
+		}
+		await axios.get(url_options, {
+			auth: {
+				username: user.user,
+  				password: user.password
+			}
+		}).then(response => {
+			const optionsData  = response.data;
+	        setOptionsMotorista({ ...optionsMotorista, ...optionsData});
+			setIsLoadingOptionsMotorista(false);
         }).catch(error => { 
 			toast.error("e: "+ error);
         });
@@ -281,6 +307,7 @@ const ReceitasCadastroPage = () => {
   
   useEffect(() => {
   	getOptionsCliente();
+  	getOptionsMotorista();
   	getOptionsVeiculo();
  	if (!isCadastro){
 		getData();
@@ -298,7 +325,7 @@ const ReceitasCadastroPage = () => {
 	   <Title name="Despesas - Editar " />
 	    }
 	  	<Box component="form" onSubmit={handleSubmit} gap="25px" sx={{ display: "flex", flexDirection: "column", m: "0px", p: "0px", alignItems: "flex-start" }}>
-	  	{!isLoading && <>
+	  	{!isLoading && !isLoadingOptionsCliente && !isLoadingOptionsMotorista && !isLoadingOptionsVeiculo && <>
 	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
 	  	  	<MySelect name="tipo" label="Tipo de despesa" isCadastro={isCadastro} getValue={entity.tipo} options={options_tipo}/>
 	  	  	<MySelect name="recorrente" label="Despesa é recorrente?" isCadastro={isCadastro} getValue={entity.recorrente} options={options_recorrente}/>
@@ -306,6 +333,7 @@ const ReceitasCadastroPage = () => {
 	  	  </Box>
 	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
 			<MySelect name="cliente_id" label="Cliente" isDisabled={!isCadastro} isRequired={false} isCadastro={isCadastro} getValue={optionsCliente.value[0]} options={optionsCliente}/>
+			<MySelect name="motorista_id" label="Motorista" isDisabled={!isCadastro} isRequired={false} isCadastro={isCadastro} getValue={optionsMotorista.value[0]} options={optionsMotorista}/>
 	  	  	<MySelect name="veiculo_id" label="Veiculo" isDisabled={!isCadastro} isRequired={false} isCadastro={isCadastro} getValue={optionsVeiculo.value[0]} options={optionsVeiculo}/>
 	  	  </Box>
 	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>

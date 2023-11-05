@@ -41,6 +41,18 @@ const RelatoriosPage = () => {
         accessor: 'descricao',
       },
       {
+        Header: 'Nome Cliente',
+        accessor: 'cliente_nome'
+      },
+      {
+        Header: 'Telefone Cliente',
+        accessor: 'cliente_telefone'
+      },
+      {
+        Header: 'Email Cliente',
+        accessor: 'cliente_email'
+      },
+      {
         Header: 'Valor',
         accessor: 'valor'
       }
@@ -61,10 +73,49 @@ const RelatoriosPage = () => {
       },
       {
         Header: 'Motorista',
-        accessor: 'nome'
+        accessor: 'usuario_nome'
       },
       {
         Header: 'Tipo de Receita',
+        accessor: 'tipo',
+      },
+      {
+        Header: 'Descrição',
+        accessor: 'descricao',
+      },
+      {
+        Header: 'Parcelas',
+        accessor: 'parcelas',
+      },
+      {
+        Header: 'Valor Total',
+        accessor: 'valor_total',
+      },
+      {
+        Header: 'Valor Recebido',
+        accessor: 'valor_recebido',
+      },
+  ];
+
+  const colunas_despesa_veiculo = [
+      {
+        Header: 'ID Despesa',
+        accessor: 'id'
+      },
+      {
+        Header: 'Data do 1º Vencimento',
+        accessor: 'data_vencimento',
+      },
+      {
+        Header: 'Placa',
+        accessor: 'placa',
+      },
+      {
+        Header: 'Motorista',
+        accessor: 'usuario_nome'
+      },
+      {
+        Header: 'Tipo de Despesa',
         accessor: 'tipo',
       },
       {
@@ -85,7 +136,46 @@ const RelatoriosPage = () => {
       },
   ];
 
-  const colunas_despesa_veiculo = [
+  const colunas_receita_motorista = [
+      {
+        Header: 'ID Receita',
+        accessor: 'id'
+      },
+      {
+        Header: 'Data do 1º Vencimento',
+        accessor: 'data_vencimento',
+      },
+      {
+        Header: 'Motorista',
+        accessor: 'usuario_nome'
+      },
+      {
+        Header: 'CPF',
+        accessor: 'cpf',
+      },
+      {
+        Header: 'Tipo de Receita',
+        accessor: 'tipo',
+      },
+      {
+        Header: 'Descrição',
+        accessor: 'descricao',
+      },
+      {
+        Header: 'Parcelas',
+        accessor: 'parcelas',
+      },
+      {
+        Header: 'Valor Total',
+        accessor: 'valor_total',
+      },
+      {
+        Header: 'Valor Recebido',
+        accessor: 'valor_recebido',
+      },
+  ];
+
+  const colunas_despesa_motorista = [
       {
         Header: 'ID Despesa',
         accessor: 'id'
@@ -95,12 +185,12 @@ const RelatoriosPage = () => {
         accessor: 'data_vencimento',
       },
       {
-        Header: 'Placa',
-        accessor: 'placa',
+        Header: 'Motorista',
+        accessor: 'usuario_nome'
       },
       {
-        Header: 'Motorista',
-        accessor: 'nome'
+        Header: 'CPF',
+        accessor: 'cpf',
       },
       {
         Header: 'Tipo de Despesa',
@@ -138,8 +228,8 @@ const RelatoriosPage = () => {
         accessor: 'cnpj',
       },
       {
-        Header: 'Nome',
-        accessor: 'nome'
+        Header: 'Nome do Cliente',
+        accessor: 'cliente_nome'
       },
       {
         Header: 'Tipo de Receita',
@@ -158,8 +248,8 @@ const RelatoriosPage = () => {
         accessor: 'valor_total',
       },
       {
-        Header: 'Valor Pago',
-        accessor: 'valor_pago',
+        Header: 'Valor Recebido',
+        accessor: 'valor_recebido',
       },
   ];
 
@@ -177,8 +267,8 @@ const RelatoriosPage = () => {
         accessor: 'cnpj',
       },
       {
-        Header: 'Nome',
-        accessor: 'nome'
+        Header: 'Nome do Cliente',
+        accessor: 'cliente_nome'
       },
       {
         Header: 'Tipo de Despesa',
@@ -232,8 +322,8 @@ const RelatoriosPage = () => {
         accessor: 'valor_total',
       },
       {
-        Header: 'Valor Pago',
-        accessor: 'valor_pago',
+        Header: 'Valor Recebido',
+        accessor: 'valor_recebido',
       },
   ];
 
@@ -279,18 +369,18 @@ const RelatoriosPage = () => {
         1,
         2,
         3,
-        4
+        //4
       ],
       "name": [
         "",
-        "Fluxo de Caixa",
+        //"Fluxo de Caixa",
         "Receita",
         "Despesa",
         "Inadimplência"
       ],
       "value": [
         "",
-        "Fluxo de Caixa",
+        //"Fluxo de Caixa",
         "Receita",
         "Despesa",
         "Inadimplência"
@@ -364,13 +454,19 @@ const RelatoriosPage = () => {
     "value": []
   });
 
+  const [optionsMotorista, setOptionsMotorista] = useState({
+    "key": [],
+    "name": [],
+    "value": []
+  });
+
   const [optionsVeiculo, setOptionsVeiculo] = useState({
     "key": [],
     "name": [],
     "value": []
   });
 
-  const entityName = "fretes";
+  const entityName = "despesas";
   const url = 'http://localhost:8080/api/'+entityName;
 
   const { user } = useAuth();
@@ -383,12 +479,14 @@ const RelatoriosPage = () => {
   const [isReceita, setIsReceita] = useState(false);
   const [isReceitaTodos, setIsReceitaTodos] = useState(false);
   const [receitaVeiculoOpen, setReceitaVeiculoOpen] = useState(false);
+  const [receitaMotoristaOpen, setReceitaMotoristaOpen] = useState(false);
   const [receitaClienteOpen, setReceitaClienteOpen] = useState(false);
   const [receitaTodosOpen, setReceitaTodosOpen] = useState(false);
 
   const [isDespesa, setIsDespesa] = useState(false);
   const [isDespesaTodos, setIsDespesaTodos] = useState(false);
   const [despesaVeiculoOpen, setDespesaVeiculoOpen] = useState(false);
+  const [despesaMotoristaOpen, setDespesaMotoristaOpen] = useState(false);
   const [despesaClienteOpen, setDespesaClienteOpen] = useState(false);
   const [despesaTodosOpen, setDespesaTodosOpen] = useState(false);
 
@@ -397,6 +495,7 @@ const RelatoriosPage = () => {
   const [open, setOpen] = useState(false);
 
   const [isLoadingOptionsCliente, setIsLoadingOptionsCliente] = useState(true);
+  const [isLoadingOptionsMotorista, setIsLoadingOptionsMotorista] = useState(true);
   const [isLoadingOptionsVeiculo, setIsLoadingOptionsVeiculo] = useState(true);
   
 
@@ -411,6 +510,23 @@ const RelatoriosPage = () => {
       const optionsData  = response.data;
           setOptionsCliente({ ...optionsCliente, ...optionsData});
           setIsLoadingOptionsCliente(false);
+          setGerar(true);
+        }).catch(error => { 
+      toast.error("e: "+ error);
+        });
+  }
+
+  const getOptionsMotorista = async () => {
+    let url_options = url+"/options_motorista";
+    await axios.get(url_options, {
+      auth: {
+        username: user.user,
+          password: user.password
+      }
+    }).then(response => {
+      const optionsData  = response.data;
+          setOptionsMotorista({ ...optionsMotorista, ...optionsData});
+          setIsLoadingOptionsMotorista(false);
           setGerar(true);
         }).catch(error => { 
       toast.error("e: "+ error);
@@ -454,6 +570,9 @@ const RelatoriosPage = () => {
         if (!isLoadingOptionsVeiculo){
           setDespesaVeiculoOpen(true);
         }
+        if (!isLoadingOptionsMotorista){
+          setDespesaMotoristaOpen(true);
+        }
         if (!isLoadingOptionsCliente){
           setDespesaClienteOpen(true);
         }
@@ -465,6 +584,9 @@ const RelatoriosPage = () => {
       else if (isReceita){
         if (!isLoadingOptionsVeiculo){
           setReceitaVeiculoOpen(true);
+        }
+        if (!isLoadingOptionsMotorista){
+          setReceitaMotoristaOpen(true);
         }
         if (!isLoadingOptionsCliente){
           setReceitaClienteOpen(true);
@@ -497,6 +619,7 @@ const RelatoriosPage = () => {
     }
     if (value === "Receita"){
       setIsLoadingOptionsCliente(true);
+      setIsLoadingOptionsMotorista(true);
       setIsLoadingOptionsVeiculo(true);
       setIsReceita(true);
       setGerar(false);
@@ -506,6 +629,7 @@ const RelatoriosPage = () => {
     }
     if (value === "Despesa"){
       setIsLoadingOptionsCliente(true);
+      setIsLoadingOptionsMotorista(true);
       setIsLoadingOptionsVeiculo(true);
       setIsDespesa(true);
       setGerar(false);
@@ -525,6 +649,7 @@ const RelatoriosPage = () => {
     const value = event.target.value;
 
     setIsLoadingOptionsCliente(true);
+    setIsLoadingOptionsMotorista(true);
     setIsLoadingOptionsVeiculo(true);
     setGerar(false);
 
@@ -535,7 +660,7 @@ const RelatoriosPage = () => {
       
     }
     if (value === "Motorista"){
-      
+      getOptionsMotorista();
     }
     else {
       
@@ -559,6 +684,7 @@ const RelatoriosPage = () => {
     const value = event.target.value;
 
     setIsLoadingOptionsCliente(true);
+    setIsLoadingOptionsMotorista(true);
     setIsLoadingOptionsVeiculo(true);
     setGerar(false);
 
@@ -569,7 +695,7 @@ const RelatoriosPage = () => {
       
     }
     if (value === "Motorista"){
-      
+      getOptionsMotorista();
     }
     else {
       
@@ -598,7 +724,9 @@ const RelatoriosPage = () => {
       <Box sx={{display: 'flex', alignSelf: 'start', margin: '0px', width: '100%', p: 0, justifyContent: 'space-between'}}>
         <Title name={titleText} />
       </Box>
-      {!inadimplenciaOpen && !despesaVeiculoOpen && !despesaClienteOpen && !despesaTodosOpen && !receitaVeiculoOpen && !receitaClienteOpen && !receitaTodosOpen &&
+      {!inadimplenciaOpen && 
+      !despesaVeiculoOpen && !despesaMotoristaOpen && !despesaClienteOpen && !despesaTodosOpen && 
+      !receitaVeiculoOpen && !receitaMotoristaOpen && !receitaClienteOpen && !receitaTodosOpen &&
       <Box component="form" onSubmit={handleSubmit} gap="25px" sx={{ display: "flex", flexDirection: "column", m: "0px", p: "0px", alignItems: "flex-start" }}>
         <Box sx={{ width: "1000px", display: "flex", flexDirection: "row"}}>
           <Box sx={{ width: "800px", minWidth: "500px", display: 'flex', alignItems: 'center',color: '#757575', marginX: '25px', p: 2, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
@@ -649,6 +777,7 @@ const RelatoriosPage = () => {
         {isDespesa && <>
           <Box sx={{ width: "500px", display: "flex", flexDirection: "row"}}>
             {!isLoadingOptionsCliente && <MySelect name="cliente_id" label="Cliente" getValue={optionsCliente.value[0]} options={optionsCliente}/>}
+            {!isLoadingOptionsMotorista && <MySelect name="motorista_id" label="Motorista" getValue={optionsMotorista.value[0]} options={optionsMotorista}/>}
             {!isLoadingOptionsVeiculo && <MySelect name="veiculo_id" label="Veiculo" getValue={optionsVeiculo.value[0]} options={optionsVeiculo}/>}
           </Box>
           </>
@@ -656,6 +785,7 @@ const RelatoriosPage = () => {
         {isReceita && <>
           <Box sx={{ width: "500px", display: "flex", flexDirection: "row"}}>
             {!isLoadingOptionsCliente && <MySelect name="cliente_id" label="Cliente" getValue={optionsCliente.value[0]} options={optionsCliente}/>}
+            {!isLoadingOptionsMotorista && <MySelect name="motorista_id" label="Motorista" getValue={optionsMotorista.value[0]} options={optionsMotorista}/>}
             {!isLoadingOptionsVeiculo && <MySelect name="veiculo_id" label="Veiculo" getValue={optionsVeiculo.value[0]} options={optionsVeiculo}/>}
           </Box>
           </>
@@ -665,10 +795,12 @@ const RelatoriosPage = () => {
         </Box>
       </Box>}
       {inadimplenciaOpen && <Table url="contas-a-receber/inadimplencia" colunas={colunas_inadimplencia} params={paramsRelatorio} size='8'/>}
-      {receitaVeiculoOpen && <Table url="receita/veiculo" colunas={colunas_receita_veiculo} params={paramsRelatorio} size='8'/>}
-      {receitaClienteOpen && <Table url="receita/cliente" colunas={colunas_receita_cliente} params={paramsRelatorio} size='8'/>}
-      {receitaTodosOpen && <Table url="receita/todos" colunas={colunas_receita_todos} params={paramsRelatorio} size='8'/>}
+      {receitaVeiculoOpen && <Table url="receitas/veiculo" colunas={colunas_receita_veiculo} params={paramsRelatorio} size='8'/>}
+      {receitaMotoristaOpen && <Table url="receitas/motorista" colunas={colunas_receita_motorista} params={paramsRelatorio} size='8'/>}
+      {receitaClienteOpen && <Table url="receitas/cliente" colunas={colunas_receita_cliente} params={paramsRelatorio} size='8'/>}
+      {receitaTodosOpen && <Table url="receitas/todos" colunas={colunas_receita_todos} params={paramsRelatorio} size='8'/>}
       {despesaVeiculoOpen && <Table url="despesas/veiculo" colunas={colunas_despesa_veiculo} params={paramsRelatorio} size='8'/>}
+      {despesaMotoristaOpen && <Table url="despesas/motorista" colunas={colunas_despesa_motorista} params={paramsRelatorio} size='8'/>}
       {despesaClienteOpen && <Table url="despesas/cliente" colunas={colunas_despesa_cliente} params={paramsRelatorio} size='8'/>}
       {despesaTodosOpen && <Table url="despesas/todos" colunas={colunas_despesa_todos} params={paramsRelatorio} size='8'/>}
 
@@ -678,7 +810,7 @@ const RelatoriosPage = () => {
         onClick={handleClose}
       >
         <Box sx={{ width: "80%", height: "80%", display: "flex", flexDirection: "row", marginBottom: "25px"}}>
-          <FluxoDeCaixa />
+
         </Box>
       </Backdrop>
       

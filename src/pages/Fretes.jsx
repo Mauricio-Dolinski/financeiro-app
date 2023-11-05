@@ -32,6 +32,10 @@ const FretesPage = () => {
       {
         Header: 'Destino',
         accessor: 'destino',
+      },
+      {
+        Header: 'Valor Total',
+        accessor: 'valor_total',
       }
   ];
   

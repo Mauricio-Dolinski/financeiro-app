@@ -7,6 +7,7 @@ export const MySelect = ({ name, label, isCadastro=true, isDisabled=false, isReq
 	
 	const bgColor = isDisabled ? '#ccc' : '#fff';
     const editColor = isCadastro ? 'success' : 'warning';
+    var isReq = false;
     
 	if (isDisabled){
 		isRequired = false;
