@@ -1,7 +1,7 @@
 {
   "name": "tcc",
   "homepage": "https://mauricio-dolinski.github.io/tcc/",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",
