@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/tcc/static/css/main.92977765.css",
-    "main.js": "/tcc/static/js/main.cde2988a.js",
+    "main.js": "/tcc/static/js/main.9cc09c7c.js",
     "static/media/caminhoes.jpg": "/tcc/static/media/caminhoes.9229ba445e3bd7e2af8e.jpg",
     "static/media/logo max.jpg": "/tcc/static/media/logo max.5ac7aa9fd29d3c94a8fa.jpg",
     "index.html": "/tcc/index.html",
     "main.92977765.css.map": "/tcc/static/css/main.92977765.css.map",
-    "main.cde2988a.js.map": "/tcc/static/js/main.cde2988a.js.map"
+    "main.9cc09c7c.js.map": "/tcc/static/js/main.9cc09c7c.js.map"
   },
   "entrypoints": [
     "static/css/main.92977765.css",
-    "static/js/main.cde2988a.js"
+    "static/js/main.9cc09c7c.js"
   ]
 }
