@@ -16,7 +16,7 @@ import { FaBars } from 'react-icons/fa';
   
 
   if (!user) {
-    return <Navigate to="/" />;
+    return <Navigate to="/tcc" />;
   }
 
   return (

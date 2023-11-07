@@ -140,7 +140,7 @@ export function Table({url, colunas, size='9', params=''}) {
 
   const editEntity = (rowid) => {
 		const id = rows[rowid].id;
-		navigate("/"+url+"/editar/"+id, { replace: true })
+		navigate("/tcc/"+url+"/editar/"+id, { replace: true })
 	}
 
 	const openConfirmDialog = (rowid) => {
@@ -206,7 +206,7 @@ export function Table({url, colunas, size='9', params=''}) {
 		if (response.data === "Cadastrado" || response.data === "Editado"|| response.data === "Confirmado"){
 			options.type = "success";
 			toast.update(toastId, options);
-			//navigate("/"+pathname, { replace: true });
+			//navigate("/tcc/"+pathname, { replace: true });
 		}
 		else{
 			toast.update(toastId, options);

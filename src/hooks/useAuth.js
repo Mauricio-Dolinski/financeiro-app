@@ -38,7 +38,7 @@ export const AuthProvider = ({ children, userData }) => {
 	        data.name = response.data.name;
 	        setUser(data);
 	        toast.update("logintoast", {render: "Autenticado", type: "success", isLoading: false, hideProgressBar: false, autoClose: 1200});
-    		navigate("/dashboard", { replace: true });
+    		navigate("/tcc/dashboard", { replace: true });
 	      }).catch(error => { 
 			  if (error.response && error.response.status === 401){
 				    toast.update("logintoast", {render: "Usuário ou senha incorretos", type: "error", isLoading: false, hideProgressBar: false, autoClose: 3000});
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children, userData }) => {
 
   const logout = () => {
     setUser(null);
-    navigate("/", { replace: true });
+    navigate("/tcc", { replace: true });
   };
 
   const value = useMemo(

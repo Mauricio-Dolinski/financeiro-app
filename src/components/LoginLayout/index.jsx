@@ -10,7 +10,7 @@ import "./styles.css";
   const outlet = useOutlet();
 
   if (user) {
-    return <Navigate to="/dashboard" replace />;
+    return <Navigate to="/tcc/dashboard" replace />;
   }
 
   return (

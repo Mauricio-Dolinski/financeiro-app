@@ -111,7 +111,7 @@ const RecoverPage = () => {
 	  <Container  maxWidth="xs">
 	  <Grid container>
         <Grid item>
-          <ArrowBackIosOutlinedIcon onClick={() => navigate("/")} color="primary" sx={{ cursor: "pointer" }}/>
+          <ArrowBackIosOutlinedIcon onClick={() => navigate("/tcc/")} color="primary" sx={{ cursor: "pointer" }}/>
         </Grid>
       </Grid>
 	  

@@ -133,7 +133,7 @@ const ReceitasCadastroPage = () => {
 		if (response.data === "Cadastrado" || response.data === "Editado"){
 			options.type = "success";
 			toast.update(toastId, options);
-			navigate("/"+entityName, { replace: true });
+			navigate("/tcc/"+entityName, { replace: true });
 		}
 		else{
 			toast.update(toastId, options);

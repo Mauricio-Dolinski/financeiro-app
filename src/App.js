@@ -59,34 +59,34 @@ export const router = createBrowserRouter(
     >
       <Route element={<LoginLayout />}>
         <Route path="/" element={<LoginPage />} />
-        <Route path="recuperar" element={<RecoverPage />} />
+        <Route path="/tcc/recuperar" element={<RecoverPage />} />
         <Route path="/tcc" element={<LoginPage />} />
       </Route>
 
       <Route element={<MainLayout />}>
-        <Route path="dashboard" element={<DashboardPage />} />
-        <Route path="usuarios" element={<UsuariosPage />} />
-        <Route path="usuarios/cadastrar" element={<UsuariosCadastroPage />} />
-        <Route path="usuarios/editar/:id" element={<UsuariosCadastroPage />} />
-        <Route path="motoristas" element={<MotoristasPage />} />
-        <Route path="motoristas/cadastrar" element={<MotoristasCadastroPage />} />
-        <Route path="motoristas/editar/:id" element={<MotoristasCadastroPage />} />
-        <Route path="veiculos" element={<VeiculosPage />} />
-        <Route path="veiculos/cadastrar" element={<VeiculosCadastroPage />} />
-        <Route path="veiculos/editar/:id" element={<VeiculosCadastroPage />} />
-        <Route path="fretes" element={<FretesPage />} />
-        <Route path="fretes/cadastrar" element={<FretesCadastroPage />} />
-        <Route path="fretes/editar/:id" element={<FretesCadastroPage />} />
-        <Route path="clientes" element={<ClientesPage />} />
-        <Route path="clientes/cadastrar" element={<ClientesCadastroPage />} />
-        <Route path="clientes/editar/:id" element={<ClientesCadastroPage />} />
-        <Route path="receitas" element={<ReceitasPage />} />
-        <Route path="receitas/cadastrar" element={<ReceitasCadastroPage />} />
-        <Route path="contas-a-receber" element={<ContasReceberPage />} />
-        <Route path="despesas" element={<DespesasPage />} />
-        <Route path="despesas/cadastrar" element={<DespesasCadastroPage />} />
-        <Route path="contas-a-pagar" element={<ContasPagarPage />} />
-        <Route path="relatorios" element={<RelatoriosPage />} />
+        <Route path="/tcc/dashboard" element={<DashboardPage />} />
+        <Route path="/tcc/usuarios" element={<UsuariosPage />} />
+        <Route path="/tcc/usuarios/cadastrar" element={<UsuariosCadastroPage />} />
+        <Route path="/tcc/usuarios/editar/:id" element={<UsuariosCadastroPage />} />
+        <Route path="/tcc/motoristas" element={<MotoristasPage />} />
+        <Route path="/tcc/motoristas/cadastrar" element={<MotoristasCadastroPage />} />
+        <Route path="/tcc/motoristas/editar/:id" element={<MotoristasCadastroPage />} />
+        <Route path="/tcc/veiculos" element={<VeiculosPage />} />
+        <Route path="/tcc/veiculos/cadastrar" element={<VeiculosCadastroPage />} />
+        <Route path="/tcc/veiculos/editar/:id" element={<VeiculosCadastroPage />} />
+        <Route path="/tcc/fretes" element={<FretesPage />} />
+        <Route path="/tcc/fretes/cadastrar" element={<FretesCadastroPage />} />
+        <Route path="/tcc/fretes/editar/:id" element={<FretesCadastroPage />} />
+        <Route path="/tcc/clientes" element={<ClientesPage />} />
+        <Route path="/tcc/clientes/cadastrar" element={<ClientesCadastroPage />} />
+        <Route path="/tcc/clientes/editar/:id" element={<ClientesCadastroPage />} />
+        <Route path="/tcc/receitas" element={<ReceitasPage />} />
+        <Route path="/tcc/receitas/cadastrar" element={<ReceitasCadastroPage />} />
+        <Route path="/tcc/contas-a-receber" element={<ContasReceberPage />} />
+        <Route path="/tcc/despesas" element={<DespesasPage />} />
+        <Route path="/tcc/despesas/cadastrar" element={<DespesasCadastroPage />} />
+        <Route path="/tcc/contas-a-pagar" element={<ContasPagarPage />} />
+        <Route path="/tcc/relatorios" element={<RelatoriosPage />} />
       </Route>
     </Route>
   )

@@ -62,36 +62,36 @@ const Sidebar = ({ active }) => {
   if (userData){
 	  if (userData.role === "Admin"){
 		  pages = [
-	  { label: 'Dashboard', path: "/dashboard" , index: 0, icon: <BiSolidDashboard className='icon' />},
-	  { label: 'Usuários', path: "/usuarios" , index: 1, icon: <Person sx={{ m: "10px", width: "30px", height: "30px"}}/>},
-	  { label: 'Motoristas', path: "/motoristas" , index: 2, icon: <BsPersonBadge className='icon' />},
-	  { label: 'Veículos', path: "/veiculos" , index: 3, icon: <FaTruck className='icon' />},
-	  { label: 'Fretes', path: "/fretes" , index: 4, icon: <FaShippingFast className='icon' />},
-	  { label: 'Clientes', path: "/clientes" , index: 5, icon: <Groups sx={{ m: "10px", width: "30px", height: "30px"}}/>},
-	  { label: 'Receitas', path: "/receitas" , index: 6, icon: <LuReceipt className='icon' />},
-	  { label: 'Contas a receber', path: "/contas-a-receber" , index: 7, icon: <GiReceiveMoney className='icon' />},
-	  { label: 'Despesas', path: "/despesas", index: 8, icon: <LuReceipt className='icon' />},
-	  { label: 'Contas a pagar', path: "/contas-a-pagar", index: 9, icon: <GiPayMoney className='icon' />},
-	  { label: 'Relatórios', path: "/relatorios", index: 10, icon: <BsFillBarChartLineFill className='icon'/>}
+	  { label: 'Dashboard', path: "/tcc/dashboard" , index: 0, icon: <BiSolidDashboard className='icon' />},
+	  { label: 'Usuários', path: "/tcc/usuarios" , index: 1, icon: <Person sx={{ m: "10px", width: "30px", height: "30px"}}/>},
+	  { label: 'Motoristas', path: "/tcc/motoristas" , index: 2, icon: <BsPersonBadge className='icon' />},
+	  { label: 'Veículos', path: "/tcc/veiculos" , index: 3, icon: <FaTruck className='icon' />},
+	  { label: 'Fretes', path: "/tcc/fretes" , index: 4, icon: <FaShippingFast className='icon' />},
+	  { label: 'Clientes', path: "/tcc/clientes" , index: 5, icon: <Groups sx={{ m: "10px", width: "30px", height: "30px"}}/>},
+	  { label: 'Receitas', path: "/tcc/receitas" , index: 6, icon: <LuReceipt className='icon' />},
+	  { label: 'Contas a receber', path: "/tcc/contas-a-receber" , index: 7, icon: <GiReceiveMoney className='icon' />},
+	  { label: 'Despesas', path: "/tcc/despesas", index: 8, icon: <LuReceipt className='icon' />},
+	  { label: 'Contas a pagar', path: "/tcc/contas-a-pagar", index: 9, icon: <GiPayMoney className='icon' />},
+	  { label: 'Relatórios', path: "/tcc/relatorios", index: 10, icon: <BsFillBarChartLineFill className='icon'/>}
 	  ];
 	  }
 	  else if (userData.role === "Operador"){
 		  pages = [
-	  { label: 'Dashboard', path: "/dashboard" , index: 0, icon: <BiSolidDashboard className='icon' />},
-	  { label: 'Fretes', path: "/fretes" , index: 4, icon: <FaShippingFast className='icon' />},
-	  { label: 'Clientes', path: "/clientes" , index: 5, icon: <Groups sx={{ m: "10px", width: "30px", height: "30px"}}/>},
-	  { label: 'Receitas', path: "/receitas", index: 6, icon: <LuReceipt className='icon' />},
-	  { label: 'Contas a receber', path: "/contas-a-receber", index: 7, icon: <GiReceiveMoney className='icon' />},
-	  { label: 'Despesas', path: "/despesas", index: 8, icon: <LuReceipt className='icon' />},
-	  { label: 'Contas a pagar', path: "/contas-a-pagar", index: 9, icon: <GiPayMoney className='icon' />},
-	  { label: 'Relatórios', path: "/relatorios", index: 10, icon: <BsFillBarChartLineFill className='icon'/>}
+	  { label: 'Dashboard', path: "/tcc/dashboard" , index: 0, icon: <BiSolidDashboard className='icon' />},
+	  { label: 'Fretes', path: "/tcc/fretes" , index: 4, icon: <FaShippingFast className='icon' />},
+	  { label: 'Clientes', path: "/tcc/clientes" , index: 5, icon: <Groups sx={{ m: "10px", width: "30px", height: "30px"}}/>},
+	  { label: 'Receitas', path: "/tcc/receitas", index: 6, icon: <LuReceipt className='icon' />},
+	  { label: 'Contas a receber', path: "/tcc/contas-a-receber", index: 7, icon: <GiReceiveMoney className='icon' />},
+	  { label: 'Despesas', path: "/tcc/despesas", index: 8, icon: <LuReceipt className='icon' />},
+	  { label: 'Contas a pagar', path: "/tcc/contas-a-pagar", index: 9, icon: <GiPayMoney className='icon' />},
+	  { label: 'Relatórios', path: "/tcc/relatorios", index: 10, icon: <BsFillBarChartLineFill className='icon'/>}
 	  ];
 	  }
 	  else if (userData.role === "Motorista"){
 		  pages = [
-	  { label: 'Fretes', path: "/fretes", index: 4, icon: <FaShippingFast className='icon' />},
-	  { label: 'Despesas', path: "/despesas", index: 8, icon: <LuReceipt className='icon' />},
-	  { label: 'Salário', path: "/contas-a-pagar" , index: 9, icon: <GiReceiveMoney className='icon' />},
+	  { label: 'Fretes', path: "/tcc/fretes", index: 4, icon: <FaShippingFast className='icon' />},
+	  { label: 'Despesas', path: "/tcc/despesas", index: 8, icon: <LuReceipt className='icon' />},
+	  { label: 'Salário', path: "/tcc/contas-a-pagar" , index: 9, icon: <GiReceiveMoney className='icon' />},
 	  ];
 	  }
   }
