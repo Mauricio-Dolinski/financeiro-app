@@ -16,6 +16,9 @@ import {Table} from "../components/Table";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useAuth } from "../hooks/useAuth";
+import { BiSolidPrinter } from "react-icons/bi";
+import Button from "@mui/material/Button";
+import { Avatar } from "@mui/material";
 
 const RelatoriosPage = () => {
 
@@ -474,6 +477,7 @@ const RelatoriosPage = () => {
 
   const [gerar, setGerar] = useState(false);
   const [titleText, setTitleText] = useState('Relatórios');
+  const [imprimirOpen, setImprimirOpen] = useState(false);
   const [isFluxoDeCaixa, setIsFluxoDeCaixa] = useState(false);
   const [isInadimplencia, setIsInadimplencia] = useState(false);
   
@@ -499,6 +503,7 @@ const RelatoriosPage = () => {
   const [isLoadingOptionsMotorista, setIsLoadingOptionsMotorista] = useState(true);
   const [isLoadingOptionsVeiculo, setIsLoadingOptionsVeiculo] = useState(true);
   
+  const print = () => window.print();
 
   const getOptionsCliente = async () => {
     let url_options = url+"/options_cliente";
@@ -560,6 +565,15 @@ const RelatoriosPage = () => {
     setparamsRelatorio(params);
 
     if (data) {
+      if (isInadimplencia || 
+          !isLoadingOptionsVeiculo ||
+          !isLoadingOptionsMotorista ||
+          !isLoadingOptionsCliente ||
+          isDespesaTodos ||
+          isReceitaTodos
+          ) {
+        setImprimirOpen(true);
+      }
       if (isFluxoDeCaixa){
         setOpen(true);
       }
@@ -724,6 +738,14 @@ const RelatoriosPage = () => {
     <>
       <Box sx={{display: 'flex', alignSelf: 'start', margin: '0px', width: '100%', p: 0, justifyContent: 'space-between'}}>
         <Title name={titleText} />
+        {imprimirOpen && <Box sx={{border: 'solid 2px', borderColor: "#fff", alignSelf: 'center', marginX: '25px', p: '0px',  bgcolor: "#fff", borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
+          <Button onClick={print} sx={{ display: 'flex', height: '60px', borderRadius: 5, paddingX: '15px'}}>
+            <Avatar sx={{ p: '0px', height: "40px", width: '40px', bgcolor: "#757575"}}>
+              <BiSolidPrinter />
+            </Avatar>
+          </Button>
+        </Box>
+        }
       </Box>
       {!inadimplenciaOpen && 
       !despesaVeiculoOpen && !despesaMotoristaOpen && !despesaClienteOpen && !despesaTodosOpen && 

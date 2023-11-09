@@ -1,6 +1,6 @@
 {
   "name": "tcc",
-  "homepage": "https://mauricio-dolinski.github.io/tcc/",
+
   "version": "1.0.0",
   "private": true,
   "dependencies": {
