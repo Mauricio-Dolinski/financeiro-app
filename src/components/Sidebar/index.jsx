@@ -63,11 +63,11 @@ const Sidebar = ({ active }) => {
 	  if (userData.role === "Admin"){
 		  pages = [
 	  { label: 'Dashboard', path: "/tcc/dashboard" , index: 0, icon: <BiSolidDashboard className='icon' />},
-	  { label: 'Usuários', path: "/tcc/usuarios" , index: 1, icon: <Person sx={{ m: "10px", width: "30px", height: "30px"}}/>},
+	  { label: 'Usuários', path: "/tcc/usuarios" , index: 1, icon: <Person className='icon' sx={{ m: "10px", width: "30px", height: "30px"}}/>},
 	  { label: 'Motoristas', path: "/tcc/motoristas" , index: 2, icon: <BsPersonBadge className='icon' />},
 	  { label: 'Veículos', path: "/tcc/veiculos" , index: 3, icon: <FaTruck className='icon' />},
 	  { label: 'Fretes', path: "/tcc/fretes" , index: 4, icon: <FaShippingFast className='icon' />},
-	  { label: 'Clientes', path: "/tcc/clientes" , index: 5, icon: <Groups sx={{ m: "10px", width: "30px", height: "30px"}}/>},
+	  { label: 'Clientes', path: "/tcc/clientes" , index: 5, icon: <Groups className='icon' sx={{ m: "10px", width: "30px", height: "30px"}}/>},
 	  { label: 'Receitas', path: "/tcc/receitas" , index: 6, icon: <LuReceipt className='icon' />},
 	  { label: 'Contas a receber', path: "/tcc/contas-a-receber" , index: 7, icon: <GiReceiveMoney className='icon' />},
 	  { label: 'Despesas', path: "/tcc/despesas", index: 8, icon: <LuReceipt className='icon' />},
@@ -79,7 +79,7 @@ const Sidebar = ({ active }) => {
 		  pages = [
 	  { label: 'Dashboard', path: "/tcc/dashboard" , index: 0, icon: <BiSolidDashboard className='icon' />},
 	  { label: 'Fretes', path: "/tcc/fretes" , index: 4, icon: <FaShippingFast className='icon' />},
-	  { label: 'Clientes', path: "/tcc/clientes" , index: 5, icon: <Groups sx={{ m: "10px", width: "30px", height: "30px"}}/>},
+	  { label: 'Clientes', path: "/tcc/clientes" , index: 5, icon: <Groups className='icon' sx={{ m: "10px", width: "30px", height: "30px"}}/>},
 	  { label: 'Receitas', path: "/tcc/receitas", index: 6, icon: <LuReceipt className='icon' />},
 	  { label: 'Contas a receber', path: "/tcc/contas-a-receber", index: 7, icon: <GiReceiveMoney className='icon' />},
 	  { label: 'Despesas', path: "/tcc/despesas", index: 8, icon: <LuReceipt className='icon' />},
@@ -102,7 +102,7 @@ const Sidebar = ({ active }) => {
         <Box  sx={{bgcolor: "#8a8a8a"}}>
 			  <List component="nav" sx={{ display: "flex", flexDirection: "column", alignItems: "center",gap: "5px"}}>
 	            {pages?.map((page) => (
-			        <ListItemButton sx={{
+			        <ListItemButton className='itemButton' sx={{
 				        "&.Mui-selected": {
 				          backgroundColor: "#ccccff",
 				          color: "primary.main",
@@ -120,7 +120,7 @@ const Sidebar = ({ active }) => {
 					        color: 'primary.main',
 					      },
 					    },
-				      color: 'white',  
+				      		color: 'white',  
 		              width: 340,
 		              height: "40px",
 		              borderRadius: "50px",
@@ -137,22 +137,46 @@ const Sidebar = ({ active }) => {
 			          </ListItemIcon>
 			          <ListItemText 
 			          disableTypography
-                       primary={<Typography variant="h6" style={{ fontSize: "25px"  }}>{page.label}</Typography>} />
+                       primary={<Typography variant="h6" className='typography'>{page.label}</Typography>} />
 			        </ListItemButton>
 		        ))}
+
+	            <ListItemButton className='itemButton' onClick={logout} sx={{
+				        "&.Mui-selected": {
+				          backgroundColor: "#ccccff",
+				          color: "primary.main",
+				          '& .MuiListItemIcon-root': {
+					        color: 'primary.main',
+					      },
+						  '&:hover': {
+						      backgroundColor: "#ccccff",
+						   },
+				        },
+				        '&:hover': {
+					      color: 'primary.main',
+					      backgroundColor: 'white',
+					      '& .MuiListItemIcon-root': {
+					        color: 'primary.main',
+					      },
+					    },
+		      		color: 'white',   
+              width: 340,
+              height: "40px",
+              borderRadius: "50px",
+              marginTop: "30px"
+             }}
+				     
+			        >
+			          <ListItemIcon sx={{ color: "white"}}>
+			            <BiLogOut className='icon'/>
+			          </ListItemIcon>
+			          <ListItemText 
+			          disableTypography
+                       primary={<Typography variant="h6" className='typography'>Sair</Typography>} />
+			        </ListItemButton>
 		        
 		        
 		      </List>
-		    {!!user && (
-              <Button
-                key={"logout"}
-                startIcon={<BiLogOut/>}
-                onClick={logout}
-                sx={{ position: "fixed", bottom: 0, fontSize: "18px", color: "white", bgcolor: "#8a8a8a", width: "400px" }}
-              >
-                {"sair"}
-              </Button>
-            )}
           </Box>
     </Container>
   )

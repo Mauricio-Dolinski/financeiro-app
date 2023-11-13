@@ -26,5 +26,26 @@
   width: 480px;
   min-width: 480px;
   max-width: 480px;
-  min-height: 99vh;
+  min-height: 100vh;
 }
+
+@media screen and (max-width: 480px) {
+    .login-first-div img {
+      object-fit: none;
+      height: 0;
+      width: 0;
+      max-height: 0;
+      max-width: 0;
+      min-width: 0px;
+    }
+    .login-second-div {
+      position: fixed;
+      right: 0px;
+      padding: 15px;
+      background-color: rgb(250, 250, 250);
+      width: 100vw;
+      min-width: 100vw;
+      max-width: 100vw;
+      min-height: 100vh;
+    }
+  }

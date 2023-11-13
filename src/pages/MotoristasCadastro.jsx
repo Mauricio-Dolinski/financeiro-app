@@ -195,7 +195,7 @@ const MotoristasCadastroPage = () => {
 	    :
 	   <Title name="Motoristas - Editar " />
 	    }
-	  	<Box component="form" onSubmit={handleSubmit} gap="25px" sx={{ display: "flex", flexDirection: "column", m: "0px", p: "0px", alignItems: "flex-start" }}>
+	  	<Box component="form" onSubmit={handleSubmit}  sx={{ display: "flex", flexDirection: "column", m: "0px", p: "0px", alignItems: "flex-start" }}>
 	  	{!isLoading && !isLoadingOptions && <>
 	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
 	  	  	<MySelect name="usuario_id" label="Usuário" isCadastro={isCadastro} getValue={options.value[0]} options={options}/>

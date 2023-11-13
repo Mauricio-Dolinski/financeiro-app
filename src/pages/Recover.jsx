@@ -45,7 +45,7 @@ const RecoverPage = () => {
       navigate("/tcc", { replace: true });
     }
     else if (response.data === "Email de recuperação enviado"){
-      options.type = "success";
+      options.type = "success"; 
       toast.update(toastId, options);
       setEmailHidden('none');
       setSubmitText('Recuperar Senha');
@@ -144,7 +144,7 @@ const RecoverPage = () => {
             label="Código de Recuperação"
             name="codigo"
             autoComplete="codigo"
-          />}
+          />} 
           
           {isCodigo && <FormControl sx={{mt: 1, width: 1, display: { xl: senhaHidden }}} variant="outlined">
             <InputLabel htmlFor="password">Nova Senha *</InputLabel>

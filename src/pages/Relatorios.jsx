@@ -738,7 +738,7 @@ const RelatoriosPage = () => {
     <>
       <Box sx={{display: 'flex', alignSelf: 'start', margin: '0px', width: '100%', p: 0, justifyContent: 'space-between'}}>
         <Title name={titleText} />
-        {imprimirOpen && <Box sx={{border: 'solid 2px', borderColor: "#fff", alignSelf: 'center', marginX: '25px', p: '0px',  bgcolor: "#fff", borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
+        {imprimirOpen && <Box sx={{border: 'solid 2px', borderColor: "#fff", alignSelf: 'center', margin: '1%', p: '0px',  bgcolor: "#fff", borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
           <Button onClick={print} sx={{ display: 'flex', height: '60px', borderRadius: 5, paddingX: '15px'}}>
             <Avatar sx={{ p: '0px', height: "40px", width: '40px', bgcolor: "#757575"}}>
               <BiSolidPrinter />
@@ -750,9 +750,9 @@ const RelatoriosPage = () => {
       {!inadimplenciaOpen && 
       !despesaVeiculoOpen && !despesaMotoristaOpen && !despesaClienteOpen && !despesaTodosOpen && 
       !receitaVeiculoOpen && !receitaMotoristaOpen && !receitaClienteOpen && !receitaTodosOpen &&
-      <Box component="form" onSubmit={handleSubmit} gap="25px" sx={{ display: "flex", flexDirection: "column", m: "0px", p: "0px", alignItems: "flex-start" }}>
-        <Box sx={{ width: "1000px", display: "flex", flexDirection: "row"}}>
-          <Box sx={{ width: "800px", minWidth: "500px", display: 'flex', alignItems: 'center',color: '#757575', marginX: '25px', p: 2, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
+      <Box component="form" onSubmit={handleSubmit}  sx={{ display: "flex", flexDirection: "column", m: "0px", p: "0px", alignItems: "flex-start" }}>
+        <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
+          <Box sx={{ width: "800px", minWidth: "500px", display: 'flex', alignItems: 'center',color: '#757575', margin: '1%', p: 2, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
             <Typography variant="h6" sx={{display: "flex", flexGrow: "10", fontWeight: 'bold', marginRight: "25px" }}>
               Período
             </Typography>
@@ -778,42 +778,34 @@ const RelatoriosPage = () => {
           </Box>
           <MySelect name="tipo" label="Tipo de Relatório" options={options_tipo} funcOnChange={funcOnChangeTipo}/>
           {isDespesa && <>
-            <Box sx={{ width: "100%", minWidth: "500px", display: "flex", flexDirection: "row"}}>
               <MySelect name="relacionado" label="Relacionado com" options={options_relacionado} funcOnChange={funcOnChangeDespesa}/>
-            </Box>
             </>
           }
           {isReceita && <>
-            <Box sx={{ width: "100%", minWidth: "500px", display: "flex", flexDirection: "row"}}>
               <MySelect name="relacionado" label="Relacionado com" options={options_relacionado} funcOnChange={funcOnChangeReceita}/>
-            </Box>
             </>
           }
         </Box>
+        <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
         {isFluxoDeCaixa && <>
-          <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
             <MySelect name="frequencia" label="Frequencia dos Dados" options={options_frequencia}/>
             <MySelect name="projecoes" label="Projeções Futuras?" options={options_projecoes}/>
-          </Box>
           </>
         }
         {isDespesa && <>
-          <Box sx={{ width: "500px", display: "flex", flexDirection: "row"}}>
             {!isLoadingOptionsCliente && <MySelect name="cliente_id" label="Cliente" getValue={optionsCliente.value[0]} options={optionsCliente}/>}
             {!isLoadingOptionsMotorista && <MySelect name="motorista_id" label="Motorista" getValue={optionsMotorista.value[0]} options={optionsMotorista}/>}
             {!isLoadingOptionsVeiculo && <MySelect name="veiculo_id" label="Veiculo" getValue={optionsVeiculo.value[0]} options={optionsVeiculo}/>}
-          </Box>
           </>
         }
         {isReceita && <>
-          <Box sx={{ width: "500px", display: "flex", flexDirection: "row"}}>
             {!isLoadingOptionsCliente && <MySelect name="cliente_id" label="Cliente" getValue={optionsCliente.value[0]} options={optionsCliente}/>}
             {!isLoadingOptionsMotorista && <MySelect name="motorista_id" label="Motorista" getValue={optionsMotorista.value[0]} options={optionsMotorista}/>}
             {!isLoadingOptionsVeiculo && <MySelect name="veiculo_id" label="Veiculo" getValue={optionsVeiculo.value[0]} options={optionsVeiculo}/>}
-          </Box>
           </>
         }
-        <Box sx={{display: "flex", flexDirection: "row"}}>
+        </Box>
+        <Box sx={{display: "flex", flexDirection: "row", m: "1%"}}>
           {gerar && <GerarButton />}
         </Box>
       </Box>}
@@ -826,16 +818,6 @@ const RelatoriosPage = () => {
       {despesaMotoristaOpen && <Table url="despesas/motorista" colunas={colunas_despesa_motorista} params={paramsRelatorio} size='8'/>}
       {despesaClienteOpen && <Table url="despesas/cliente" colunas={colunas_despesa_cliente} params={paramsRelatorio} size='8'/>}
       {despesaTodosOpen && <Table url="despesas/todos" colunas={colunas_despesa_todos} params={paramsRelatorio} size='8'/>}
-
-      <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={open}
-        onClick={handleClose}
-      >
-        <Box sx={{ width: "80%", height: "80%", display: "flex", flexDirection: "row", marginBottom: "25px"}}>
-
-        </Box>
-      </Backdrop>
       
     </>
 

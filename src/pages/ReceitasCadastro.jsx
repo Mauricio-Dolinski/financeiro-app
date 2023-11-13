@@ -279,7 +279,7 @@ const ReceitasCadastroPage = () => {
 	    :
 	   <Title name="Receitas - Editar " />
 	    }
-	  	<Box component="form" onSubmit={handleSubmit} gap="25px" sx={{ display: "flex", flexDirection: "column", m: "0px", p: "0px", alignItems: "flex-start" }}>
+	  	<Box component="form" onSubmit={handleSubmit}  sx={{ display: "flex", flexDirection: "column", m: "0px", p: "0px", alignItems: "flex-start" }}>
 	  	{!isLoading && !isLoadingOptionsCliente && !isLoadingOptionsVeiculo && <>
 	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
 	  	  	<MySelect name="tipo" label="Tipo de receita" isCadastro={isCadastro} getValue={entity.tipo} options={options_tipo}/>
@@ -293,7 +293,7 @@ const ReceitasCadastroPage = () => {
 	  	  	<MyInput name="valor_total" label="Valor Total" isCadastro={isCadastro} getValue={entity.valor_total}/>
             <MyInput name="descricao" label="Descricao" isCadastro={isCadastro} isDisabled={!isCadastro} getValue={entity.descricao}/>
           </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center',color: '#757575', marginX: '25px', p: 2, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
+          <Box sx={{ display: 'flex', alignItems: 'center',color: '#757575', margin: '1%', p: 2, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
           	<Typography variant="h6" sx={{display: "flex", flexGrow: "10", fontWeight: 'bold', marginRight: "25px" }}>
           		Data da Primeira Parcela
         	</Typography>

@@ -15,7 +15,7 @@ export const EntradasSaidas = ({ entradas=70, saidas=30 }) => {
   }
 
   return (
-      <Box sx={{ width: "100%", display: 'flex', color: '#757575', maxWidth: "230px", marginX: '25px', minWidth: "0", p: 0, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
+      <Box noWrap sx={{ width: "100%", display: 'flex', maxWidth: "15vw",  maxHeight: "15vh", color: '#757575', maxWidth: "230px", margin: '1%', minWidth: "0", p: 0, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
       <PieChart
         series={[
           {

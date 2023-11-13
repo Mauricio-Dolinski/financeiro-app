@@ -350,54 +350,55 @@ export const FluxoDeCaixa = ({ getFluxo, getProjecao, days=30 }) => {
 
 
   return (
-      <Box sx={{ width: "100%", maxHeight: "550px", display: 'flex',color: '#757575', marginX: '25px', p: 2, minWidth: "0",  bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
-        <LineChart
-          sx={{p: 5, color: '#1565c0'}}
-          xAxis={[{ 
-            scaleType: 'time', 
-            data: getTime(),
-            valueFormatter: (value) => {
-              return formatter(value);
-            }
-            }]}
-          yAxis={[{ 
-            scaleType: 'linear', 
-            min: min, 
-            max: max,
-            valueFormatter: (value) => {
-              if (value == null || value == undefined) {
-                  return undefined;
+      <Box  sx={{ width: "100%", display: 'flex',color: '#757575',  margin: '1%', p: "2%", maxWidth: "55vw",  maxHeight: "50vh", minWidth: "30vw", minHeight: "30vh", bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
+          <LineChart 
+            sx={{paddingTop: "5%", color: '#1565c0'}}
+            xAxis={[{ 
+              scaleType: 'time', 
+              data: getTime(),
+              valueFormatter: (value) => {
+                return formatter(value);
               }
-              else {
-                return currencyFormatter(value);
-              }
-            }
-            }]}
-          series={[
-            {
-              color: '#1565c0', showMark: false, label: 'Fluxo de Caixa', data: data,
+              }]}
+            yAxis={[{ 
+              scaleType: 'linear', 
+              min: min, 
+              max: max,
               valueFormatter: (value) => {
                 if (value == null || value == undefined) {
-                  return undefined;
+                    return undefined;
                 }
                 else {
                   return currencyFormatter(value);
                 }
               }
-            },
-            {
-              color: '#F4B400', showMark: false, label: 'Projeção Futura (7 dias)', data: proj(),
-              valueFormatter: (value) => {
-                if (value == null || value == undefined) {
-                  return undefined;
+              }]}
+            series={[
+              {
+                color: '#1565c0', showMark: false, label: 'Fluxo de Caixa', data: data,
+                valueFormatter: (value) => {
+                  if (value == null || value == undefined) {
+                    return undefined;
+                  }
+                  else {
+                    return currencyFormatter(value);
+                  }
                 }
-                else {
-                  return currencyFormatter(value);
+              },
+              {
+                color: '#F4B400', showMark: false, label: 'Projeção Futura (7 dias)', data: proj(),
+                valueFormatter: (value) => {
+                  if (value == null || value == undefined) {
+                    return undefined;
+                  }
+                  else {
+                    return currencyFormatter(value);
+                  }
                 }
-              }
-            },
-          ]}
-        />
+              },
+            ]}
+          />
+
       </Box>
   );
 };

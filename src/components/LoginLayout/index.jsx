@@ -7,7 +7,7 @@ import "./styles.css";
 
  const LoginLayout = () => {
   const { user } = useAuth();
-  const outlet = useOutlet();
+  const outlet = useOutlet(); 
 
   if (user) {
     return <Navigate to="/tcc/dashboard" replace />;

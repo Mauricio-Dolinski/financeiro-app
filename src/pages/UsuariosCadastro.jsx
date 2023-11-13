@@ -176,7 +176,7 @@ const UsuariosCadastroPage = () => {
 	    :
 	   <Title name="Usuários - Editar " />
 	    }
-	  	<Box component="form" onSubmit={handleSubmit} gap="25px" sx={{ display: "flex", flexDirection: "column", m: "0px", p: "0px", alignItems: "flex-start" }}>
+	  	<Box component="form" onSubmit={handleSubmit} sx={{ display: "flex", flexDirection: "column", m: "0px", p: "0px", alignItems: "flex-start" }}>
 	  	{!isLoading && <>
 	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
 	  	  	<MyInput name="name" label="Nome Completo" isCadastro={isCadastro} getValue={entity.name}/>
@@ -184,7 +184,7 @@ const UsuariosCadastroPage = () => {
 	  	  </Box>
 	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
             <MyInput name="username" label="Usuário" isCadastro={isCadastro} isDisabled={!isCadastro} getValue={entity.username}/>
-            <Box sx={{width: "100%", display: 'flex', alignItems: 'center',color: '#757575', marginX: '25px', p: 2, bgcolor: bgColor, borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
+            <Box sx={{width: "100%", display: 'flex', alignItems: 'center',color: '#757575', margin: '1%', p: 2, bgcolor: bgColor, borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
 	          <Typography variant="h6" sx={{display: "flex", fontWeight: 'bold', marginRight: "25px"}}>
 	             Senha
 	          </Typography>

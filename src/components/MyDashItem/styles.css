@@ -1,0 +1,53 @@
+.blue, .green, .red, .blue2, .green2, .red2 {
+  display: flex;
+  align-self: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.blue2, .green2, .red2 {
+  font-size: 24px;
+  margin-top: 5%;
+}
+
+.blue {
+  color: #1565c0;
+}
+
+.green {
+  color: #2e7d32;
+}
+
+.red {
+  color: #d32f2f;
+}
+
+.blue2 {
+  color: #1565c0;
+}
+
+.green2 {
+  color: #2e7d32;
+}
+
+.red2 {
+  color: #d32f2f;
+}
+
+@media screen and (max-height: 768px) {
+  .blue, .green, .red {
+    font-size: 14px;
+  }
+  .blue2, .green2, .red2 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .blue, .green, .red {
+    font-size: 12px;
+  }
+  .blue2, .green2, .red2 {
+    font-size: 16px;
+  }
+}

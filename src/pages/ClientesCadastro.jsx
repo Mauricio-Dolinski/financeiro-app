@@ -164,7 +164,7 @@ const ClientesCadastroPage = () => {
 	    :
 	   <Title name="Clientes - Editar " />
 	    }
-	  	<Box component="form" onSubmit={handleSubmit} gap="25px" sx={{ display: "flex", flexDirection: "column", m: "0px", p: "0px", alignItems: "flex-start" }}>
+	  	<Box component="form" onSubmit={handleSubmit}  sx={{ display: "flex", flexDirection: "column", m: "0px", p: "0px", alignItems: "flex-start" }}>
 	  	{!isLoading && <>
 	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
 	  	  	<MyInput name="cnpj" label="CNPJ" isCadastro={isCadastro} getValue={entity.cnpj}/>

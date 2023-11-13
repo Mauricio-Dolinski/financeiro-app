@@ -43,6 +43,21 @@ export function Table({url, colunas, size='9', params=''}) {
   const location = useLocation();
   const pathname = location.pathname.split('/').pop();
 
+
+  const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+
+  if (vh <= 900) {
+  	size = 6;
+  }
+
+  if (vh <= 700) {
+  	size = 4;
+  }
+
+  if (vh <= 500) {
+  	size = 3;
+  }
+
   const funcRenderDelete = () => {
   	if (user.role.includes("Admin")) setRenderDelete(true);
   }
@@ -342,8 +357,8 @@ export function Table({url, colunas, size='9', params=''}) {
   }, []);
 
   return (
-  		<Box gap="25px" sx={{ display: "flex", flexDirection: "column"}}>
-      <Box sx={{ marginX: '25px', p: 2, bgcolor: "#ffffff", borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
+  		<Box  sx={{ display: "flex", flexDirection: "column"}}>
+      <Box sx={{ margin: '1%', p: 2, bgcolor: "#ffffff", borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
 	      <table {...getTableProps()}>
 	        <thead>
 	          {headerGroups.map(headerGroup => (
@@ -451,7 +466,7 @@ export function Table({url, colunas, size='9', params=''}) {
 					          Cancelar
 					        </Typography>
 				        </Button>
-		          <Box sx={{border: 'solid 2px', borderColor: '#2e7d32', alignSelf: 'center', marginX: '25px', p: '0px',  bgcolor: "#ffffff", borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
+		          <Box sx={{border: 'solid 2px', borderColor: '#2e7d32', alignSelf: 'center', margin: '1%', p: '0px',  bgcolor: "#ffffff", borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
 			          <Button type="submit" form="my-form" sx={{ display: 'flex', height: '60px', borderRadius: 5, paddingX: '15px'}}>
 				          <LuCheckCircle className="confirm-btn" />
 					        <Typography color="#2e7d32" variant="h6" sx={{fontWeight: 'bold'}}>
@@ -483,7 +498,7 @@ export function Table({url, colunas, size='9', params=''}) {
 				          Cancelar
 				        </Typography>
 			        </Button>
-	          <Box sx={{border: 'solid 2px', borderColor: '#DB4437', alignSelf: 'center', marginX: '25px', p: '0px',  bgcolor: "#ffffff", borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
+	          <Box sx={{border: 'solid 2px', borderColor: '#DB4437', alignSelf: 'center', margin: '1%', p: '0px',  bgcolor: "#ffffff", borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
 		          <Button onClick={deleteEntity} sx={{ display: 'flex', height: '60px', borderRadius: 5, paddingX: '15px'}}>
 			          <BsFillTrashFill className="delete-btn" />
 				        <Typography color="#DB4437" variant="h6" sx={{fontWeight: 'bold'}}>

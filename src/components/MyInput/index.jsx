@@ -1,4 +1,4 @@
-
+import "./styles.css";
 import { TextField, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 
@@ -13,8 +13,8 @@ export const MyInput = ({ name, label, isCadastro=true, isDisabled=false, isRequ
 	}
 
   return (
-      <Box sx={{ width: "100%", display: 'flex', alignItems: 'center',color: '#757575', marginX: '25px', p: 2, bgcolor: bgColor, borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
-      	<Typography variant="h6" sx={{display: "flex", flexGrow: "10", fontWeight: 'bold', marginRight: "25px" }}>
+      <Box sx={{ width: "100%", display: 'flex', alignItems: 'center',color: '#757575', margin: '1%', p: 2, bgcolor: bgColor, borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
+      	<Typography class="label" variant="h6" sx={{display: "flex", flexGrow: "10", fontWeight: 'bold', marginRight: "25px" }}>
           {label}
         </Typography>
         <TextField

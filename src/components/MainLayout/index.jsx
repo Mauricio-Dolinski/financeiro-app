@@ -26,9 +26,11 @@ import { FaBars } from 'react-icons/fa';
         {sidebar && <FaBars className="testfabars" onClick={showSiderbar} />}
         {!sidebar && <FaBars className="testfabars2" onClick={showSiderbar} />}
       </div>
-      <div className="content-container">
+      <div className="right-container">
         <Topbar />
-        {outlet}
+        <div className="content-container">
+          {outlet}
+        </div>
       </div>
     </div>
   );

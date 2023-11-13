@@ -13,6 +13,7 @@ import {GiReceiveMoney, GiPayMoney} from "react-icons/gi";
 import Icon from '@mui/material/Icon';
 import { MySelect } from "../components/MySelect";
 import Tooltip from '@mui/material/Tooltip';
+import { MyDashItem } from "../components/MyDashItem";
 
 const DashboardPage = () => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -93,80 +94,16 @@ const DashboardPage = () => {
 		    </Box>
 		    {!isLoading && <>
 		    <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
-		    	<Tooltip title="Contas a receber - Entradas Hoje" arrow>
-			    	<Box sx={{ width: "100%", display: 'flex', flexDirection: "column", gap:"5px", alignItems: 'center', color: '#757575', marginLeft: '25px', p: 2, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
-			    		 <Typography variant="h3" sx={{ display: "flex", alignSelf: "center", fontWeight: 'bold', fontSize: "20px", color: '#2e7d32'}}>
-							Hoje
-	       				 </Typography>
-		    		 	 <Typography variant="h1" sx={{display: "flex", alignSelf: "center", marginTop: "10px", fontWeight: 'bold', fontSize: "24px", color: '#2e7d32'}}>
-							{entity.contas_receber_hoje}
-	   					 </Typography>
-			    	</Box>
-		    	</Tooltip>
-		    	<Tooltip title="Contas a receber - Entradas Em atraso" arrow>
-			    	<Box sx={{ width: "100%", display: 'flex', flexDirection: "column", gap:"5px", alignItems: 'center', color: '#757575', marginLeft: '25px', p: 2, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
-			    		 <Typography variant="h3" sx={{ display: "flex", alignSelf: "center", fontWeight: 'bold', fontSize: "20px", color: '#2e7d32'}}>
-								Em atraso
-	       				 </Typography>
-		    		 	 <Typography variant="h1" sx={{display: "flex", alignSelf: "center", marginTop: "10px", fontWeight: 'bold', fontSize: "24px", color: '#2e7d32'}}>
-							{entity.contas_receber_atraso}
-	   					 </Typography>
-			    	</Box>
-		    	</Tooltip>
-		    	<Tooltip title="Contas a receber - Entradas Total" arrow>
-			    	<Box sx={{ width: "100%", display: 'flex', flexDirection: "column", gap:"5px", alignItems: 'center', color: '#757575', marginLeft: '25px', p: 2, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
-			    		 <Typography variant="h3" sx={{ display: "flex", alignSelf: "center", fontWeight: 'bold', fontSize: "20px", color: '#2e7d32'}}>
-								Total
-	       				 </Typography>
-		    		 	 <Typography variant="h1" sx={{display: "flex", alignSelf: "center", marginTop: "10px", fontWeight: 'bold', fontSize: "24px", color: '#2e7d32'}}>
-							{entity.contas_receber_aberto}
-	   					 </Typography>
-			    	</Box>
-		    	</Tooltip>
-		    	<Tooltip title="Valor em Caixa " arrow>
-			    	<Box sx={{ width: "100%", display: 'flex', flexDirection: "column", gap:"5px", alignItems: 'center', color: '#757575', marginLeft: '25px', p: 2, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
-			    		 <Typography variant="h3" sx={{ display: "flex", alignSelf: "center", fontWeight: 'bold', fontSize: "20px", color: '#1565c0'}}>
-								Caixa
-	       				 </Typography>
-		    		 	 <Typography variant="h1" sx={{display: "flex", alignSelf: "center", marginTop: "10px", fontWeight: 'bold', fontSize: "24px", color: '#1565c0'}}>
-							{entity.valor_caixa}
-	   					 </Typography>
-			    	</Box>
-		    	</Tooltip>
-		    	<Tooltip title="Contas a pagar - Saídas Total" arrow>
-			    	<Box sx={{ width: "100%", display: 'flex', flexDirection: "column", gap:"5px", alignItems: 'center',color: '#757575', marginLeft: '25px', p: 2, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
-			    		 <Typography variant="h3" sx={{ display: "flex", alignSelf: "center", fontWeight: 'bold', fontSize: "20px", color: '#d32f2f'}}>
-								Total
-	       				 </Typography>
-		    		 	 <Typography variant="h1" sx={{display: "flex", alignSelf: "center", marginTop: "10px", fontWeight: 'bold', fontSize: "24px", color: '#d32f2f'}}>
-							{entity.contas_pagar_aberto}
-	   					 </Typography>
-			    	</Box>
-		    	</Tooltip>
-		    	<Tooltip title="Contas a pagar - Saídas Em atraso" arrow>
-			    	<Box sx={{ width: "100%", display: 'flex', flexDirection: "column", gap:"5px", alignItems: 'center',color: '#757575', marginLeft: '25px', p: 2, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
-			    		 <Typography variant="h3" sx={{ display: "flex", alignSelf: "center", fontWeight: 'bold', fontSize: "20px", color: '#d32f2f'}}>
-							Em atraso
-	       				 </Typography>
-		    		 	 <Typography variant="h1" sx={{display: "flex", alignSelf: "center", marginTop: "10px", fontWeight: 'bold', fontSize: "24px", color: '#d32f2f'}}>
-							{entity.contas_pagar_atraso}
-	   					 </Typography>
-			    	</Box>
-		    	</Tooltip>
-		    	<Tooltip title="Contas a pagar - Saídas Hoje" arrow>
-			    	<Box sx={{ width: "100%", display: 'flex', flexDirection: "column", gap:"5px", alignItems: 'center',color: '#757575', marginX: '25px', p: 2, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
-			    		 <Typography variant="h3" sx={{ display: "flex", alignSelf: "center", fontWeight: 'bold', fontSize: "20px", color: '#d32f2f'}}>
-								Hoje
-	       				 </Typography>
-		    		 	 <Typography variant="h1" sx={{display: "flex", alignSelf: "center", marginTop: "10px", fontWeight: 'bold', fontSize: "24px", color: '#d32f2f'}}>
-							{entity.contas_pagar_hoje}
-	   					 </Typography>
-			    	</Box>
-		    	</Tooltip>
+		    	<MyDashItem tooltip="Contas a receber - Entradas Hoje" title="Hoje" value={entity.contas_receber_hoje} />
+		    	<MyDashItem tooltip="Contas a receber - Entradas Em atraso" title="Em atraso" value={entity.contas_receber_atraso} />
+		    	<MyDashItem tooltip="Contas a receber - Entradas Total" title="Total" value={entity.contas_receber_aberto} />
+		    	<MyDashItem tooltip="Valor em Caixa" title="Caixa" value={entity.valor_caixa} />
+		    	<MyDashItem tooltip="Contas a pagar - Saídas Hoje" title="Hoje" value={entity.contas_pagar_hoje} />
+		    	<MyDashItem tooltip="Contas a pagar - Saídas Em atraso" title="Em atraso" value={entity.contas_pagar_atraso} />
+		    	<MyDashItem tooltip="Contas a pagar - Saídas Total" title="Total" value={entity.contas_pagar_aberto} />
 		    </Box>
-		    <Box sx={{ width: "100%", height: "100%", display: "flex", flexDirection: "row", marginBottom: "25px"}}>
+		    <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
 		    	<FluxoDeCaixa getFluxo={entity.fluxoDiario} getProjecao={entity.projecao} days={days}/>
-		    	
 		    	<TiposDeDespesas getData={entity.despesasPeriodo}/>
 		    </Box>
 		    </>}
