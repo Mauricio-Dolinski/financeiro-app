@@ -306,7 +306,7 @@ const ReceitasCadastroPage = () => {
         		/>
    		 	</LocalizationProvider>
           </Box>
-          <Box sx={{display: "flex", alignItems: "flex-start"}} > 
+          <Box sx={{display: "flex", alignItems: "flex-start", m: '1%'}} > 
 		  	{isCadastro ?
 		  	<SaveButton action='cadastrar' isWaitingData={isWaitingData}/>
 		  	:

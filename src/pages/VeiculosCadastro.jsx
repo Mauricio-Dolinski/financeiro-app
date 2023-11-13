@@ -212,7 +212,7 @@ const VeiculosCadastroPage = () => {
 	  	  	<MyInput name="tipo" label="Tipo" isCadastro={isCadastro} getValue={entity.tipo}/>
 	  	  	<MyInput name="capacidade" label="Capacidade" isCadastro={isCadastro} getValue={entity.capacidade}/>
 	  	  </Box>
-          <Box sx={{display: "flex", alignItems: "flex-start"}} > 
+          <Box sx={{display: "flex", alignItems: "flex-start", m: '1%'}} > 
 		  	{isCadastro ?
 		  	<SaveButton action='cadastrar' isWaitingData={isWaitingData}/>
 		  	:

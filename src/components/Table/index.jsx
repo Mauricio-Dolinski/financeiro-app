@@ -46,15 +46,25 @@ export function Table({url, colunas, size='9', params=''}) {
 
   const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 
+  if (vh <= 1000) {
+  	size = 9;
+  }
+  if (vh <= 950) {
+  	size = 8;
+  }
   if (vh <= 900) {
+  	size = 7;
+  }
+  if (vh <= 850) {
   	size = 6;
   }
-
+  if (vh <= 800) {
+  	size = 5;
+  }
   if (vh <= 700) {
   	size = 4;
   }
-
-  if (vh <= 500) {
+  if (vh <= 600) {
   	size = 3;
   }
 

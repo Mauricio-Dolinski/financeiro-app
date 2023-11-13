@@ -805,7 +805,7 @@ const RelatoriosPage = () => {
           </>
         }
         </Box>
-        <Box sx={{display: "flex", flexDirection: "row", m: "1%"}}>
+        <Box sx={{display: "flex", m: "1%"}}>
           {gerar && <GerarButton />}
         </Box>
       </Box>}

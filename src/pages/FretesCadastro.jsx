@@ -265,52 +265,52 @@ const FretesCadastroPage = () => {
 	   <Title name="Fretes - Editar " />
 	    }
 	  	<Box component="form" onSubmit={handleSubmit}  sx={{ display: "flex", flexDirection: "column", m: "0px", p: "0px", alignItems: "flex-start" }}>
-	  	{!isLoading && !isLoadingOptionsCliente && !isLoadingOptionsVeiculo && <>
-	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
-	  	  	<MyInput name="tipo" label="Tipo de receita" isCadastro={isCadastro} isDisabled={true} getValue="Frete"/>
-	  	  	<MyInput name="cte" label="Nº do Conhecimento de Transporte Eletrônico" isCadastro={isCadastro}  getValue={entity.cte}/>
-	  	  </Box>
-	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
-					<MySelect name="cliente_id" label="Cliente" isDisabled={!isCadastro} isCadastro={isCadastro} getValue={optionsCliente.value[0]} options={optionsCliente}/>
-	  	  	<MySelect name="veiculo_id" label="Veiculo" isDisabled={!isCadastro} isRequired={false} isCadastro={isCadastro} getValue={optionsVeiculo.value[0]} options={optionsVeiculo}/>
-	  	  </Box>
-	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
-	  	  	<MyInput name="origem" label="Origem" isCadastro={isCadastro}  getValue={entity.origem}/>
-	  	  	<MyInput name="destino" label="Destino" isCadastro={isCadastro}  getValue={entity.destino}/>
-	  	  </Box>
-	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
-		  	  <Box sx={{ width: "100%", display: 'flex', alignItems: 'center',color: '#757575', margin: '1%', p: 2, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
-	          	<Typography variant="h6" sx={{display: "flex", flexGrow: "10", fontWeight: 'bold', marginRight: "25px" }}>
-	          		Data do Pagamento
-	        	</Typography>
-	          	<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
-	        		<DatePicker
-	        			disabled={!isCadastro}
-	          			label="Data do Pagamento"
-	          			format="DD/MM/YYYY"
-	          			defaultValue={dayjs()}
-	          			slotProps={{ textField: { name: 'data' } }}
-	        		/>
-	   		 	</LocalizationProvider>
-	          </Box>
-	  	  	<MyInput name="valor_total" label="Valor Total" isCadastro={isCadastro} isDisabled={!isCadastro} getValue={entity.valor_total}/>
-	  	  	<MyInput name="valor_adiantamento" label="Valor do Adiantamento" isCadastro={isCadastro} isDisabled={!isCadastro} getValue={entity.valor_adiantamento}/>
-          </Box>
-          <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
-            <MyInput name="descricao" label="Descricao" isCadastro={isCadastro} isDisabled={!isCadastro} getValue={entity.descricao}/>
-          </Box>
+		  	{!isLoading && !isLoadingOptionsCliente && !isLoadingOptionsVeiculo && 
+		  		<>
+			  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
+			  	  	<MyInput name="tipo" label="Tipo de receita" isCadastro={isCadastro} isDisabled={true} getValue="Frete"/>
+			  	  	<MyInput name="cte" label="Nº do Conhecimento de Transporte Eletrônico" isCadastro={isCadastro}  getValue={entity.cte}/>
+			  	  </Box>
+			  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
+							<MySelect name="cliente_id" label="Cliente" isDisabled={!isCadastro} isCadastro={isCadastro} getValue={optionsCliente.value[0]} options={optionsCliente}/>
+			  	  	<MySelect name="veiculo_id" label="Veiculo" isDisabled={!isCadastro} isRequired={false} isCadastro={isCadastro} getValue={optionsVeiculo.value[0]} options={optionsVeiculo}/>
+			  	  </Box>
+			  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
+			  	  	<MyInput name="origem" label="Origem" isCadastro={isCadastro}  getValue={entity.origem}/>
+			  	  	<MyInput name="destino" label="Destino" isCadastro={isCadastro}  getValue={entity.destino}/>
+			  	  </Box>
+			  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
+				  	  <Box sx={{ width: "100%", display: 'flex', alignItems: 'center',color: '#757575', margin: '1%', p: 2, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
+			          <Typography variant="h6" sx={{display: "flex", flexGrow: "10", fontWeight: 'bold', marginRight: "25px" }}>
+			          		Data do Pagamento
+			        	</Typography>
+			          <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
+			        	<DatePicker
+			        			disabled={!isCadastro}
+			          			label="Data do Pagamento"
+			          			format="DD/MM/YYYY"
+			          			defaultValue={dayjs()}
+			          			slotProps={{ textField: { name: 'data' } }}
+			        		/>
+			   		 		</LocalizationProvider>
+			        </Box>
+			  	  	<MyInput name="valor_total" label="Valor Total" isCadastro={isCadastro} isDisabled={!isCadastro} getValue={entity.valor_total}/>
+			  	  	<MyInput name="valor_adiantamento" label="Valor do Adiantamento" isCadastro={isCadastro} isDisabled={!isCadastro} getValue={entity.valor_adiantamento}/>
+		        </Box>
+		        <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
+		          <MyInput name="descricao" label="Descricao" isCadastro={isCadastro} isDisabled={!isCadastro} getValue={entity.descricao}/>
+		        </Box>
 
-          <Box sx={{display: "flex", alignItems: "flex-start"}} > 
-		  	{isCadastro ?
-		  	<SaveButton action='cadastrar' isWaitingData={isWaitingData}/>
-		  	:
-		  	<SaveButton isWaitingData={isWaitingData}/>
-		  	}
-		  </Box>
-	  	
-	  	</>}
-	  	  
-        </Box>
+		        <Box sx={{display: "flex", alignItems: "flex-start", m: '1%'}} > 
+					  	{isCadastro ?
+					  	<SaveButton action='cadastrar' isWaitingData={isWaitingData}/>
+					  	:
+					  	<SaveButton isWaitingData={isWaitingData}/>
+					  	}
+			  		</Box>
+	  			</>
+	  		}
+      </Box>
 	  </>
   )
 };

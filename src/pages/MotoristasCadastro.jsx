@@ -205,7 +205,7 @@ const MotoristasCadastroPage = () => {
 	  	  	<MyInput name="cpf" label="CPF" isCadastro={isCadastro} getValue={entity.cpf}/>
 	  	  	<MyInput name="cnh" label="CNH" isCadastro={isCadastro} getValue={entity.cnh}/>
 	  	  </Box>
-          <Box sx={{display: "flex", alignItems: "flex-start"}} > 
+          <Box sx={{display: "flex", alignItems: "flex-start", m: '1%'}} > 
 		  	{isCadastro ?
 		  	<SaveButton action='cadastrar' isWaitingData={isWaitingData}/>
 		  	:

@@ -11,7 +11,7 @@ export const SaveButton = ({action, isWaitingData=false}) => {
 	const bgColor = action === "cadastrar" ? '#2e7d32' : '#f4b400';
 	
   return (
-    <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
+    <Box sx={{ width: "100%", display: "flex", m: "1%"}}>
       <Box sx={{border: 'solid 2px', borderColor: bgColor, alignSelf: 'center', margin: '1%', p: '0px',  bgcolor: "#ffffff", borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
       	<Button type="submit" disabled={isWaitingData} sx={{ display: 'flex', height: '100%', borderRadius: 5, paddingX: '15px'}}>
       		

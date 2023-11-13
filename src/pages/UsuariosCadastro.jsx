@@ -219,7 +219,7 @@ const UsuariosCadastroPage = () => {
         	  </Box>
         	    <MySelect name="role" label="Nivel de Acesso" isCadastro={isCadastro} getValue={entity.role} options={options_role}/>
             </Box>
-          <Box sx={{display: "flex", alignItems: "flex-start"}} > 
+          <Box sx={{display: "flex", alignItems: "flex-start", m: '1%'}} > 
 		  	{isCadastro ?
 		  	<SaveButton action='cadastrar' isWaitingData={isWaitingData}/>
 		  	:

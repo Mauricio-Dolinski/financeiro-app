@@ -179,7 +179,7 @@ const ClientesCadastroPage = () => {
 	  	  	<MyInput name="telefone" label="Telefone" isCadastro={isCadastro} getValue={entity.telefone}/>
 	  	  	<MyInput name="email" label="Email" isCadastro={isCadastro} getValue={entity.email}/>
 	  	  </Box>
-          <Box sx={{display: "flex", alignItems: "flex-start"}} > 
+          <Box sx={{display: "flex", alignItems: "flex-start", m: '1%'}} > 
 		  	{isCadastro ?
 		  	<SaveButton action='cadastrar' isWaitingData={isWaitingData}/>
 		  	:
