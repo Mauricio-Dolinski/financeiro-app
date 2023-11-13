@@ -272,8 +272,8 @@ const FretesCadastroPage = () => {
 			  	  	<MyInput name="cte" label="Nº do Conhecimento de Transporte Eletrônico" isCadastro={isCadastro}  getValue={entity.cte}/>
 			  	  </Box>
 			  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
-							<MySelect name="cliente_id" label="Cliente" isDisabled={!isCadastro} isCadastro={isCadastro} getValue={optionsCliente.value[0]} options={optionsCliente}/>
-			  	  	<MySelect name="veiculo_id" label="Veiculo" isDisabled={!isCadastro} isRequired={false} isCadastro={isCadastro} getValue={optionsVeiculo.value[0]} options={optionsVeiculo}/>
+						<MySelect name="cliente_id" label="Cliente"  isCadastro={isCadastro} getValue={optionsCliente.value[0]} options={optionsCliente}/>
+			  	  		<MySelect name="veiculo_id" label="Veiculo" isCadastro={isCadastro} getValue={optionsVeiculo.value[0]} options={optionsVeiculo}/>
 			  	  </Box>
 			  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
 			  	  	<MyInput name="origem" label="Origem" isCadastro={isCadastro}  getValue={entity.origem}/>
