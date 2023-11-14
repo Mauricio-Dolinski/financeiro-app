@@ -330,16 +330,16 @@ const ReceitasCadastroPage = () => {
 	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
 	  	  	<MySelect name="tipo" label="Tipo de despesa" isCadastro={isCadastro} getValue={entity.tipo} options={options_tipo}/>
 	  	  	<MySelect name="recorrente" label="Despesa é recorrente?" isCadastro={isCadastro} getValue={entity.recorrente} options={options_recorrente}/>
-	  	  	<MySelect name="parcelas" label="Quantidade de parcelas" isCadastro={isCadastro} getValue={entity.parcelas} options={options_parcelas}/>
+	  	  	<MySelect name="parcelas" label="Quantidade de parcelas" isDisabled={!isCadastro} isCadastro={isCadastro} getValue={entity.parcelas} options={options_parcelas}/>
 	  	  </Box>
 	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
-			<MySelect name="cliente_id" label="Cliente" isDisabled={!isCadastro} isRequired={false} isCadastro={isCadastro} getValue={optionsCliente.value[0]} options={optionsCliente}/>
-			<MySelect name="motorista_id" label="Motorista" isDisabled={!isCadastro} isRequired={false} isCadastro={isCadastro} getValue={optionsMotorista.value[0]} options={optionsMotorista}/>
-	  	  	<MySelect name="veiculo_id" label="Veiculo" isDisabled={!isCadastro} isRequired={false} isCadastro={isCadastro} getValue={optionsVeiculo.value[0]} options={optionsVeiculo}/>
+			<MySelect name="cliente_id" label="Cliente" isRequired={false} isCadastro={isCadastro} getValue={optionsCliente.value[0]} options={optionsCliente}/>
+			<MySelect name="motorista_id" label="Motorista" isRequired={false} isCadastro={isCadastro} getValue={optionsMotorista.value[0]} options={optionsMotorista}/>
+	  	  	<MySelect name="veiculo_id" label="Veiculo" isRequired={false} isCadastro={isCadastro} getValue={optionsVeiculo.value[0]} options={optionsVeiculo}/>
 	  	  </Box>
 	  	  <Box sx={{ width: "100%", display: "flex", flexDirection: "row"}}>
-	  	 	<MyInput name="valor_total" label="Valor Total" isCadastro={isCadastro} getValue={entity.valor_total}/>
-            <MyInput name="descricao" label="Descricao" isCadastro={isCadastro} isDisabled={!isCadastro} getValue={entity.descricao}/>
+	  	 	<MyInput name="valor_total" label="Valor Total" isDisabled={!isCadastro} isCadastro={isCadastro} getValue={entity.valor_total}/>
+            <MyInput name="descricao" label="Descricao" isCadastro={isCadastro} getValue={entity.descricao}/>
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center',color: '#757575', margin: '1%', p: 2, bgcolor: '#fff', borderRadius: 5, boxShadow: "2px 2px 10px -3px"}}>
           	<Typography variant="h6" sx={{display: "flex", flexGrow: "10", fontWeight: 'bold', marginRight: "25px" }}>
@@ -351,6 +351,7 @@ const ReceitasCadastroPage = () => {
           			format="DD/MM/YYYY"
           			defaultValue={dayjs()}
           			slotProps={{ textField: { name: 'data' } }}
+          			disabled={!isCadastro}
         		/>
    		 	</LocalizationProvider>
           </Box>

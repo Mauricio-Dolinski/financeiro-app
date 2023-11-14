@@ -336,21 +336,9 @@ export function Table({url, colunas, size='9', params=''}) {
      
 
     switch(pathname) {
-	  case "receitas":
-	  	getData();
-	  	funcRenderDelete();
-	    break;
-	  case "receitas":
-	  	getData();
-	    funcRenderDelete();
-	    break;
 	  case "contas-a-receber":
 	  	getData();
 	    if (!user.role.includes("Motorista")) setRenderConfirm(true);
-	    break;
-	  case "despesas":
-	  	getData();
-	    funcRenderDelete();
 	    break;
 	  case "contas-a-pagar":
 	  	getData();

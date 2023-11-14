@@ -82,9 +82,11 @@ export const router = createBrowserRouter(
         <Route path="/tcc/clientes/editar/:id" element={<ClientesCadastroPage />} />
         <Route path="/tcc/receitas" element={<ReceitasPage />} />
         <Route path="/tcc/receitas/cadastrar" element={<ReceitasCadastroPage />} />
+        <Route path="/tcc/receitas/editar/:id" element={<ReceitasCadastroPage />} />
         <Route path="/tcc/contas-a-receber" element={<ContasReceberPage />} />
         <Route path="/tcc/despesas" element={<DespesasPage />} />
         <Route path="/tcc/despesas/cadastrar" element={<DespesasCadastroPage />} />
+        <Route path="/tcc/despesas/editar/:id" element={<DespesasCadastroPage />} />
         <Route path="/tcc/contas-a-pagar" element={<ContasPagarPage />} />
         <Route path="/tcc/relatorios" element={<RelatoriosPage />} />
       </Route>
