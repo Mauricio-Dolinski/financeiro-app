@@ -30,24 +30,47 @@ import LoginLayout from "./components/LoginLayout";
 import AuthLayout from "./components/AuthLayout";
 import "./App.css";
 
+
 import axios from 'axios';
 
   const auth = async () => {
-	const userData = window.localStorage.getItem("user");
+
+	  const userData = window.localStorage.getItem("user");
     const userObject = JSON.parse(userData);
-	if (userObject){
+	  if (userObject){
 	    await axios.post('https://shielded-journey-60376-d85de0c32e4c.herokuapp.com/api/login', { }, {
 			auth: {
 				username: userObject.user,
   				password: userObject.password
 			}
 		}).then(response => {
+          window.localStorage.setItem("user", userData);
+          window.localStorage.setItem("usuarios", []);
+          window.localStorage.setItem("motoristas", []);
+          window.localStorage.setItem("veiculos", []);
+          window.localStorage.setItem("fretes", []);
+          window.localStorage.setItem("clientes", []);
+          window.localStorage.setItem("receitas", []);
+          window.localStorage.setItem("contas-a-receber", []);
+          window.localStorage.setItem("despesas", []);
+          window.localStorage.setItem("contas-a-pagar", []);
 	        return new Promise((resolve, reject) => resolve(userObject));
       }).catch(error => { 
-		  window.localStorage.setItem("user", null);
+		  //
+      window.localStorage.clear();
 		  return new Promise((resolve, reject) => reject("Error"));
       });
     }
+    window.localStorage.setItem("user", userData);
+    window.localStorage.setItem("usuarios", []);
+    window.localStorage.setItem("motoristas", []);
+    window.localStorage.setItem("veiculos", []);
+    window.localStorage.setItem("fretes", []);
+    window.localStorage.setItem("clientes", []);
+    window.localStorage.setItem("receitas", []);
+    window.localStorage.setItem("contas-a-receber", []);
+    window.localStorage.setItem("despesas", []);
+    window.localStorage.setItem("contas-a-pagar", []);
     return new Promise((resolve, reject) => resolve(userObject));
   };
 

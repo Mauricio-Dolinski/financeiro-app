@@ -36,6 +36,7 @@ export const AuthProvider = ({ children, userData }) => {
 		}).then(response => {
 	        data.role = response.data.role;
 	        data.name = response.data.name;
+	        localStorage.clear();
 	        setUser(data);
 	        toast.update("logintoast", {render: "Autenticado", type: "success", isLoading: false, hideProgressBar: false, autoClose: 1200});
     		navigate("/tcc/dashboard", { replace: true });
@@ -52,6 +53,7 @@ export const AuthProvider = ({ children, userData }) => {
 
   const logout = () => {
     setUser(null);
+    localStorage.clear();
     navigate("/tcc", { replace: true });
   };
 

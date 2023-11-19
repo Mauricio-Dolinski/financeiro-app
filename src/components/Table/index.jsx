@@ -24,8 +24,11 @@ import { Select, Avatar, Typography, MenuItem, InputLabel, FormControl, TextFiel
 
 export function Table({url, colunas, size='9', params=''}) {
 
-  const [rows, setRows] = useState([]);
+	const [rowSavedData, setRowSavedData] = useLocalStorage(url, []);
+
+  const [rows, setRows] = useState(rowSavedData);
   const [user] = useLocalStorage("user", null);
+  
   const { URL_API } = useAuth();
   const [renderEdit, setRenderEdit] = useState(false);
   const [renderDelete, setRenderDelete] = useState(false);
@@ -42,6 +45,9 @@ export function Table({url, colunas, size='9', params=''}) {
   const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname.split('/').pop();
+
+  const data = useMemo(() => [...rows], [rows]);
+  const columns = useMemo(() => colunas, []);
 
 
   const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
@@ -95,6 +101,7 @@ export function Table({url, colunas, size='9', params=''}) {
         for (const entity of entities) {
           setRows([...rows, { ...entity }]);
           rows.push({ ...entity });
+          setRowSavedData(rows);
         };
         rows.length = 0;
       }).catch(error => { 
@@ -159,9 +166,7 @@ export function Table({url, colunas, size='9', params=''}) {
     });
   };
 
-  const data = useMemo(() => [...rows], [rows]);
-  const columns = useMemo(() => colunas, []
-  );
+  
 
   const editEntity = (rowid) => {
 		const id = rows[rowid].id;
