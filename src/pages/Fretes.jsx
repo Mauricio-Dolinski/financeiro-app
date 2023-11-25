@@ -10,12 +10,14 @@ const FretesPage = () => {
         accessor: 'id'
       },
       {
-        Header: 'Data Inicio',
         accessor: 'data',
+        Header: 'Data Inicio',
+        //Cell: (testasdas => testasdas + "test"),
       },
       {
         Header: 'Cliente',
         accessor: 'nome_cliente',
+        filter: 'text'
       },
       {
         Header: 'Motorista',

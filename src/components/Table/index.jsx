@@ -1,7 +1,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
-import { useTable, usePagination, useSortBy } from 'react-table';
+import { useTable, usePagination, useSortBy, useFilters } from 'react-table';
 import './styles.css'
 import Box from "@mui/material/Box";
 import { toast} from "react-toastify";
@@ -316,8 +316,10 @@ export function Table({url, colunas, size='9', params=''}) {
       data,
       initialState: { pageIndex: 0, pageSize: Number(size) }
     },
+    useFilters,
     useSortBy,
-    usePagination
+    usePagination,
+    
   )
   
   const {
