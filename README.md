@@ -1,4 +1,4 @@
-# Aplicativo Web de Gerenciamento Financeiro para Trasportadora de Cargas (Front-End)
+# Aplicativo Web de Gerenciamento Financeiro para Trasportadora de Cargas (Front-End e um API de Back-End)
 
 Rápida descrição do objetivo de fazer esse projeto
 
