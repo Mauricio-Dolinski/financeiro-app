@@ -35,7 +35,7 @@ public class Startup {
     	Receita.deleteAll();
     	Frete.deleteAll();
     	
-    	Usuario.add("admin", "admin", "Admin", "Mauricio da Mota Porelli Dolinski", "mauriciompd@gmail.com");
+    	Usuario.add("admin", "admin", "Admin", "Mauricio Dolinski", "mauriciompd@gmail.com");
         Usuario.add("operador", "operador", "Operador", "Davi Costa Oliveira", "operador@transdolinski.com.br");
         Usuario usuario3 = Usuario.add("motorista", "motorista", "Motorista", "Luiz Carlos Pereira", "mot.teste1@transdolinski.com");
         Usuario usuario4 = Usuario.add("motorista2", "motorista2", "Motorista", "João da Silva", "mot.teste2@transdolinski.com");
