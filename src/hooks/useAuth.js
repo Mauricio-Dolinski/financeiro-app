@@ -12,7 +12,7 @@ export const AuthProvider = ({ children, userData }) => {
   const [user, setUser] = useLocalStorage("user", userData);
   const navigate = useNavigate();
 
-  const URL_API = "https://shielded-journey-60376-d85de0c32e4c.herokuapp.com/api/";
+  const URL_API = "http://apidolinski.sa-east-1.elasticbeanstalk.com/api/";
 
   const login = async (data) => {
 	
