@@ -78,7 +78,7 @@ const DashboardPage = () => {
 	useEffect(() => {
 		if (userData){
 		  if (userData.role === "Motorista"){
-			  navigate("/tcc/fretes", { replace: true });
+			  navigate("/financeiro-app/fretes", { replace: true });
 		  }
 		  else {
 		  	postData(days);

@@ -39,7 +39,7 @@ export const AuthProvider = ({ children, userData }) => {
 	        localStorage.clear();
 	        setUser(data);
 	        toast.update("logintoast", {render: "Autenticado", type: "success", isLoading: false, hideProgressBar: false, autoClose: 1200});
-    		navigate("/tcc/dashboard", { replace: true });
+    		navigate("/financeiro-app/dashboard", { replace: true });
 	      }).catch(error => { 
 			  if (error.response && error.response.status === 401){
 				    toast.update("logintoast", {render: "Usuário ou senha incorretos", type: "error", isLoading: false, hideProgressBar: false, autoClose: 3000});
@@ -54,7 +54,7 @@ export const AuthProvider = ({ children, userData }) => {
   const logout = () => {
     setUser(null);
     localStorage.clear();
-    navigate("/tcc", { replace: true });
+    navigate("/financeiro-app", { replace: true });
   };
 
   const value = useMemo(

@@ -42,7 +42,7 @@ const RecoverPage = () => {
     if (response.data === "Senha modificada com sucesso"){
       options.type = "success";
       toast.update(toastId, options);
-      navigate("/tcc", { replace: true });
+      navigate("/financeiro-app", { replace: true });
     }
     else if (response.data === "Email de recuperação enviado"){
       options.type = "success"; 
@@ -111,7 +111,7 @@ const RecoverPage = () => {
 	  <Container  maxWidth="xs">
 	  <Grid container>
         <Grid item>
-          <ArrowBackIosOutlinedIcon onClick={() => navigate("/tcc/")} color="primary" sx={{ cursor: "pointer" }}/>
+          <ArrowBackIosOutlinedIcon onClick={() => navigate("/financeiro-app/")} color="primary" sx={{ cursor: "pointer" }}/>
         </Grid>
       </Grid>
 	  

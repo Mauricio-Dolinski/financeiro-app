@@ -82,36 +82,36 @@ export const router = createBrowserRouter(
     >
       <Route element={<LoginLayout />}>
         <Route path="/" element={<LoginPage />} />
-        <Route path="/tcc/recuperar" element={<RecoverPage />} />
-        <Route path="/tcc" element={<LoginPage />} />
+        <Route path="/financeiro-app/recuperar" element={<RecoverPage />} />
+        <Route path="/financeiro-app" element={<LoginPage />} />
       </Route>
 
       <Route element={<MainLayout />}>
-        <Route path="/tcc/dashboard" element={<DashboardPage />} />
-        <Route path="/tcc/usuarios" element={<UsuariosPage />} />
-        <Route path="/tcc/usuarios/cadastrar" element={<UsuariosCadastroPage />} />
-        <Route path="/tcc/usuarios/editar/:id" element={<UsuariosCadastroPage />} />
-        <Route path="/tcc/motoristas" element={<MotoristasPage />} />
-        <Route path="/tcc/motoristas/cadastrar" element={<MotoristasCadastroPage />} />
-        <Route path="/tcc/motoristas/editar/:id" element={<MotoristasCadastroPage />} />
-        <Route path="/tcc/veiculos" element={<VeiculosPage />} />
-        <Route path="/tcc/veiculos/cadastrar" element={<VeiculosCadastroPage />} />
-        <Route path="/tcc/veiculos/editar/:id" element={<VeiculosCadastroPage />} />
-        <Route path="/tcc/fretes" element={<FretesPage />} />
-        <Route path="/tcc/fretes/cadastrar" element={<FretesCadastroPage />} />
-        <Route path="/tcc/fretes/editar/:id" element={<FretesCadastroPage />} />
-        <Route path="/tcc/clientes" element={<ClientesPage />} />
-        <Route path="/tcc/clientes/cadastrar" element={<ClientesCadastroPage />} />
-        <Route path="/tcc/clientes/editar/:id" element={<ClientesCadastroPage />} />
-        <Route path="/tcc/receitas" element={<ReceitasPage />} />
-        <Route path="/tcc/receitas/cadastrar" element={<ReceitasCadastroPage />} />
-        <Route path="/tcc/receitas/editar/:id" element={<ReceitasCadastroPage />} />
-        <Route path="/tcc/contas-a-receber" element={<ContasReceberPage />} />
-        <Route path="/tcc/despesas" element={<DespesasPage />} />
-        <Route path="/tcc/despesas/cadastrar" element={<DespesasCadastroPage />} />
-        <Route path="/tcc/despesas/editar/:id" element={<DespesasCadastroPage />} />
-        <Route path="/tcc/contas-a-pagar" element={<ContasPagarPage />} />
-        <Route path="/tcc/relatorios" element={<RelatoriosPage />} />
+        <Route path="/financeiro-app/dashboard" element={<DashboardPage />} />
+        <Route path="/financeiro-app/usuarios" element={<UsuariosPage />} />
+        <Route path="/financeiro-app/usuarios/cadastrar" element={<UsuariosCadastroPage />} />
+        <Route path="/financeiro-app/usuarios/editar/:id" element={<UsuariosCadastroPage />} />
+        <Route path="/financeiro-app/motoristas" element={<MotoristasPage />} />
+        <Route path="/financeiro-app/motoristas/cadastrar" element={<MotoristasCadastroPage />} />
+        <Route path="/financeiro-app/motoristas/editar/:id" element={<MotoristasCadastroPage />} />
+        <Route path="/financeiro-app/veiculos" element={<VeiculosPage />} />
+        <Route path="/financeiro-app/veiculos/cadastrar" element={<VeiculosCadastroPage />} />
+        <Route path="/financeiro-app/veiculos/editar/:id" element={<VeiculosCadastroPage />} />
+        <Route path="/financeiro-app/fretes" element={<FretesPage />} />
+        <Route path="/financeiro-app/fretes/cadastrar" element={<FretesCadastroPage />} />
+        <Route path="/financeiro-app/fretes/editar/:id" element={<FretesCadastroPage />} />
+        <Route path="/financeiro-app/clientes" element={<ClientesPage />} />
+        <Route path="/financeiro-app/clientes/cadastrar" element={<ClientesCadastroPage />} />
+        <Route path="/financeiro-app/clientes/editar/:id" element={<ClientesCadastroPage />} />
+        <Route path="/financeiro-app/receitas" element={<ReceitasPage />} />
+        <Route path="/financeiro-app/receitas/cadastrar" element={<ReceitasCadastroPage />} />
+        <Route path="/financeiro-app/receitas/editar/:id" element={<ReceitasCadastroPage />} />
+        <Route path="/financeiro-app/contas-a-receber" element={<ContasReceberPage />} />
+        <Route path="/financeiro-app/despesas" element={<DespesasPage />} />
+        <Route path="/financeiro-app/despesas/cadastrar" element={<DespesasCadastroPage />} />
+        <Route path="/financeiro-app/despesas/editar/:id" element={<DespesasCadastroPage />} />
+        <Route path="/financeiro-app/contas-a-pagar" element={<ContasPagarPage />} />
+        <Route path="/financeiro-app/relatorios" element={<RelatoriosPage />} />
       </Route>
     </Route>
   )

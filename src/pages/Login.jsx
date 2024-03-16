@@ -92,7 +92,7 @@ const LoginPage = () => {
           </Button>
           <Grid container>
             <Grid item>
-              <RouterLink to="/tcc/recuperar">
+              <RouterLink to="/financeiro-app/recuperar">
                 <Link href="#" variant="body2">
                   {"Esqueceu a senha?"}
                 </Link>

@@ -60,6 +60,6 @@
       "localhost",
       ".localhost"
     ],
-    "proxy": "https://localhost:3000/tcc"
+    "proxy": "https://localhost:3000/financeiro-app"
   }
 }

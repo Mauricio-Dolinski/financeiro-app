@@ -16,7 +16,7 @@ import { FaBars } from 'react-icons/fa';
   
 
   if (!user) {
-    return <Navigate to="/tcc" />;
+    return <Navigate to="/financeiro-app" />;
   }
 
   return (

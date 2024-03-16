@@ -118,7 +118,7 @@ const FretesCadastroPage = () => {
 		if (response.data === "Cadastrado" || response.data === "Editado"){
 			options.type = "success";
 			toast.update(toastId, options);
-			navigate("/tcc/"+entityName, { replace: true });
+			navigate("/financeiro-app/"+entityName, { replace: true });
 		}
 		else{
 			toast.update(toastId, options);
