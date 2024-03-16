@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/financeiro-app/static/css/main.37bce759.css",
-    "main.js": "/financeiro-app/static/js/main.b15ea480.js",
+    "main.js": "/financeiro-app/static/js/main.63a96486.js",
     "static/media/caminhoes.jpg": "/financeiro-app/static/media/caminhoes.9229ba445e3bd7e2af8e.jpg",
     "static/media/logo max.jpg": "/financeiro-app/static/media/logo max.5ac7aa9fd29d3c94a8fa.jpg",
     "index.html": "/financeiro-app/index.html",
     "main.37bce759.css.map": "/financeiro-app/static/css/main.37bce759.css.map",
-    "main.b15ea480.js.map": "/financeiro-app/static/js/main.b15ea480.js.map"
+    "main.63a96486.js.map": "/financeiro-app/static/js/main.63a96486.js.map"
   },
   "entrypoints": [
     "static/css/main.37bce759.css",
-    "static/js/main.b15ea480.js"
+    "static/js/main.63a96486.js"
   ]
 }
