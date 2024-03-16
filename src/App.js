@@ -38,7 +38,7 @@ import axios from 'axios';
 	  const userData = window.localStorage.getItem("user");
     const userObject = JSON.parse(userData);
 	  if (userObject){
-	    await axios.post('http://apidolinski.sa-east-1.elasticbeanstalk.com/api/login', { }, {
+	    await axios.post('https://financeiro-api-1370b9e1a18c.herokuapp.com/api/login', { }, {
 			auth: {
 				username: userObject.user,
   				password: userObject.password
