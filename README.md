@@ -87,6 +87,11 @@ XXXXXXX
 
 Exemplo de mensagem de confirmação para exclusão de dados, esta tela adiciona um valor significativo para a empresa em termos de segurança operacional e integridade de dados. Ao exigir uma confirmação antes de excluir um registro, a empresa minimiza o risco de perda de dados acidental e força a responsabilidade dos usuarios ao realizar ações irreversíveis.
 
+## Mensagem do Sistema
+![](https://i.imgur.com/index.jpeg)
+
+XXXXXXX
+
 ## Telas de Cadastro e Edição
 ![](https://i.imgur.com/index.jpeg)
 
