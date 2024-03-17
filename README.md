@@ -13,7 +13,8 @@ Rápida descrição do objetivo de fazer esse projeto
 | :fire: Desafios     | Fazer uma aplicação de Front-end que consuma uma api RESTful
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
-![](https://via.placeholder.com/1200x500.png?text=imagem+lindona+do+meu+projeto#vitrinedev)
+![](https://imgur.com/a/fzjkDYt)
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/fzjkDYt" data-context="false" ><a href="//imgur.com/a/fzjkDYt"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 ## Detalhes do projeto
 
