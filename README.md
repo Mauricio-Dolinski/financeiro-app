@@ -82,7 +82,7 @@ Os relatórios financeiros devem apresentar de forma clara e organizada informa�
 ## Tela de Salário
 ![](https://i.imgur.com/kxJUrlP.png)
 
-XXXXXXX
+Esta tela com nível de acesso “Motorista” exibe os registros de contas a pagar referentes ao salário do motorista. Esta tela permite aos motoristas visualizar detalhes sobre seus salários pendentes. O objetivo dessa tela é fornecer transparência e facilitar o gerenciamento financeiro para os motoristas, permitindo-lhes acompanhar o que lhes é devido pela empresa de transporte.
 
 ## Confirmação do Sistema
 ![](https://i.imgur.com/NOTPPX8.png)
