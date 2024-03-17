@@ -1,10 +1,8 @@
 # Aplicativo de Gerenciamento Financeiro para Trasportadora de Cargas (Front-End)
 
-Este projeto está dividido em front-end e back-end, 
+Front-end: https://github.com/Mauricio-Dolinski/financeiro-app
 
-font-end: https://github.com/Mauricio-Dolinski/financeiro-app
-
-back-end: https://github.com/Mauricio-Dolinski/financeiro-api
+Back-end: https://github.com/Mauricio-Dolinski/financeiro-api
 
 ### Resumo
 
