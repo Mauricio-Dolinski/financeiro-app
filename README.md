@@ -8,7 +8,7 @@ Back-end: https://github.com/Mauricio-Dolinski/financeiro-api
 
 | :placard: Nome |  **Financeiro TransDolinski**   
 | --------------------  | -------
-| :label:Tecnologias | javascript, react, node
+| :label:Tecnologias | javascript, reactjs, node
 | :sparkles: Objetivo   | Visão integrada e atualizada da situação financeira, facilitando gestão, planejamento e tomadas de decisão.
 | :rocket: URL        | https://mauricio-dolinski.github.io/financeiro-app/
 | :fire: Desafios     | Fazer uma aplicação de Front-end que consuma uma api RESTful
