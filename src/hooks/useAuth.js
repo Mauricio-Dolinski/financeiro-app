@@ -12,7 +12,7 @@ export const AuthProvider = ({ children, userData }) => {
   const [user, setUser] = useLocalStorage("user", userData);
   const navigate = useNavigate();
 
-  const URL_API = "https://financeiro-api-1370b9e1a18c.herokuapp.com/api/";
+  const URL_API = "https://financeiro-api-1-eaad692ff6da.herokuapp.com/api/";
 
   const login = async (data) => {
 	
